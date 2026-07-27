@@ -3,6 +3,10 @@
 보안 입문자를 위한 Cortex XSIAM 한국어 인터랙티브 가이드입니다.
 React, TypeScript, Vite를 사용하며 화면, 데이터, 상호작용을 컴포넌트 단위로 분리했습니다.
 
+## 배포 사이트
+
+**[Cortex XSIAM POC 가이드 바로가기](https://hyunjida.github.io/cortex-ai-agent-guide/)**
+
 ## 로컬에서 보기
 
 ```bash
