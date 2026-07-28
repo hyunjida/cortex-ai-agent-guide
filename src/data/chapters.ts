@@ -1,44 +1,105 @@
 import type { Chapter } from "../types/guide";
 
-export const chapters: Chapter[] = [
+const chapterCatalog: Chapter[] = [
   {
-    id: "overview", no: "00", title: "Cortex XSIAM 개요", shortTitle: "개요", time: "8분", audience: "모든 사용자",
-    description: "XSIAM이 어떤 데이터를 모으고, 어떻게 사건을 찾아 대응까지 연결하는지 큰 그림부터 이해합니다.",
-    outcomes: ["Alert와 Incident의 차이를 설명할 수 있다", "수집 → 분석 → 대응 흐름을 이해한다", "이 가이드의 업무 범위를 안다"],
+    id: "overview", no: "00", title: "XSIAM 분석 프로세스 이해", shortTitle: "분석 프로세스", time: "20분", audience: "신규 고객 · SOC 분석가",
+    description: "새 Case를 받았을 때 기능을 둘러보기 전에, 탐지 신호를 확인하고 우선순위를 정해 조사·대응·종료까지 연결하는 분석가의 사고 순서를 익힙니다.",
+    path: "Cases → Case 목록 → Case 상세",
+    outcomes: [
+      "탐지부터 Case 종료까지의 전체 분석 흐름을 설명할 수 있다",
+      "각 단계에서 먼저 확인할 정보와 그 이유를 말할 수 있다",
+      "증거가 충분한지 판단하고 적절한 다음 조사 단계로 이동할 수 있다",
+    ],
     blocks: [
-      { type: "cards", title: "XSIAM의 세 단계", items: [
-        { title: "1. 수집", text: "엔드포인트·네트워크·클라우드·ID 데이터를 XDL에 모읍니다." },
-        { title: "2. 탐지", text: "규칙과 분석 모델이 관련 신호를 찾아 하나의 사건으로 연결합니다." },
-        { title: "3. 대응", text: "분석가와 AI 에이전트가 조사하고 승인된 조치를 실행합니다." },
+      { type: "cards", title: "분석을 시작하는 상황", references: [
+        { chapter: "Module 4 · Alerting and Detection", pages: "PDF 163–203쪽" },
+        { chapter: "Module 8 · Case Management", pages: "PDF 324–353쪽" },
+      ], items: [
+        { title: "새 Case가 생성됨", text: "Correlation과 자동 Case 생성으로 조사할 보안 신호가 생겼습니다. 먼저 제목만 읽지 말고 어떤 Alert와 자산이 포함됐는지 확인합니다." },
+        { title: "Case가 배정됨", text: "다른 분석가나 자동화가 이미 작업했을 수 있습니다. 현재 상태, 담당자, 코멘트와 실행 내역을 확인한 뒤 조사를 이어갑니다." },
+        { title: "우선순위를 다시 정해야 함", text: "여러 Case가 동시에 열렸거나 새로운 증거가 추가된 상황입니다. Case score와 자산·행위 맥락을 다시 확인합니다." },
+        { title: "대응 또는 종료를 판단함", text: "조사 결과가 조치할 만큼 충분한지, 영향 범위와 실행 결과가 확인됐는지 검토합니다." },
       ]},
-      { type: "note", tone: "tip", title: "처음 보는 분을 위한 한 문장", text: "XSIAM은 회사의 보안 기록을 한곳에 모아, 지금 먼저 확인할 사건과 그 이유를 보여주는 SOC 업무 플랫폼입니다." },
-      { type: "cards", title: "대상 독자", items: [
-        { title: "SOC L1/L2 관제 분석가", text: "실시간 Alert·Incident 모니터링, 초동 대응, 정탐·오탐 판정을 수행합니다." },
-        { title: "침해사고 / Tier 3 분석가", text: "복합 사건 심층 조사, Timeline, IoC·BoC 추출, 포렌식과 위협 헌팅을 수행합니다." },
+      { type: "check", title: "분석 전 확인사항", references: [
+        { chapter: "Module 4 · Case Prioritization / Case Statuses", pages: "PDF 180–203쪽" },
+        { chapter: "Module 8 · Understanding the Cases Page", pages: "PDF 340–344쪽" },
+      ], items: [
+        "올바른 테넌트와 조사 대상 Case를 열었는가",
+        "Case의 현재 상태와 담당자, 마지막 갱신 시각은 무엇인가",
+        "Severity와 Case score는 무엇이며 어떤 방식으로 계산됐는가",
+        "포함된 Alert, endpoint, 사용자, IP, 파일 등 핵심 개체는 무엇인가",
+        "기존 코멘트, War Room 활동, 자동화 실행 결과가 있는가",
+        "조사 시간 범위와 표시 시간대가 사건 발생 시각을 포함하는가",
       ]},
-      { type: "cards", title: "이 매뉴얼의 범위", items: [
-        { title: "포함", text: "Incident/Alert 심층 조사, Cause Agent와 Timeline 분석, XQL과 Custom Query, Playbook 모니터링과 Manual Action, Indicator/Threat Intelligence, 위협 헌팅" },
-        { title: "제외", text: "Data Collector/Agent 설치·배포, Log Parser 작성·수정, 타 시스템 API 연동, Engine/System 설정 등 엔지니어링 영역" },
+      { type: "steps", title: "단계별 분석 절차", references: [
+        { chapter: "Module 8 · Case Lifecycle / Case Management Workflow", pages: "PDF 330–353쪽" },
+      ], items: [
+        "식별합니다. Case의 제목, 상태, 담당자, Alert와 핵심 자산을 확인해 지금 조사하는 대상과 범위를 한 문장으로 정리합니다.",
+        "우선순위를 판단합니다. Severity와 Case score를 보되, 점수의 계산 방식과 포함된 자산·행위를 함께 확인합니다.",
+        "조사를 시작합니다. Case Overview에서 출발해 Alerts, Key Assets & Artifacts, Timeline과 Causality로 이동하며 요약을 원본 증거와 대조합니다.",
+        "범위를 확장합니다. 핵심 endpoint, 사용자, process, IP, domain, hash가 다른 이벤트나 Case에도 나타나는지 필요한 화면과 XQL로 확인합니다.",
+        "완화합니다. 위협이 확인되면 영향과 승인 조건을 검토하고 containment, eradication, recovery 작업을 수행하거나 담당 팀에 전달합니다.",
+        "결과를 검증합니다. 실행 요청이 아니라 실제 조치 결과와 잔여 위험을 확인하고, 추가 조사가 필요한지 판단합니다.",
+        "기록하고 종료합니다. 확인한 사실, 분석 판단, 조치, 결과, 후속 작업을 남기고 Case 상태를 변경합니다.",
       ]},
-      { type: "cards", title: "로그 수집 3대 체계", items: [
-        { title: "Broker VM", text: "On-Prem의 Syslog, DB Audit Log(ODBC), 파일·폴더 로그를 수집해 TLS 압축·암호화 후 XDL로 전송합니다." },
-        { title: "Cloud API / Native Connectors", text: "Marketplace를 통해 AWS·Azure·GCP, SaaS, Identity, EDR·SASE·NGFW 등을 API로 연동합니다." },
-        { title: "XDR Collector", text: "Windows Server와 Linux의 이벤트·로그를 Filebeat/Winlogbeat 기반으로 수집합니다." },
+      { type: "cards", title: "화면에서 확인할 항목과 의미", references: [
+        { chapter: "Module 4 · Case Scoring / Case Statuses", pages: "PDF 180–203쪽" },
+        { chapter: "Module 8 · Cases Page / Case Detailed View", pages: "PDF 340–344쪽" },
+      ], items: [
+        { title: "Severity", text: "Case 또는 신호의 심각도입니다. 조사 순서의 한 요소이며 그 자체가 정탐을 의미하지는 않습니다." },
+        { title: "Case score", text: "조직이 구성한 scoring method, SmartScore 또는 수동 점수의 영향을 받을 수 있는 우선순위 값입니다." },
+        { title: "Status · Assignee", text: "Case가 업무 흐름의 어느 단계에 있고 누가 책임지고 있는지 보여줍니다." },
+        { title: "Alerts", text: "Case를 구성하는 탐지 신호입니다. 규칙, 시각, 대상과 원본 이벤트를 확인하는 출발점입니다." },
+        { title: "Assets & Artifacts", text: "조사 범위를 구성하는 endpoint, 사용자, IP, 파일 등의 개체와 증거입니다." },
+        { title: "Timeline · Causality", text: "이벤트의 시간 순서와 관계를 보여줍니다. 표시된 관계는 원본 이벤트로 다시 검증합니다." },
+        { title: "Executions · War Room", text: "자동화 작업의 실행 상태와 분석가의 조사 기록·협업 내역을 확인하는 곳입니다." },
+        { title: "Last updated", text: "Case가 마지막으로 바뀐 시각입니다. 인수인계 전 새 Alert나 조치가 추가됐는지 판단하는 단서입니다." },
       ]},
-      { type: "image", title: "XSIAM 데이터 수집 및 전송 아키텍처", src: "./notion/xsiam-architecture.png", alt: "XSIAM의 수집, XDL, 분석 및 AI 계층 구조" },
-      { type: "cards", title: "Cortex AgentiX 에이전트", items: [
-        { title: "Case Investigation", text: "케이스 컨텍스트를 연결해 노이즈 제거, 타임라인 요약, 다음 조사 단계를 제시합니다." },
-        { title: "Endpoint Investigation", text: "이종 EDR/XDR의 호스트 격리, 포렌식 수집, 티켓 연동을 지원합니다." },
-        { title: "Network Security", text: "NGFW/Panorama와 타사 장비의 정책 최적화·설정·취약점·인증서를 점검합니다." },
-        { title: "Email Investigation", text: "XDR와 MS EOP/MDO를 바탕으로 BEC·피싱·ATO 의도와 노출 범위를 분석합니다." },
-        { title: "Cloud Posture", text: "멀티 클라우드 오설정과 공격 경로의 우선순위를 지정하고 완화를 지원합니다." },
-        { title: "Threat Intel", text: "CTI 피드를 수집·인리치하고 내부 인시던트에 매핑합니다." },
-        { title: "IT & IAM", text: "계정 수명주기, 격리, 패치 거버넌스와 정책 기반 조치를 지원합니다." },
-        { title: "Application Security", text: "코드 위험 식별, 자동 PR, AppSec 측정과 예방 가드레일을 지원합니다." },
-        { title: "Automation Engineer", text: "자연어로 Python 플레이북 스크립트 생성·수정·디버깅을 지원합니다." },
-        { title: "Help Center", text: "Palo Alto Networks 공식 문서를 기반으로 문제 해결을 안내합니다." },
+      { type: "cards", title: "판단 기준", basis: "practice", references: [
+        { chapter: "Module 4 · Case Prioritization", pages: "PDF 180–195쪽" },
+        { chapter: "Module 8 · Identify / Investigate", pages: "PDF 331–340쪽" },
+      ], items: [
+        { title: "지금 즉시 확장 조사", text: "중요 자산이 포함됐거나 여러 관련 Alert·개체가 보이고, Timeline 또는 Causality에 확인할 연결 관계가 있을 때입니다." },
+        { title: "먼저 정보 보강", text: "점수와 제목 외에 판단할 증거가 부족하거나 대상·시간 범위가 불명확할 때입니다. 원본 Alert와 개체 정보를 먼저 확보합니다." },
+        { title: "대응 검토", text: "위협 활동과 영향 대상이 증거로 확인되고, 조치 대상과 예상 영향이 특정됐을 때 승인 절차와 대응 옵션을 검토합니다." },
+        { title: "종료 검토", text: "조사 질문에 답했고, 필요한 조치 결과와 잔여 위험·후속 작업이 기록됐을 때입니다. 조직별 종료 기준은 별도로 적용합니다." },
       ]},
-      { type: "image", title: "Cortex AgentiX 지원 범위", src: "./notion/agentix-lineup.png", alt: "10개 Cortex AgentiX 에이전트 지원 영역" },
+      { type: "note", tone: "warn", title: "Case score는 결론이 아닙니다", references: [
+        { chapter: "Module 4 · Case Scoring", pages: "PDF 180–195쪽" },
+      ], text: "PDF는 여러 scoring method와 수동 점수 조정을 설명합니다. 따라서 높은 점수는 먼저 볼 이유이지 악성임을 확정하는 증거가 아닙니다. 반대로 낮은 점수만으로 Case를 닫지 마세요." },
+      { type: "steps", title: "다음 조사 단계로 넘어가는 기준", basis: "practice", references: [
+        { chapter: "Module 8 · Investigate / Mitigate", pages: "PDF 334–339쪽" },
+      ], items: [
+        "Alert의 생성 이유와 Case에 묶인 관계가 불명확하면 1장 ‘Alert와 Case 이해’로 이동합니다.",
+        "최초 행위와 실행 순서를 확인해야 하면 Timeline과 Causality 분석으로 이동합니다.",
+        "endpoint, 사용자, host, process가 핵심 조사 대상이면 개체 분석으로 이동합니다.",
+        "IP, domain, URL, hash가 발견되면 Indicator와 Artifact 분석으로 이동합니다.",
+        "화면 정보만으로 가설을 검증할 수 없으면 XQL 심층 분석으로 이동합니다.",
+        "위협과 대상이 확인되고 조치 영향이 검토됐으면 대응 단계로 이동합니다.",
+      ]},
+      { type: "check", title: "분석 체크리스트", basis: "practice", references: [
+        { chapter: "Module 8 · Case Management", pages: "PDF 324–377쪽" },
+      ], items: [
+        "Case 상태와 담당자를 확인했다",
+        "Severity와 Case score의 의미를 구분했다",
+        "포함된 Alert와 핵심 자산을 확인했다",
+        "기존 Timeline, 코멘트와 실행 내역을 확인했다",
+        "현재 조사 질문과 시간 범위를 정했다",
+        "다음 조사 단계로 이동하는 이유를 기록했다",
+        "대응 전 대상과 영향을 다시 확인했다",
+        "종료 전 조치 결과와 후속 작업을 기록했다",
+      ]},
+      { type: "note", tone: "tip", title: "실무 참고 · 조사 질문을 먼저 적으세요", basis: "practice", text: "화면을 무작정 순회하기보다 “어떤 신호가 왜 하나의 Case가 되었는가?”, “어느 자산까지 영향을 받았는가?”처럼 현재 답해야 할 질문을 한 문장으로 적으면 다음 화면을 선택하기 쉽습니다. 이는 PDF의 기능 설명을 분석 절차로 재구성한 실무 참고입니다." },
+      { type: "note", tone: "warn", title: "주의 · 시간대와 최신 활동", basis: "practice", text: "교대 인수인계나 장시간 열린 Case에서는 표시 시간대와 마지막 갱신 시각을 먼저 확인하세요. 시간 순서를 잘못 읽거나 이미 수행된 조치를 중복 실행하지 않기 위한 실무 참고입니다." },
+      { type: "cards", title: "간단한 실습 시나리오", basis: "practice", references: [
+        { chapter: "Lab 7 · Analyze AnyDesk Cases", pages: "PDF 461–464쪽" },
+        { chapter: "Lab 11 · Case Handling", pages: "PDF 471–473쪽" },
+      ], items: [
+        { title: "상황", text: "Portable AnyDesk 관련 Case가 새로 배정됐습니다. 상태는 New이고 여러 이벤트가 Case Timeline에 포함돼 있습니다." },
+        { title: "과제 1", text: "Case를 열고 처음 확인할 여섯 가지 정보를 순서대로 적은 뒤, 각각 왜 필요한지 설명합니다." },
+        { title: "과제 2", text: "Case Overview와 Timeline만으로 답할 수 있는 질문과 추가 조사가 필요한 질문을 나눕니다." },
+        { title: "완료 기준", text: "현재 판단, 근거, 다음에 열 화면, 그 화면으로 이동하는 이유를 한 문단으로 기록합니다." },
+      ]},
     ],
   },
   {
@@ -149,34 +210,117 @@ export const chapters: Chapter[] = [
     ],
   },
   {
-    id: "cases", no: "04", title: "케이스 & 알림 분석", shortTitle: "케이스 분석", time: "15분", audience: "SOC L1~L3",
-    description: "하나의 케이스를 열어 우선순위를 판단하고, AI 에이전트와 원본 증거를 이용해 처음부터 종결까지 조사합니다.",
-    path: "Incident Response → Incidents",
-    outcomes: ["Alert와 Case를 구분한다", "AI 요약을 검증한다", "근거와 조치를 남기고 종결한다"],
+    id: "cases", no: "01", title: "Alert와 Case 이해", shortTitle: "Alert와 Case", time: "25분", audience: "신규 고객 · SOC L1/L2",
+    description: "개별 탐지 신호인 Alert가 어떤 규칙에서 시작되고, 관련 이슈와 자산이 어떻게 Case라는 조사 단위로 연결되는지 증거를 따라 확인합니다.",
+    path: "Cases → Case 상세 → Alerts",
+    outcomes: [
+      "Alert와 Case의 역할을 구분할 수 있다",
+      "Alert의 생성 근거와 Case에 포함된 관계를 확인할 수 있다",
+      "정보 보강, 심층 조사, 대응 중 올바른 다음 단계를 선택할 수 있다",
+    ],
     blocks: [
-      { type: "cards", title: "Alert와 Case", items: [
-        { title: "Alert", text: "탐지 규칙 하나가 만든 보안 신호입니다." },
-        { title: "Case / Incident", text: "SmartGrouping이 관련 알림·자산·행위를 묶은 실제 조사 단위입니다." },
+      { type: "cards", title: "Alert와 Case를 구분하는 이유", references: [
+        { chapter: "Module 4 · Alerting and Detection", pages: "PDF 163–179쪽" },
+        { chapter: "Module 8 · Case Management", pages: "PDF 328–330쪽" },
+      ], items: [
+        { title: "Alert", text: "Correlation Rule 등 탐지 로직이 이벤트 패턴을 찾아 생성한 보안 신호입니다. 분석가는 어떤 조건과 원본 이벤트가 신호를 만들었는지 확인합니다." },
+        { title: "Issue와 Causality", text: "탐지된 활동의 관계와 문맥을 보여줍니다. Causality View는 관련 이벤트와 개체를 따라 조사할 수 있는 출발점입니다." },
+        { title: "Case", text: "관련 이슈, 자산과 Artifact를 한곳에서 식별·조사·대응하도록 관리하는 조사 단위입니다." },
+        { title: "분석가의 핵심 질문", text: "“왜 탐지됐는가?”, “왜 같은 Case에 포함됐는가?”, “어떤 자산까지 영향을 받았는가?”를 순서대로 답합니다." },
       ]},
-      { type: "cards", title: "케이스 목록과 상세 화면", items: [
-        { title: "목록", text: "Severity·Priority·Status·Assignee·발생 시각으로 정렬·필터링합니다." },
-        { title: "우선순위", text: "심각도뿐 아니라 자산 중요도, 사용자, 탐지 신뢰도와 영향 범위를 함께 판단합니다." },
-        { title: "SmartGrouping", text: "공통 자산·행위·시간 관계를 이용해 여러 Alert를 하나의 Case로 자동 연결합니다." },
-        { title: "상세 탭", text: "Summary, Alerts, Timeline, Assets, Evidence 등에서 사건 맥락과 원본 근거를 확인합니다." },
+      { type: "cards", title: "분석을 시작하는 상황", references: [
+        { chapter: "Module 4 · Correlation Rules / Issue Causality", pages: "PDF 165–179쪽" },
+        { chapter: "Module 8 · Cases", pages: "PDF 328–330쪽" },
+      ], items: [
+        { title: "새 Alert를 확인함", text: "탐지 규칙과 원본 이벤트를 확인해 무엇이 기준을 충족했는지 판단해야 합니다." },
+        { title: "여러 Alert가 한 Case에 포함됨", text: "공통 자산·행위·시간 관계가 있는지 확인하고 하나의 조사 범위로 볼 수 있는지 판단합니다." },
+        { title: "Case score가 높거나 변경됨", text: "점수 자체보다 어떤 Alert와 scoring method가 값에 영향을 줬는지 확인합니다." },
+        { title: "기존 Case에 새 활동이 추가됨", text: "마지막 확인 이후 어떤 Alert·Artifact가 추가됐고 기존 가설이 달라지는지 확인합니다." },
       ]},
-      { type: "steps", title: "케이스 조사 7단계", items: [
-        "심각도, 우선순위, 상태, 담당자, 발생 시각을 확인하고 담당자를 배정합니다.",
-        "AI 자동 요약을 읽고 주장마다 연결된 Alert와 증거가 있는지 확인합니다.",
-        "Timeline과 Root Cause/Attack Story에서 최초 행위와 공격 흐름을 찾습니다.",
-        "사용자·호스트·IP·해시가 다른 케이스나 자산에도 나타났는지 확장 조사합니다.",
-        "Case Investigation Agent에 조사 가설과 범위를 구체적으로 질문합니다.",
-        "격리·차단은 대상과 영향 범위를 재확인하고 조직의 승인 절차를 따릅니다.",
-        "정탐/오탐 판정, 근거, 영향 범위, 수행 조치, 후속 작업을 기록하고 종결합니다.",
+      { type: "check", title: "분석 전 확인사항", references: [
+        { chapter: "Module 4 · Case Prioritization / Case Statuses", pages: "PDF 180–203쪽" },
+        { chapter: "Module 8 · Cases Page", pages: "PDF 340–344쪽" },
+      ], items: [
+        "Case ID, 제목, 생성·갱신 시각과 현재 상태를 확인했다",
+        "담당자와 기존 조사 코멘트, 자동화 실행 내역을 확인했다",
+        "Severity와 Case score를 서로 다른 정보로 구분했다",
+        "Alert 수와 각 Alert의 발생 시각 범위를 확인했다",
+        "Case에 표시된 주요 endpoint, 사용자와 Artifact를 확인했다",
+        "필터와 시간대 때문에 일부 Alert가 보이지 않는지 확인했다",
       ]},
-      { type: "note", tone: "ai", title: "좋은 질문 예시", text: "“이 IP가 최근 30일 다른 케이스에도 나왔어?”, “이 사용자의 정상 기준과 다른 행위는?”, “가설별 증거와 반증을 나눠 보여줘.”" },
-      { type: "note", tone: "ai", title: "백그라운드 XQL", text: "에이전트는 자연어 질문을 XQL과 도구 실행 계획으로 바꿔 관련 기간의 로그를 찾습니다. 결과에 표시되는 검색 범위·쿼리·근거를 열어 원본과 대조하세요." },
-      { type: "note", tone: "tip", title: "근본 원인과 공격 체인", text: "Root Cause와 Attack Story는 공격 흐름을 시각화합니다. 화살표의 시간 순서, 최초 진입점, 영향을 받은 자산, 각 노드의 원본 이벤트를 확인하세요." },
-      { type: "note", tone: "warn", title: "Human in the loop", text: "에이전트도 사용자와 같은 권한 체계를 따릅니다. 호스트 격리·계정 비활성화 같은 중요 조치는 승인자와 영향 범위를 확인한 뒤 실행하세요." },
+      { type: "steps", title: "단계별 분석 절차", references: [
+        { chapter: "Module 4 · Correlation Rules / Causality / Case Prioritization", pages: "PDF 165–195쪽" },
+        { chapter: "Module 8 · Understanding the Cases Page", pages: "PDF 340–344쪽" },
+      ], items: [
+        "Case 목록에서 기본 맥락을 잡습니다. 제목, Severity, score, status, assignee와 시간을 확인하고 조사 순서를 정합니다.",
+        "Alerts 영역에서 가장 이른 Alert부터 확인합니다. Alert 이름, 발생 시각, 대상 개체와 탐지 규칙을 기록합니다.",
+        "탐지 이유를 확인합니다. Correlation Rule의 조건과 Alert의 원본 이벤트를 대조해 실제로 어떤 패턴이 일치했는지 찾습니다.",
+        "Alert 사이의 공통점을 찾습니다. 같은 endpoint, 사용자, process, IP, 파일 또는 인접 시간대가 있는지 비교합니다.",
+        "Causality와 Timeline으로 관계를 검증합니다. 단순히 함께 표시됐다는 이유만으로 원인·결과라고 단정하지 않고 연결된 이벤트를 엽니다.",
+        "Case 범위를 정리합니다. 현재까지 확인된 영향 자산, 핵심 Artifact, 최초·최종 활동 시각과 아직 모르는 내용을 구분합니다.",
+        "다음 행동을 선택합니다. 증거가 부족하면 정보 보강, 관계가 확인되면 심층 조사, 명확한 위협과 대상이 확인되면 대응 검토로 이동합니다.",
+      ]},
+      { type: "cards", title: "화면에서 확인할 항목과 의미", references: [
+        { chapter: "Module 4 · Correlation Rules / Case Scoring / Case Statuses", pages: "PDF 165–203쪽" },
+        { chapter: "Module 8 · Cases Page / Case Detailed View", pages: "PDF 340–344쪽" },
+      ], items: [
+        { title: "Alert name · Source", text: "무슨 탐지 로직이 신호를 만들었는지 식별합니다. 이름만으로 악성 여부를 판정하지 않습니다." },
+        { title: "Correlation Rule", text: "이벤트에서 Alert를 생성한 조건과 대상 데이터입니다. 탐지 이유를 재현하는 핵심 근거입니다." },
+        { title: "Alert timestamp", text: "개별 신호의 발생 시각입니다. Case 생성 시각과 구분해 실제 활동 순서를 파악합니다." },
+        { title: "Severity", text: "Alert 또는 Case에 지정된 심각도입니다. 우선순위 판단에 쓰지만 정탐 여부와 같지 않습니다." },
+        { title: "Case score", text: "Case의 상대적 우선순위를 표현합니다. 적용된 scoring method와 수동 조정 가능성을 확인합니다." },
+        { title: "Issue Grouping", text: "여러 관련 이슈를 하나의 Case로 관리해 조사량을 줄이는 기능입니다. 묶인 근거는 분석가가 검증합니다." },
+        { title: "Assets · Artifacts", text: "Alert와 Case에 관련된 endpoint, 사용자, IP, 파일 등 조사할 개체입니다." },
+        { title: "Status · Last updated", text: "업무 처리 단계와 최근 변화를 보여줍니다. 새 활동이 추가됐는지 확인하는 기준입니다." },
+      ]},
+      { type: "cards", title: "판단 기준", basis: "practice", references: [
+        { chapter: "Module 4 · Issue Causality / Case Prioritization", pages: "PDF 175–195쪽" },
+        { chapter: "Module 8 · Identify / Investigate", pages: "PDF 331–335쪽" },
+      ], items: [
+        { title: "관련성이 높음", text: "동일 자산이나 개체가 반복되고 시간·행위 흐름이 연결되며, 원본 이벤트가 그 관계를 뒷받침할 때입니다." },
+        { title: "관련성이 불명확함", text: "공통점이 시간대나 제목뿐이고 원본 이벤트·개체 관계가 확인되지 않을 때입니다. 추가 정보가 필요합니다." },
+        { title: "의심을 강화하는 정보", text: "여러 Alert에서 동일 개체가 이어지거나 Causality에 추가 조사할 연결 이벤트가 나타나는 경우입니다." },
+        { title: "정상 가능성을 검토할 정보", text: "승인된 업무·관리 활동과 일치하는 정황이 있을 때입니다. PDF는 조직별 정상 목록을 제공하지 않으므로 환경 소유자 확인이 필요합니다." },
+      ]},
+      { type: "note", tone: "warn", title: "공식 내용과 조직 기준을 구분하세요", basis: "practice", text: "PDF는 Correlation, Causality, Case scoring 기능을 설명하지만 모든 환경에 적용되는 정탐·오탐 임계값이나 정상 프로세스 목록은 제시하지 않습니다. 자산 중요도, 허용된 관리 도구와 업무 시간 같은 기준은 고객 조직에서 확인해야 합니다." },
+      { type: "steps", title: "다음 조사 단계로 넘어가는 기준", basis: "practice", references: [
+        { chapter: "Module 8 · Investigate / Key Assets & Artifacts", pages: "PDF 334–357쪽" },
+      ], items: [
+        "Alert가 발생한 조건을 설명할 수 없으면 Correlation Rule과 원본 이벤트 확인을 계속합니다.",
+        "Alert 사이의 시간·개체 관계가 보이면 Timeline과 Causality 심층 분석으로 이동합니다.",
+        "특정 endpoint, 사용자, host 또는 process가 중심이면 해당 개체 조사로 이동합니다.",
+        "IP, domain, URL, hash가 핵심 증거면 Indicator와 Artifact 조사로 이동합니다.",
+        "현재 화면의 정보로 범위나 가설을 검증할 수 없으면 XQL로 이동합니다.",
+        "위협 활동, 대상과 영향이 증거로 확인되면 승인 조건을 확인하고 대응 검토로 이동합니다.",
+        "정상 정황이 있어도 근거와 확인자를 기록하기 전에는 종료하지 않습니다.",
+      ]},
+      { type: "check", title: "분석 체크리스트", basis: "practice", references: [
+        { chapter: "Module 4 · Alerting and Detection", pages: "PDF 163–203쪽" },
+        { chapter: "Module 8 · Case Management", pages: "PDF 324–360쪽" },
+      ], items: [
+        "첫 Alert와 마지막 Alert의 발생 시각을 확인했다",
+        "각 Alert를 생성한 규칙과 조건을 확인했다",
+        "Alert의 원본 이벤트를 최소 한 건 이상 확인했다",
+        "공통 endpoint, 사용자, process와 Artifact를 비교했다",
+        "Case score와 Severity를 정탐 판정으로 사용하지 않았다",
+        "Causality 또는 Timeline의 관계를 원본 이벤트로 검증했다",
+        "확인한 사실과 아직 모르는 내용을 분리했다",
+        "다음 조사 단계와 이동 이유를 기록했다",
+      ]},
+      { type: "note", tone: "tip", title: "실무 참고 · 첫 Alert부터 시간 순으로 읽으세요", basis: "practice", text: "Case 제목이나 가장 높은 Severity Alert만 먼저 보면 뒤에 발생한 결과를 원인으로 오해할 수 있습니다. 가장 이른 Alert와 이벤트를 기준점으로 잡고 이후 활동을 연결하는 방식은 PDF의 Timeline·Causality 기능을 초보자용 절차로 재구성한 실무 참고입니다." },
+      { type: "note", tone: "warn", title: "주의 · 함께 묶였다는 사실만으로 인과관계를 확정하지 마세요", references: [
+        { chapter: "Module 4 · Issue Causality", pages: "PDF 175–179쪽" },
+      ], text: "Causality View와 Issue Grouping은 조사 범위를 좁히는 강력한 단서입니다. 각 노드와 Alert의 원본 이벤트를 열어 시간, 개체와 행위 관계를 확인한 뒤 판단하세요." },
+      { type: "cards", title: "간단한 실습 시나리오", basis: "practice", references: [
+        { chapter: "Lab 6 · Review Correlation Rule", pages: "PDF 458–460쪽" },
+        { chapter: "Lab 7 · Analyze AnyDesk Cases", pages: "PDF 461–464쪽" },
+      ], items: [
+        { title: "상황", text: "Portable AnyDesk Detected Correlation Rule에서 Alert가 생성되고 관련 Case가 열렸습니다." },
+        { title: "과제 1", text: "Correlation Rule에서 어떤 조건과 데이터가 Alert를 만들었는지 찾고, Alert 상세의 원본 이벤트와 대조합니다." },
+        { title: "과제 2", text: "Case에 포함된 Alert를 시간 순으로 정리하고 공통 endpoint, 사용자 또는 Artifact를 표시합니다." },
+        { title: "판단", text: "확인된 사실, 추가로 필요한 증거, 다음에 열 화면과 그 이유를 각각 한 문장으로 작성합니다." },
+        { title: "완료 기준", text: "Alert 생성 이유와 Case 조사 범위를 설명하되, 제공된 증거 이상으로 악성 여부를 단정하지 않습니다." },
+      ]},
     ],
   },
   {
@@ -312,3 +456,13 @@ export const chapters: Chapter[] = [
     ],
   },
 ];
+
+const primaryChapterIds = ["overview", "cases"];
+
+export const chapters: Chapter[] = [
+  ...primaryChapterIds.map((id) => chapterCatalog.find((chapter) => chapter.id === id)!),
+  ...chapterCatalog.filter((chapter) => !primaryChapterIds.includes(chapter.id)),
+].map((chapter, index) => ({
+  ...chapter,
+  no: String(index).padStart(2, "0"),
+}));
