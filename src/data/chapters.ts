@@ -458,6 +458,15 @@ const chapterCatalog: Chapter[] = [
   },
 ];
 
+const verifiedUiBlocks = new Set([
+  "Dashboard 화면 항목",
+  "Dashboard 조회 확인",
+]);
+
+const isVerifiedBlock = (block: Chapter["blocks"][number]) =>
+  block.basis !== "practice" &&
+  (Boolean(block.references?.length) || verifiedUiBlocks.has(block.title));
+
 export const chapters: Chapter[] = [
   chapterCatalog.find((chapter) => chapter.id === "overview")!,
   chapterCatalog.find((chapter) => chapter.id === "cases")!,
@@ -465,4 +474,5 @@ export const chapters: Chapter[] = [
 ].map((chapter, index) => ({
   ...chapter,
   no: String(index).padStart(2, "0"),
+  blocks: chapter.blocks.filter(isVerifiedBlock),
 }));
