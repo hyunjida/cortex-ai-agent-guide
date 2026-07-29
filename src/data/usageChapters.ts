@@ -7,7 +7,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Cases & Issues → Cases",
     outcomes: ["Navigation에서 조사 화면을 찾는다", "화면별 시간·필터 범위를 확인한다", "Case에서 관련 조사 화면으로 이동한다"],
     blocks: [
-      { type: "steps", title: "처음 접속한 뒤 클릭 순서", references: [{ chapter: "Module 1 · Introduction to Cortex XSIAM", pages: "PDF 14–38쪽" }, { chapter: "Lab 1 · Perform a Walkthrough", pages: "PDF 441–443쪽" }], items: [
+      { type: "steps", title: "처음 접속한 뒤 클릭 순서", references: [{ chapter: "Module 1 · Introduction to Cortex XSIAM", pages: "14–38쪽" }, { chapter: "Lab 1 · Perform a Walkthrough", pages: "441–443쪽" }], items: [
         "왼쪽 사이드바에서 Cases & Issues를 클릭해 하위 메뉴를 펼칩니다.",
         "Cases를 클릭하고 목록의 필터, 시간 범위와 표시 열을 확인합니다.",
         "연습용 Case 하나를 클릭해 상세 화면을 엽니다.",
@@ -31,15 +31,15 @@ export const usageChapters: Chapter[] = [
         "모듈을 연 뒤 상단의 tenant, 현재 대상과 권한을 확인하고 조회 작업부터 시작합니다.",
         "원하는 모듈이 없거나 열기 버튼이 비활성화돼 있으면 임의 설정을 바꾸지 말고 라이선스와 역할 권한을 관리자에게 확인합니다.",
       ]},
-      { type: "note", tone: "tip", title: "현재 UI 참고 · ‘Modules’와 교육과정 Module은 다릅니다", basis: "practice", text: "사이드바의 Modules는 제품 기능을 여는 메뉴입니다. 이 사이트에서 말하는 Module 1~9는 PDF 교육과정의 장 구분이므로, 같은 이름의 버튼이 제품 안에 반드시 존재하는 것은 아닙니다." },
+      { type: "note", tone: "tip", title: "현재 UI 참고 · ‘Modules’와 교육과정 Module은 다릅니다", basis: "practice", text: "사이드바의 Modules는 제품 기능을 여는 메뉴입니다. 교육과정의 장 번호와 제품 메뉴 이름은 서로 다릅니다." },
       { type: "cards", title: "클릭하기 전에 보는 항목", basis: "practice", items: [
-        { title: "Tenant · Role", text: "올바른 환경과 권한으로 접속했는지 확인합니다. PDF는 조직별 로그인·권한 절차를 정의하지 않습니다." },
+        { title: "Tenant · Role", text: "올바른 환경과 권한으로 접속했는지 확인합니다." },
         { title: "Time range", text: "현재 조회가 사건 발생 시간을 포함하는지 확인합니다." },
         { title: "Filters", text: "숨은 필터 때문에 Case나 이벤트가 제외되지 않았는지 확인합니다." },
         { title: "Current object", text: "현재 보고 있는 Case, endpoint 또는 Indicator의 ID와 이름을 확인합니다." },
       ]},
       { type: "check", title: "화면 탐색 체크리스트", basis: "practice", items: ["Cases 목록을 열 수 있다", "Case 상세와 목록을 오갈 수 있다", "현재 시간 범위와 필터를 설명할 수 있다", "Alerts와 Timeline 위치를 찾았다", "권한이 없는 메뉴를 임의 설정 변경으로 해결하지 않았다"] },
-      { type: "note", tone: "warn", title: "메뉴 이름은 버전에 따라 달라질 수 있습니다", references: [{ chapter: "Courseware Version B · GUI Walkthrough", pages: "PDF 441–443쪽" }], text: "이 가이드는 PDF 화면명을 기준으로 합니다. 메뉴가 보이지 않으면 Navigation 검색으로 화면 이름을 찾고, 그래도 없으면 라이선스와 역할 권한을 확인하세요." },
+      { type: "note", tone: "warn", title: "메뉴 이름은 버전에 따라 달라질 수 있습니다", references: [{ chapter: "Courseware Version B · GUI Walkthrough", pages: "441–443쪽" }], text: "메뉴가 보이지 않으면 Navigation 검색으로 화면 이름을 찾고, 그래도 없으면 라이선스와 역할 권한을 확인하세요." },
     ],
   },
   {
@@ -48,7 +48,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Inventory → Endpoints",
     outcomes: ["endpoint 상세를 연다", "적용 프로파일과 태그를 확인한다", "Action Center에서 조치 상태와 결과를 확인한다"],
     blocks: [
-      { type: "steps", title: "Endpoint를 조회하는 클릭 순서", references: [{ chapter: "Module 2 · Endpoint Security / Investigating Endpoints", pages: "PDF 48–64쪽" }], items: [
+      { type: "steps", title: "Endpoint를 조회하는 클릭 순서", references: [{ chapter: "Module 2 · Endpoint Security / Investigating Endpoints", pages: "48–64쪽" }], items: [
         "왼쪽 사이드바에서 Inventory를 클릭하고 Endpoints 또는 Endpoint Management를 엽니다.",
         "검색 또는 필터에서 Case에 표시된 endpoint 이름을 입력합니다.",
         "결과 행을 클릭해 endpoint 상세를 열고 agent 상태, 마지막 연결, 운영체제와 IP를 확인합니다.",
@@ -56,35 +56,35 @@ export const usageChapters: Chapter[] = [
         "Security Profiles에서 적용된 Agent Settings, Malware, Restrictions와 Exceptions 프로파일을 확인합니다.",
         "관련 Case가 필요하면 endpoint 상세의 Case 연결 또는 Cases 화면에서 endpoint 이름으로 필터링합니다.",
       ]},
-      { type: "steps", title: "Action Center에서 조치 결과 확인", references: [{ chapter: "Module 2 · Action Center", pages: "PDF 61–76쪽" }], items: [
+      { type: "steps", title: "Action Center에서 조치 결과 확인", references: [{ chapter: "Module 2 · Action Center", pages: "61–76쪽" }], items: [
         "Navigation에서 Action Center를 열고 endpoint 이름 또는 action ID로 필터링합니다.",
         "action 종류, 요청자, 시작 시각과 현재 상태를 확인합니다.",
         "격리·스캔·파일 회수 작업의 상세를 열어 대상 endpoint가 맞는지 재확인합니다.",
         "Running은 완료될 때까지 새로 고침하고, Failed는 오류와 재시도 이력을 먼저 확인합니다.",
         "Completed가 표시되면 결과 또는 산출물을 열어 완료 내용을 확인합니다.",
       ]},
-      { type: "cards", title: "화면 값과 판단", references: [{ chapter: "Module 2 · Endpoint Groups / Security Profiles", pages: "PDF 50–58쪽" }], items: [
+      { type: "cards", title: "화면 값과 판단", references: [{ chapter: "Module 2 · Endpoint Groups / Security Profiles", pages: "50–58쪽" }], items: [
         { title: "Agent status", text: "endpoint가 관리 서버와 통신하는지 보여줍니다. 오래된 마지막 연결은 조치 성공 가능성에도 영향을 줍니다." },
         { title: "Group · Tag", text: "정책 적용과 자산 분류의 근거입니다. 동적 그룹은 조건에 따라 구성원이 바뀔 수 있습니다." },
         { title: "Profile", text: "endpoint에 적용되는 보안·에이전트 설정입니다. 분석 중 임의 수정하지 않습니다." },
         { title: "Action status", text: "Pending, Running, Completed, Failed를 구분하고 상세 결과를 확인합니다." },
       ]},
-      { type: "check", title: "Endpoint 조사 체크리스트", basis: "practice", references: [{ chapter: "Lab 2–3 · Profiles and Tagging", pages: "PDF 444–448쪽" }], items: ["Case와 endpoint 이름이 일치한다", "agent 상태와 마지막 연결을 확인했다", "그룹·태그·프로파일을 확인했다", "관련 Case를 확인했다", "조치 전 대상과 승인을 확인했다", "Completed 상태와 실제 결과를 모두 확인했다"] },
-      { type: "steps", title: "Engineer Guide · Agent 설치 패키지 화면 열기", references: [{ chapter: "Engineer Lab 4 · Install Linux/Kubernetes Agent", pages: "Engineer PDF 571–572쪽" }], items: [
+      { type: "check", title: "Endpoint 조사 체크리스트", basis: "practice", references: [{ chapter: "Lab 2–3 · Profiles and Tagging", pages: "444–448쪽" }], items: ["Case와 endpoint 이름이 일치한다", "agent 상태와 마지막 연결을 확인했다", "그룹·태그·프로파일을 확인했다", "관련 Case를 확인했다", "조치 전 대상과 승인을 확인했다", "Completed 상태와 실제 결과를 모두 확인했다"] },
+      { type: "steps", title: "Engineer Guide · Agent 설치 패키지 화면 열기", references: [{ chapter: "Engineer Lab 4 · Install Linux/Kubernetes Agent", pages: "571–572쪽" }], items: [
         "Settings → Configurations → Agent Installations를 엽니다.",
         "Create New를 클릭하고 Linux 또는 Kubernetes 설치 유형을 선택합니다.",
         "설치 패키지 이름과 필요한 배포 옵션을 입력합니다.",
         "Create Package를 클릭한 뒤 생성된 패키지 행을 엽니다.",
         "Download Package에서 설치 파일과 안내를 확인합니다.",
       ]},
-      { type: "steps", title: "Engineer Guide · Endpoint 그룹과 정책 확인", references: [{ chapter: "Engineer Lab 5 · Configure XDR Endpoint Groups and Endpoint Policy", pages: "Engineer PDF 573–575쪽" }, { chapter: "Engineer Lab 10 · Tagging", pages: "Engineer PDF 585–586쪽" }], items: [
+      { type: "steps", title: "Engineer Guide · Endpoint 그룹과 정책 확인", references: [{ chapter: "Engineer Lab 5 · Configure XDR Endpoint Groups and Endpoint Policy", pages: "573–575쪽" }, { chapter: "Engineer Lab 10 · Tagging", pages: "585–586쪽" }], items: [
         "Settings → Configurations → Endpoints → Endpoint Groups를 엽니다.",
         "Create New를 클릭해 Static 또는 Dynamic Group을 선택하고 조건·구성원을 확인합니다.",
         "Endpoints → All Endpoints에서 대상 endpoint 행을 선택합니다.",
         "Endpoint Control 메뉴를 열어 태그 관리 화면으로 이동합니다.",
         "태그를 추가하거나 제거한 뒤 endpoint 상세에서 반영 여부를 확인합니다.",
       ]},
-      { type: "note", tone: "warn", title: "실무 참고 · 운영 조치는 조회와 다릅니다", basis: "practice", text: "격리, 스캔, 파일 회수와 스크립트 실행은 상태를 바꾸는 작업입니다. PDF의 클릭 절차와 별개로 고객 조직의 승인·영향 검토 절차를 먼저 적용하세요." },
+      { type: "note", tone: "warn", title: "실무 참고 · 운영 조치는 조회와 다릅니다", basis: "practice", text: "격리, 스캔, 파일 회수와 스크립트 실행 전 고객 조직의 승인 절차를 확인합니다." },
     ],
   },
   {
@@ -93,21 +93,21 @@ export const usageChapters: Chapter[] = [
     path: "Settings → Configurations → Data Broker / Agent Installations / Engines",
     outcomes: ["Broker VM 관리 화면을 연다", "Agent/Collector 설치 패키지를 찾는다", "Engine 설치·로그 화면을 확인한다"],
     blocks: [
-      { type: "steps", title: "Broker VM을 등록하고 관리 화면 열기", references: [{ chapter: "Engineer Lab 6 · Onboarding Broker VM", pages: "Engineer PDF 576–578쪽" }], items: [
+      { type: "steps", title: "Broker VM을 등록하고 관리 화면 열기", references: [{ chapter: "Engineer Lab 6 · Onboarding Broker VM", pages: "576–578쪽" }], items: [
         "Settings → Configurations → Data Broker → Broker VMs를 엽니다.",
         "Add Broker VM 또는 Register Broker VM을 클릭합니다.",
         "표시된 registration command 또는 token을 복사합니다.",
         "등록 후 Broker VMs 목록에서 새 Broker VM 행을 클릭합니다.",
         "Connectivity, applet 상태, storage와 최근 활동을 확인합니다.",
       ]},
-      { type: "steps", title: "Windows Agent와 Collector 패키지 찾기", references: [{ chapter: "Engineer Lab 7 · Install Windows Agent and Collector", pages: "Engineer PDF 579–581쪽" }], items: [
+      { type: "steps", title: "Windows Agent와 Collector 패키지 찾기", references: [{ chapter: "Engineer Lab 7 · Install Windows Agent and Collector", pages: "579–581쪽" }], items: [
         "Settings → Configurations → Agent Installations를 엽니다.",
         "Create New를 클릭하고 Windows 설치 패키지 유형을 선택합니다.",
         "패키지 옵션을 입력한 뒤 Create Package를 클릭합니다.",
         "생성된 패키지를 선택해 Download와 설치 정보를 확인합니다.",
         "설치 후 All Endpoints 또는 Collector 관리 화면에서 연결 상태를 확인합니다.",
       ]},
-      { type: "steps", title: "Engine 설치와 로그 화면 열기", references: [{ chapter: "Engineer Lab 9 · Engine Installation", pages: "Engineer PDF 585쪽" }], items: [
+      { type: "steps", title: "Engine 설치와 로그 화면 열기", references: [{ chapter: "Engineer Lab 9 · Engine Installation", pages: "585쪽" }], items: [
         "Settings → Configurations → Engines를 엽니다.",
         "Add Engine 또는 Create New를 클릭하고 설치 방식을 선택합니다.",
         "표시된 설치 명령과 등록 정보를 확인합니다.",
@@ -123,7 +123,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Investigation & Response → Search → Query Builder",
     outcomes: ["Query Builder를 연다", "XQL 모드에서 쿼리를 실행한다", "결과를 표와 그래프로 확인한다"],
     blocks: [
-      { type: "steps", title: "Query Builder를 여는 순서", references: [{ chapter: "Module 3 · XQL Components / Query Editor", pages: "PDF 97–125쪽" }, { chapter: "Lab 4 · XQL Syntax Review", pages: "PDF 449–450쪽" }], items: [
+      { type: "steps", title: "Query Builder를 여는 순서", references: [{ chapter: "Module 3 · XQL Components / Query Editor", pages: "97–125쪽" }, { chapter: "Lab 4 · XQL Syntax Review", pages: "449–450쪽" }], items: [
         "왼쪽 사이드바에서 Investigation & Response를 클릭하고 Search → Query Builder를 엽니다.",
         "Query Builder 오른쪽의 XQL을 클릭해 Query Editor를 엽니다.",
         "Dataset 또는 Preset을 선택하고 필드 탐색기에서 실제 필드명을 확인합니다.",
@@ -131,7 +131,7 @@ export const usageChapters: Chapter[] = [
         "dataset stage 뒤에 filter, fields, sort와 limit를 순서대로 추가합니다.",
         "Run을 클릭하고 오류가 나면 표시된 stage와 필드명을 수정합니다.",
       ]},
-      { type: "steps", title: "쿼리 결과를 확인하는 순서", references: [{ chapter: "Module 3 · Query Results / Table-Graph", pages: "PDF 118–125쪽" }], items: [
+      { type: "steps", title: "쿼리 결과를 확인하는 순서", references: [{ chapter: "Module 3 · Query Results / Table-Graph", pages: "118–125쪽" }], items: [
         "Results의 총 건수와 실행 시간 범위를 확인합니다.",
         "Table에서 시간, endpoint, 사용자와 조사 개체 필드를 확인합니다.",
         "원본 행을 열어 필드 값, null과 중복 여부를 확인합니다.",
@@ -139,14 +139,14 @@ export const usageChapters: Chapter[] = [
         "Table/Graph를 전환해 시간별 분포가 조사 가설과 일치하는지 확인합니다.",
         "재사용할 쿼리는 Query Library에 목적이 드러나는 이름으로 저장합니다.",
       ]},
-      { type: "cards", title: "쿼리 편집 화면에서 볼 것", references: [{ chapter: "Module 3 · Data Types / Stage Order / XQL Functions", pages: "PDF 83–119쪽" }], items: [
+      { type: "cards", title: "쿼리 편집 화면에서 볼 것", references: [{ chapter: "Module 3 · Data Types / Stage Order / XQL Functions", pages: "83–119쪽" }], items: [
         { title: "Dataset · Preset", text: "검색할 데이터 범위와 미리 구성된 데이터 뷰입니다." },
         { title: "Stage order", text: "앞 stage의 결과가 다음 stage 입력이 되므로 순서가 결과에 영향을 줍니다." },
         { title: "Time window", text: "쿼리 데이터 범위입니다. 넓은 범위는 결과량과 실행 시간을 키웁니다." },
         { title: "Fields · Aliases", text: "필드 탐색기와 XDM alias로 사용할 수 있는 값을 확인합니다." },
       ]},
-      { type: "check", title: "XQL 실행 체크리스트", basis: "practice", references: [{ chapter: "Lab 5 · Winning Gold with XQL", pages: "PDF 451–457쪽" }], items: ["조사 질문을 한 문장으로 적었다", "dataset과 필드 존재를 확인했다", "짧은 시간 범위로 시작했다", "limit를 사용해 표본을 확인했다", "시간대·null·중복 값을 확인했다", "쿼리와 결과를 Case 기록에 남겼다"] },
-      { type: "steps", title: "Engineer Guide · Query Builder에서 직접 실행", references: [{ chapter: "Engineer Lab 11 · XQL Syntax Review", pages: "Engineer PDF 587–588쪽" }, { chapter: "Engineer Lab 12 · Winning Gold with XQL", pages: "Engineer PDF 589–594쪽" }], items: [
+      { type: "check", title: "XQL 실행 체크리스트", basis: "practice", references: [{ chapter: "Lab 5 · Winning Gold with XQL", pages: "451–457쪽" }], items: ["조사 질문을 한 문장으로 적었다", "dataset과 필드 존재를 확인했다", "짧은 시간 범위로 시작했다", "limit를 사용해 표본을 확인했다", "시간대·null·중복 값을 확인했다", "쿼리와 결과를 Case 기록에 남겼다"] },
+      { type: "steps", title: "Engineer Guide · Query Builder에서 직접 실행", references: [{ chapter: "Engineer Lab 11 · XQL Syntax Review", pages: "587–588쪽" }, { chapter: "Engineer Lab 12 · Winning Gold with XQL", pages: "589–594쪽" }], items: [
         "Investigation & Response → Search → Query Builder를 엽니다.",
         "XQL을 클릭해 Query Editor로 전환합니다.",
         "Create New Query 또는 새 탭을 열고 dataset stage를 입력합니다.",
@@ -162,7 +162,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Threat Management → Correlation Rules",
     outcomes: ["Correlation Rule 상세를 연다", "Alert 생성 조건을 원본 이벤트와 비교한다", "Case score와 status를 해석한다"],
     blocks: [
-      { type: "steps", title: "Alert에서 Correlation Rule로 이동", references: [{ chapter: "Module 4 · Correlation Rules", pages: "PDF 165–174쪽" }], items: [
+      { type: "steps", title: "Alert에서 Correlation Rule로 이동", references: [{ chapter: "Module 4 · Correlation Rules", pages: "165–174쪽" }], items: [
         "Cases에서 조사할 Case를 클릭하고 Alerts 영역을 엽니다.",
         "Alert 하나를 선택해 이름, 발생 시각, endpoint와 원본 이벤트를 확인합니다.",
         "Alert 상세의 rule 이름을 클릭하거나 왼쪽 사이드바에서 Threat Management → Correlation Rules를 엽니다.",
@@ -170,21 +170,21 @@ export const usageChapters: Chapter[] = [
         "규칙 조건과 Alert 원본 이벤트의 값을 한 항목씩 대조합니다.",
         "같은 규칙의 다른 Alert가 필요하면 rule 또는 Alert 이름으로 필터링합니다.",
       ]},
-      { type: "steps", title: "Causality와 Case 우선순위 확인", references: [{ chapter: "Module 4 · Issue Causality / Case Prioritization", pages: "PDF 175–195쪽" }], items: [
+      { type: "steps", title: "Causality와 Case 우선순위 확인", references: [{ chapter: "Module 4 · Issue Causality / Case Prioritization", pages: "175–195쪽" }], items: [
         "Case의 Causality View를 열고 Alert와 관련된 시작 노드를 찾습니다.",
         "노드를 클릭해 상세 이벤트와 연결 개체를 확인합니다.",
         "Case 목록 또는 상세에서 score와 적용 scoring method를 확인합니다.",
         "Star, assignee와 status를 확인하고 필요한 경우 승인된 업무 절차에 따라 갱신합니다.",
         "새 증거가 추가되면 Severity, Score와 Status 값을 다시 확인합니다.",
       ]},
-      { type: "cards", title: "화면에서 해석할 값", references: [{ chapter: "Module 4 · Case Scoring / Statuses", pages: "PDF 180–203쪽" }], items: [
+      { type: "cards", title: "화면에서 해석할 값", references: [{ chapter: "Module 4 · Case Scoring / Statuses", pages: "180–203쪽" }], items: [
         { title: "Rule query", text: "어떤 데이터와 조건이 Alert를 만드는지 보여주는 탐지 근거입니다." },
         { title: "Causality node", text: "관련 이벤트와 개체의 관계를 조사하는 진입점입니다." },
         { title: "Score method", text: "Rule-based, SmartScore 또는 수동 점수 중 어떤 방식이 표시되는지 확인합니다." },
         { title: "Status", text: "New, In Progress, Resolved 등 Case 처리 단계를 나타냅니다." },
       ]},
-      { type: "check", title: "탐지 검토 체크리스트", basis: "practice", references: [{ chapter: "Lab 6–7 · Correlation Rule / AnyDesk Case", pages: "PDF 458–464쪽" }], items: ["Alert 원본 이벤트를 열었다", "rule의 dataset과 조건을 확인했다", "조건과 이벤트 값을 대조했다", "Causality 연결을 확인했다", "score 계산 방식을 확인했다", "규칙을 바로 수정하거나 끄지 않았다"] },
-      { type: "steps", title: "Engineer Guide · IOC와 Correlation Rule 화면 사용", references: [{ chapter: "Engineer Lab 13 · OTX IOC and BIOC Walkthrough", pages: "Engineer PDF 595–596쪽" }, { chapter: "Engineer Lab 14–15 · Correlation Rule / Custom IOC", pages: "Engineer PDF 597–601쪽" }], items: [
+      { type: "check", title: "탐지 검토 체크리스트", basis: "practice", references: [{ chapter: "Lab 6–7 · Correlation Rule / AnyDesk Case", pages: "458–464쪽" }], items: ["Alert 원본 이벤트를 열었다", "rule의 dataset과 조건을 확인했다", "조건과 이벤트 값을 대조했다", "Causality 연결을 확인했다", "score 계산 방식을 확인했다", "규칙을 바로 수정하거나 끄지 않았다"] },
+      { type: "steps", title: "Engineer Guide · IOC와 Correlation Rule 화면 사용", references: [{ chapter: "Engineer Lab 13 · OTX IOC and BIOC Walkthrough", pages: "595–596쪽" }, { chapter: "Engineer Lab 14–15 · Correlation Rule / Custom IOC", pages: "597–601쪽" }], items: [
         "Threat Management에서 Indicators 또는 IOC 화면을 열고 검색창에 IOC 값을 입력합니다.",
         "결과를 클릭해 verdict, source와 관련 Alert를 확인합니다.",
         "Detection Rules 또는 Correlation Rules를 열고 Create New를 클릭합니다.",
@@ -196,11 +196,11 @@ export const usageChapters: Chapter[] = [
   },
   {
     id: "forensics", no: "06", title: "Forensics 기능 접근과 수집 준비", shortTitle: "Forensics", time: "10분", audience: "포렌식 담당자",
-    description: "이 PDF가 제공하는 Forensics 범위를 정확히 이해하고, 별도 공식 과정으로 이동하기 전에 수집 목적과 대상을 준비합니다.",
+    description: "Forensics 학습 과정으로 이동하기 전에 수집 목적과 대상을 준비합니다.",
     path: "왼쪽 사이드바 → Modules → 사용 가능한 Forensics 모듈 확인",
-    outcomes: ["PDF의 Forensics 범위를 설명한다", "별도 학습 과정으로 이동한다", "수집 전 필요한 Case 정보를 준비한다"],
+    outcomes: ["Forensics 학습 과정으로 이동한다", "수집할 endpoint를 확인한다", "수집 전 필요한 Case 정보를 준비한다"],
     blocks: [
-      { type: "steps", title: "PDF에서 안내하는 접근 순서", references: [{ chapter: "Module 5 · Forensics", pages: "PDF 207–212쪽" }], items: [
+      { type: "steps", title: "Forensics 과정으로 이동하는 순서", references: [{ chapter: "Module 5 · Forensics", pages: "207–212쪽" }], items: [
         "Module 5의 Forensics Learning Modality 안내를 확인합니다.",
         "안내된 Cortex XSIAM Forensics Learning Center 과정 링크를 엽니다.",
         "Forensics concept, virtual dataset, collection과 query 관련 별도 과정을 이수합니다.",
@@ -215,7 +215,7 @@ export const usageChapters: Chapter[] = [
     path: "Settings → Configurations → Data Collection → Automation and Feed Integrations",
     outcomes: ["Integration Marketplace를 연다", "integration instance를 추가한다", "instance 실행 결과를 확인한다"],
     blocks: [
-      { type: "steps", title: "Integration 인스턴스를 추가하는 클릭 순서", references: [{ chapter: "Engineer Lab 16 · Configure Integrations", pages: "Engineer PDF 597–599쪽" }], items: [
+      { type: "steps", title: "Integration 인스턴스를 추가하는 클릭 순서", references: [{ chapter: "Engineer Lab 16 · Configure Integrations", pages: "597–599쪽" }], items: [
         "Settings → Configurations → Data Collection → Automation and Feed Integrations를 엽니다.",
         "Marketplace 또는 Available Integrations에서 필요한 integration 이름을 검색합니다.",
         "integration 카드를 클릭하고 Add Instance를 선택합니다.",
@@ -223,7 +223,7 @@ export const usageChapters: Chapter[] = [
         "Test를 클릭해 연결 결과를 확인한 뒤 Save를 클릭합니다.",
         "Instances 목록에서 새 instance의 enabled 상태와 최근 실행 결과를 확인합니다.",
       ]},
-      { type: "steps", title: "Active Directory Query와 PAN-OS 찾기", references: [{ chapter: "Engineer Lab 16 · Active Directory Query / PAN-OS Integration", pages: "Engineer PDF 597–599쪽" }], items: [
+      { type: "steps", title: "Active Directory Query와 PAN-OS 찾기", references: [{ chapter: "Engineer Lab 16 · Active Directory Query / PAN-OS Integration", pages: "597–599쪽" }], items: [
         "Automation and Feed Integrations에서 Active Directory Query를 검색해 상세를 엽니다.",
         "Add Instance에서 directory server, user와 credential 입력 위치를 확인합니다.",
         "목록으로 돌아와 PAN-OS를 검색하고 integration 상세를 엽니다.",
@@ -239,7 +239,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Threat Management → Indicators",
     outcomes: ["Indicator Dashboard에서 값을 검색한다", "verdict와 enrichment를 확인한다", "내부 관계와 sightings를 Case에 연결한다"],
     blocks: [
-      { type: "steps", title: "Indicator를 조회하는 클릭 순서", references: [{ chapter: "Module 6 · Indicator Investigation", pages: "PDF 252–279쪽" }, { chapter: "Lab 9 · Indicators", pages: "PDF 466–467쪽" }], items: [
+      { type: "steps", title: "Indicator를 조회하는 클릭 순서", references: [{ chapter: "Module 6 · Indicator Investigation", pages: "252–279쪽" }, { chapter: "Lab 9 · Indicators", pages: "466–467쪽" }], items: [
         "Case의 Assets & Artifacts에서 조사할 IP, domain, URL 또는 hash를 복사합니다.",
         "왼쪽 사이드바에서 Threat Management를 클릭하고 Indicators 화면을 엽니다.",
         "검색창에 Indicator 값을 정확히 입력하고 결과 행을 클릭합니다.",
@@ -247,21 +247,21 @@ export const usageChapters: Chapter[] = [
         "Enrichment와 Timeline을 열어 외부 정보와 내부 관측 이력을 확인합니다.",
         "Relationships에서 연결된 Indicator와 Case를 하나씩 엽니다.",
       ]},
-      { type: "steps", title: "Indicator 관리 화면 사용", references: [{ chapter: "Module 6 · Indicator Management", pages: "PDF 232–251쪽" }], items: [
+      { type: "steps", title: "Indicator 관리 화면 사용", references: [{ chapter: "Module 6 · Indicator Management", pages: "232–251쪽" }], items: [
         "Indicators 목록의 필터로 type, verdict, source 또는 expiration 범위를 좁힙니다.",
         "Indicator 상세에서 verdict가 자동·수동 중 어떤 방식으로 설정됐는지 확인합니다.",
         "Exclusion 또는 expiration이 적용됐는지 확인합니다.",
         "Feed와 Integration 화면에서는 데이터 출처와 최근 처리 상태를 확인합니다.",
         "수동 변경이 필요하면 근거와 고객 승인 절차를 확인한 뒤 수행합니다.",
       ]},
-      { type: "cards", title: "Indicator 화면에서 볼 값", references: [{ chapter: "Module 6 · Indicator Concepts / Verdict / Relationships", pages: "PDF 226–276쪽" }], items: [
+      { type: "cards", title: "Indicator 화면에서 볼 값", references: [{ chapter: "Module 6 · Indicator Concepts / Verdict / Relationships", pages: "226–276쪽" }], items: [
         { title: "Verdict", text: "Indicator에 대한 판정입니다. 출처와 갱신 시각을 함께 확인합니다." },
         { title: "Source · Enrichment", text: "어디에서 수집됐고 어떤 추가 정보가 결합됐는지 보여줍니다." },
         { title: "Timeline", text: "Indicator의 생성·변경·관측 이력을 확인합니다." },
         { title: "Relationships", text: "다른 Indicator, Case와의 연결 관계를 보여줍니다." },
       ]},
       { type: "check", title: "Indicator 조사 체크리스트", basis: "practice", items: ["값과 type을 확인했다", "verdict의 source와 시각을 확인했다", "enrichment를 열었다", "내부 timeline과 sightings를 확인했다", "relationships와 관련 Case를 확인했다", "단일 외부 verdict만으로 결론내리지 않았다"] },
-      { type: "steps", title: "Engineer Guide · Threat Intel Feed 직접 구성", references: [{ chapter: "Engineer Lab 19 · Configure TIM Feeds", pages: "Engineer PDF 607–608쪽" }], items: [
+      { type: "steps", title: "Engineer Guide · Threat Intel Feed 직접 구성", references: [{ chapter: "Engineer Lab 19 · Configure TIM Feeds", pages: "607–608쪽" }], items: [
         "Settings → Data Sources를 열고 Add Data Source를 클릭합니다.",
         "Threat Intelligence 또는 Feed 카테고리를 선택합니다.",
         "목록에서 구성할 feed를 검색하고 카드를 클릭합니다.",
@@ -277,7 +277,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Modules → Automation → Playbooks",
     outcomes: ["Playbook을 열어 Task 순서를 읽는다", "Case 실행 상태와 출력값을 확인한다", "Job과 Context Data를 확인한다"],
     blocks: [
-      { type: "steps", title: "Playbook을 열어 확인하는 순서", references: [{ chapter: "Module 7 · Work Plan and Playbook Tasks", pages: "PDF 284–295쪽" }, { chapter: "Lab 10 · Playbooks", pages: "PDF 468–470쪽" }], items: [
+      { type: "steps", title: "Playbook을 열어 확인하는 순서", references: [{ chapter: "Module 7 · Work Plan and Playbook Tasks", pages: "284–295쪽" }, { chapter: "Lab 10 · Playbooks", pages: "468–470쪽" }], items: [
         "왼쪽 사이드바에서 Modules를 클릭하고, 표시되는 목록에서 Automation을 연 뒤 Playbooks 화면으로 이동합니다.",
         "검색창에서 이름으로 Playbook을 찾고 결과를 클릭합니다.",
         "Work Plan에서 시작 task부터 연결선을 따라 실행 순서를 읽습니다.",
@@ -285,14 +285,14 @@ export const usageChapters: Chapter[] = [
         "task 입력, 출력, 조건, 사용하는 integration과 on-error 흐름을 확인합니다.",
         "Playbook을 조회 모드로 열고 Task 순서와 설정값을 확인합니다.",
       ]},
-      { type: "cards", title: "자동화 화면에서 볼 값", references: [{ chapter: "Module 7 · Automation", pages: "PDF 280–320쪽" }], items: [
+      { type: "cards", title: "자동화 화면에서 볼 값", references: [{ chapter: "Module 7 · Automation", pages: "280–320쪽" }], items: [
         { title: "Trigger", text: "Playbook 또는 Job이 언제 무엇에 의해 시작됐는지 보여줍니다." },
         { title: "Task input/output", text: "자동화가 어떤 값을 사용하고 무엇을 반환했는지 확인하는 증거입니다." },
         { title: "Context Data", text: "Case와 task 사이에서 공유되는 구조화된 데이터입니다." },
         { title: "Job status", text: "실행 상태입니다. Completed를 확인한 뒤 출력값에서 외부 조치 결과를 확인합니다." },
       ]},
       { type: "check", title: "자동화 실행 체크리스트", basis: "practice", items: ["Playbook과 trigger를 확인했다", "task 순서와 조건을 읽었다", "입력 대상이 Case와 일치한다", "실패·승인 대기를 확인했다", "출력값과 외부 조치 결과를 확인했다", "재실행 전 중복 조치 위험을 확인했다"] },
-      { type: "steps", title: "Engineer Guide · Playbook 생성과 Trigger 연결", references: [{ chapter: "Engineer Lab 17 · Create a Playbook", pages: "Engineer PDF 600–604쪽" }, { chapter: "Engineer Lab 18 · Playbook Trigger", pages: "Engineer PDF 605–606쪽" }], items: [
+      { type: "steps", title: "Engineer Guide · Playbook 생성과 Trigger 연결", references: [{ chapter: "Engineer Lab 17 · Create a Playbook", pages: "600–604쪽" }, { chapter: "Engineer Lab 18 · Playbook Trigger", pages: "605–606쪽" }], items: [
         "Incident Response → Automation → Playbooks를 열고 New Playbook을 클릭합니다.",
         "이름을 입력하고 Task Library에서 task를 canvas로 끌어놓습니다.",
         "task를 클릭해 input, condition과 다음 task 연결을 구성합니다.",
@@ -308,10 +308,10 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Cases & Issues → Cases",
     outcomes: ["Case 상세의 Overview를 연다", "Issues와 Assets 정보를 확인한다", "Resolution Center의 상태별 숫자를 확인한다"],
     blocks: [
-      { type: "steps", title: "Engineer Guide · Case Layout과 Layout Rule 확인", references: [{ chapter: "Engineer Lab 20 · Create a Custom Case Layout and Rule", pages: "Engineer PDF 609–611쪽" }], items: [
+      { type: "steps", title: "Engineer Guide · Case Layout과 Layout Rule 확인", references: [{ chapter: "Engineer Lab 20 · Create a Custom Case Layout and Rule", pages: "609–611쪽" }], items: [
         "Settings → Configurations → Object Setup → Cases를 엽니다.",
       ]},
-      { type: "steps", title: "Case를 조사하는 클릭 순서", references: [{ chapter: "Module 8 · Cases Page / Case Detailed View", pages: "PDF 340–360쪽" }, { chapter: "Lab 11 · Case Handling", pages: "PDF 471–473쪽" }], items: [
+      { type: "steps", title: "Case를 조사하는 클릭 순서", references: [{ chapter: "Module 8 · Cases Page / Case Detailed View", pages: "340–360쪽" }, { chapter: "Lab 11 · Case Handling", pages: "471–473쪽" }], items: [
         "왼쪽 사이드바에서 Cases & Issues → Cases를 열고 status, score, assignee와 시간 범위를 설정합니다.",
         "조사할 Case 행을 클릭해 상세 화면을 엽니다.",
         "상단에서 Case Name, Severity, Status와 Assignee를 확인합니다.",
@@ -321,13 +321,13 @@ export const usageChapters: Chapter[] = [
         "MITRE ATT&CK 영역에 표시된 Tactics와 Techniques 숫자를 확인합니다.",
         "오른쪽 Resolution Center에서 Pending, Recommended, In Progress, Done 숫자를 확인합니다.",
       ]},
-      { type: "steps", title: "Resolution Center 확인 순서", references: [{ chapter: "Module 8 · Case Management", pages: "PDF 324–390쪽" }], items: [
+      { type: "steps", title: "Resolution Center 확인 순서", references: [{ chapter: "Module 8 · Case Management", pages: "324–390쪽" }], items: [
         "오른쪽 Resolution Center를 봅니다.",
         "Pending, Recommended, In Progress, Done에 표시된 숫자를 확인합니다.",
         "숫자가 표시된 상태를 클릭해 목록을 엽니다.",
         "목록에 표시된 항목의 이름과 현재 상태를 확인합니다.",
       ]},
-      { type: "cards", title: "Case 상세의 역할", references: [{ chapter: "Module 8 · Case Management", pages: "PDF 324–390쪽" }], items: [
+      { type: "cards", title: "Case 상세의 역할", references: [{ chapter: "Module 8 · Case Management", pages: "324–390쪽" }], items: [
         { title: "AI 요약", text: "Case 제목 아래에서 요약 문장을 확인합니다." },
         { title: "Issues", text: "화면 아래에서 Issue 이름, 발생 시각과 연결된 대상을 확인합니다." },
         { title: "Assets · Artifacts", text: "Hosts, Hash와 IP 항목을 확인합니다." },
@@ -342,7 +342,7 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Dashboards & Reports → Dashboard",
     outcomes: ["Dashboard 화면을 연다", "표시할 Dashboard를 선택한다", "조회 시간 범위를 변경한다", "화면에 표시된 운영 지표를 확인한다"],
     blocks: [
-      { type: "steps", title: "Dashboards 탭에서 직접 확인하는 순서", references: [{ chapter: "Engineer Lab 21.1 · Creating Dashboards", pages: "Engineer PDF 613쪽" }], items: [
+      { type: "steps", title: "Dashboards 탭에서 직접 확인하는 순서", references: [{ chapter: "Engineer Lab 21.1 · Creating Dashboards", pages: "613쪽" }], items: [
         "왼쪽 사이드바에서 Dashboards & Reports를 클릭합니다.",
         "하위 메뉴에서 Dashboard를 클릭합니다.",
         "화면 상단의 Dashboard 이름과 아래쪽 화살표를 클릭합니다.",

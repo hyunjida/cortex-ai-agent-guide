@@ -1,4 +1,4 @@
-export type PdfReference = {
+export type SourceReference = {
   chapter: string;
   pages: string;
 };
@@ -7,7 +7,7 @@ export type ContentBasis = "pdf" | "practice";
 
 type BlockMeta = {
   basis?: ContentBasis;
-  references?: PdfReference[];
+  references?: SourceReference[];
 };
 
 export type GuideBlock = BlockMeta & (
