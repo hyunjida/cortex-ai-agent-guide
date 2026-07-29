@@ -318,7 +318,9 @@ export const usageChapters: Chapter[] = [
     path: "왼쪽 사이드바 → Cases & Issues → Cases",
     outcomes: ["Case 상세의 조사 탭을 순서대로 사용한다", "War Room과 Executions로 협업 기록을 확인한다", "대응 결과를 검증하고 상태를 변경한다"],
     blocks: [
-      { type: "note", tone: "tip", title: "현재 UI의 Object Setup 경로", text: "Settings → Configurations → Object Setup → Cases를 선택합니다. Engineer Study Guide의 이전 UI에서 Incidents로 표시된 항목은 현재 제공된 화면에서 Cases로 표시됩니다." },
+      { type: "steps", title: "Engineer Guide · Case Layout과 Layout Rule 확인", references: [{ chapter: "Engineer Lab 20 · Create a Custom Case Layout and Rule", pages: "Engineer PDF 609–611쪽" }], items: [
+        "Settings → Configurations → Object Setup → Cases를 엽니다.",
+      ]},
       { type: "steps", title: "Case를 조사하는 클릭 순서", references: [{ chapter: "Module 8 · Cases Page / Case Detailed View", pages: "PDF 340–360쪽" }, { chapter: "Lab 11 · Case Handling", pages: "PDF 471–473쪽" }], items: [
         "왼쪽 사이드바에서 Cases & Issues → Cases를 열고 status, score, assignee와 시간 범위를 설정합니다.",
         "조사할 Case 행을 클릭하고 Overview에서 설명, Alert와 핵심 자산을 확인합니다.",
