@@ -76,7 +76,7 @@ const chapterCatalog: Chapter[] = [
         "최초 행위와 실행 순서를 확인해야 하면 Timeline과 Causality 분석으로 이동합니다.",
         "endpoint, 사용자, host, process가 핵심 조사 대상이면 개체 분석으로 이동합니다.",
         "IP, domain, URL, hash가 발견되면 Indicator와 Artifact 분석으로 이동합니다.",
-        "화면에 필요한 이벤트가 없으면 Query Builder를 열어 XQL로 원본 데이터를 검색합니다.",
+        "화면에 필요한 이벤트가 없으면 Investigation & Response → Search → XQL Search를 열어 원본 데이터를 검색합니다.",
         "위협과 대상이 확인되고 조치 영향이 검토됐으면 대응 단계로 이동합니다.",
       ]},
       { type: "check", title: "분석 체크리스트", basis: "practice", references: [
@@ -114,10 +114,10 @@ const chapterCatalog: Chapter[] = [
         "관리자가 제공한 고객 전용 URL로 접속합니다. 검색 결과나 개인 북마크의 다른 테넌트로 접속하지 않습니다.",
         "조직의 SSO 계정을 선택하고 MFA 인증을 완료합니다.",
         "화면 상단의 테넌트명과 계정명을 확인합니다.",
-        "Incident Response, Query Center, Dashboards 메뉴가 보이는지 확인합니다.",
+        "Cases & Issues, Investigation & Response, Dashboards & Reports 메뉴가 보이는지 확인합니다.",
       ]},
       { type: "cards", title: "화면에서 먼저 찾을 곳", items: [
-        { title: "Navigation", text: "왼쪽 메뉴. 메뉴가 안 보이면 검색 기능으로 이름을 찾습니다." },
+        { title: "왼쪽 사이드바", text: "Cases & Issues, Investigation & Response 등 제품 기능을 여는 메뉴입니다." },
         { title: "Time range", text: "조회 기간과 시간대. 조사 결과가 달라지는 가장 흔한 원인입니다." },
         { title: "Agentic Assistant", text: "자연어로 조사 도움을 요청하는 패널. 표시 여부는 라이선스와 권한에 따라 다릅니다." },
       ]},
@@ -296,7 +296,7 @@ const chapterCatalog: Chapter[] = [
         "Alert 사이의 시간·개체 관계가 보이면 Timeline과 Causality 심층 분석으로 이동합니다.",
         "특정 endpoint, 사용자, host 또는 process가 중심이면 해당 개체 조사로 이동합니다.",
         "IP, domain, URL, hash가 핵심 증거면 Indicator와 Artifact 조사로 이동합니다.",
-        "현재 화면에 필요한 원본 이벤트가 없으면 Query Builder를 열어 XQL로 검색합니다.",
+        "현재 화면에 필요한 원본 이벤트가 없으면 Investigation & Response → Search → XQL Search를 열어 검색합니다.",
         "위협 활동과 대상이 확인되면 조치 대상의 이름을 다시 확인하고 승인된 대응 화면을 엽니다.",
         "정상 정황이 있어도 근거와 확인자를 기록하기 전에는 종료하지 않습니다.",
       ]},
@@ -331,8 +331,8 @@ const chapterCatalog: Chapter[] = [
   },
   {
     id: "xql", no: "05", title: "XQL 쿼리 심층 분석", shortTitle: "XQL", time: "15분", audience: "SOC L2/L3",
-    description: "Query Center에서 데이터셋, 시간 범위와 필드를 선택하고 결과 행을 직접 확인합니다.",
-    path: "Investigation → Query Center",
+    description: "XQL Search에서 데이터셋, 시간 범위와 필드를 선택하고 결과 행을 직접 확인합니다.",
+    path: "Investigation & Response → Search → XQL Search",
     outcomes: ["기본 파이프라인을 읽는다", "좁은 범위에서 안전하게 검색한다", "결과를 사건 근거로 남긴다"],
     blocks: [
       { type: "cards", title: "핵심 명령", items: [
@@ -361,7 +361,7 @@ const chapterCatalog: Chapter[] = [
   {
     id: "detections", no: "06", title: "탐지 규칙", shortTitle: "탐지 규칙", time: "10분", audience: "SOC L2/L3",
     description: "알림을 만든 규칙의 유형과 조건을 이해하고, 탐지 공백 없이 개선 요청을 작성합니다.",
-    path: "Detection & Threat Intel → Detection Rules",
+    path: "Threat Management → Detection Rules → Correlations",
     outcomes: ["규칙 유형을 구분한다", "조건과 MITRE 매핑을 검토한다", "튜닝 요청 근거를 작성한다"],
     blocks: [
       { type: "cards", title: "주요 탐지 유형", items: [
@@ -383,7 +383,7 @@ const chapterCatalog: Chapter[] = [
   {
     id: "exceptions", no: "07", title: "예외 설정", shortTitle: "예외 설정", time: "8분", audience: "승인된 운영자",
     description: "반복된 Case의 원본 이벤트를 확인하고 필요한 대상만 예외 조건에 추가합니다.",
-    path: "Settings → Exception / Exclusion Configuration",
+    path: "메뉴 경로는 예외 유형별 공식 절차에서 확인",
     outcomes: ["예외와 규칙 비활성화를 구분한다", "최소 범위 원칙을 적용한다", "재검토 가능한 기록을 남긴다"],
     blocks: [
       { type: "cards", title: "예외와 제외 이해", items: [
