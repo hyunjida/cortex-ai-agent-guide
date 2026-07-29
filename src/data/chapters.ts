@@ -24,12 +24,12 @@ const chapterCatalog: Chapter[] = [
         { chapter: "Module 4 · Case Prioritization / Case Statuses", pages: "PDF 180–203쪽" },
         { chapter: "Module 8 · Understanding the Cases Page", pages: "PDF 340–344쪽" },
       ], items: [
-        "Last Updated 필터가 원하는 기간으로 설정되어 있는가",
-        "Status 필터 때문에 필요한 Case가 목록에서 빠지지 않았는가",
-        "Case Domain이 Security인지 Posture인지 확인했는가",
-        "Severity와 Score를 각각 확인했는가",
-        "Status가 New인지 In Progress인지 확인했는가",
-        "Assignee가 N/A인지 특정 분석가인지 확인했는가",
+        "Last Updated 필터에 표시된 조회 기간을 확인합니다",
+        "Status 필터에 표시된 조건을 확인합니다",
+        "Case Domain 열에서 Security 또는 Posture 중 표시된 값을 확인합니다",
+        "Severity 열과 Score 열의 값을 각각 확인합니다",
+        "Status 열에서 New 또는 In Progress 값을 확인합니다",
+        "Assignee 열에서 N/A 또는 담당자 이름을 확인합니다",
       ]},
       { type: "steps", title: "단계별 분석 절차", references: [
         { chapter: "Module 8 · Cases Page / Case Management Workflow", pages: "PDF 330–353쪽" },
