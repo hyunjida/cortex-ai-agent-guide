@@ -4,15 +4,34 @@ export const usageChapters: Chapter[] = [
   {
     id: "login", no: "02", title: "XSIAM 화면에서 조사 시작하기", shortTitle: "화면 탐색", time: "15분", audience: "신규 사용자",
     description: "로그인 이후 메뉴를 무작정 둘러보지 않고, 조사 질문에 맞는 화면을 찾고 현재 범위를 확인하는 기본 조작을 익힙니다.",
+    path: "왼쪽 사이드바 → Cases & Issues → Cases",
     outcomes: ["Navigation에서 조사 화면을 찾는다", "화면별 시간·필터 범위를 확인한다", "Case에서 관련 조사 화면으로 이동한다"],
     blocks: [
       { type: "steps", title: "처음 접속한 뒤 클릭 순서", references: [{ chapter: "Module 1 · Introduction to Cortex XSIAM", pages: "PDF 14–38쪽" }, { chapter: "Lab 1 · Perform a Walkthrough", pages: "PDF 441–443쪽" }], items: [
-        "왼쪽 Navigation을 펼치고 메뉴 검색을 사용해 Cases를 찾습니다.",
-        "Cases를 열어 목록의 필터, 시간 범위와 표시 열을 확인합니다.",
+        "왼쪽 사이드바에서 Cases & Issues를 클릭해 하위 메뉴를 펼칩니다.",
+        "Cases를 클릭하고 목록의 필터, 시간 범위와 표시 열을 확인합니다.",
         "연습용 Case 하나를 클릭해 상세 화면을 엽니다.",
         "Case 상세에서 Alerts, Assets & Artifacts, Timeline, Executions와 War Room의 위치를 확인합니다.",
         "상단 또는 브라우저의 뒤로 가기 대신 제품 내 목록 이동을 사용해 원래 Case 목록으로 돌아갑니다.",
       ]},
+      { type: "cards", title: "현재 사이드바에서 화면을 찾는 방법", basis: "practice", items: [
+        { title: "Dashboards & Reports", text: "Dashboard, Report와 Widget을 조회하거나 만드는 화면으로 이동합니다." },
+        { title: "Cases & Issues", text: "새 Case를 찾고 Alert, Timeline, Causality와 조사 기록을 확인할 때 시작합니다." },
+        { title: "Investigation & Response", text: "Search와 Query Builder를 열어 XQL로 원본 데이터를 조사할 때 사용합니다." },
+        { title: "Threat Management", text: "Indicator, 위협 인텔리전스와 탐지·Correlation 관련 화면을 찾을 때 사용합니다." },
+        { title: "Posture Management", text: "보안 상태와 구성 위험을 관리하는 영역입니다. 이번 조사 가이드의 핵심 Case 흐름과는 구분합니다." },
+        { title: "Inventory", text: "Endpoint와 자산 목록을 찾아 상세 상태, 태그와 관련 정보를 확인할 때 사용합니다." },
+        { title: "Modules", text: "현재 테넌트에 제공되는 추가 기능 모듈을 여는 진입점입니다. 표시 항목은 라이선스와 권한에 따라 다릅니다." },
+      ]},
+      { type: "steps", title: "Modules 메뉴를 눌러 기능을 여는 순서", basis: "practice", items: [
+        "왼쪽 사이드바 맨 아래의 Modules를 클릭합니다.",
+        "열린 모듈 목록에서 이름과 설명을 확인합니다. 필요한 경우 검색 또는 카테고리 필터를 사용합니다.",
+        "사용하려는 모듈의 카드나 이름을 클릭해 상세 또는 시작 화면을 엽니다.",
+        "Open, Launch 또는 화면으로 이동하는 버튼이 표시되면 클릭합니다. 버튼 명칭은 제품 버전과 모듈에 따라 달라질 수 있습니다.",
+        "모듈을 연 뒤 상단의 tenant, 현재 대상과 권한을 확인하고 조회 작업부터 시작합니다.",
+        "원하는 모듈이 없거나 열기 버튼이 비활성화돼 있으면 임의 설정을 바꾸지 말고 라이선스와 역할 권한을 관리자에게 확인합니다.",
+      ]},
+      { type: "note", tone: "tip", title: "현재 UI 참고 · ‘Modules’와 교육과정 Module은 다릅니다", basis: "practice", text: "사이드바의 Modules는 제품 기능을 여는 메뉴입니다. 이 사이트에서 말하는 Module 1~9는 PDF 교육과정의 장 구분이므로, 같은 이름의 버튼이 제품 안에 반드시 존재하는 것은 아닙니다." },
       { type: "cards", title: "클릭하기 전에 보는 항목", basis: "practice", items: [
         { title: "Tenant · Role", text: "올바른 환경과 권한으로 접속했는지 확인합니다. PDF는 조직별 로그인·권한 절차를 정의하지 않습니다." },
         { title: "Time range", text: "현재 조회가 사건 발생 시간을 포함하는지 확인합니다." },
@@ -26,10 +45,11 @@ export const usageChapters: Chapter[] = [
   {
     id: "endpoints", no: "03", title: "Endpoint 실제 조회와 조치", shortTitle: "Endpoints", time: "25분", audience: "SOC L1/L2",
     description: "Case에서 endpoint를 식별한 뒤 프로파일·태그·상태를 확인하고 Action Center에서 조치 결과까지 검증합니다.",
+    path: "왼쪽 사이드바 → Inventory → Endpoints",
     outcomes: ["endpoint 상세를 연다", "적용 프로파일과 태그를 확인한다", "Action Center에서 조치 상태를 검증한다"],
     blocks: [
       { type: "steps", title: "Endpoint를 조회하는 클릭 순서", references: [{ chapter: "Module 2 · Endpoint Security / Investigating Endpoints", pages: "PDF 48–64쪽" }], items: [
-        "Navigation에서 Endpoints를 검색하고 Endpoint Management 화면을 엽니다.",
+        "왼쪽 사이드바에서 Inventory를 클릭하고 Endpoints 또는 Endpoint Management를 엽니다.",
         "검색 또는 필터에서 Case에 표시된 endpoint 이름을 입력합니다.",
         "결과 행을 클릭해 endpoint 상세를 열고 agent 상태, 마지막 연결, 운영체제와 IP를 확인합니다.",
         "Groups와 Tags를 열어 정적·동적 그룹과 분류 태그를 확인합니다.",
@@ -56,10 +76,11 @@ export const usageChapters: Chapter[] = [
   {
     id: "xql", no: "04", title: "Query Builder와 XQL 실제 사용", shortTitle: "XQL", time: "35분", audience: "SOC L1~L3",
     description: "Case에서 생긴 질문을 Query Builder로 옮겨 데이터셋·시간·필드를 확인하고, 좁은 쿼리부터 실행해 결과를 검증합니다.",
+    path: "왼쪽 사이드바 → Investigation & Response → Search → Query Builder",
     outcomes: ["Query Builder를 연다", "XQL 모드에서 쿼리를 실행한다", "결과를 표와 그래프로 검증한다"],
     blocks: [
       { type: "steps", title: "Query Builder를 여는 순서", references: [{ chapter: "Module 3 · XQL Components / Query Editor", pages: "PDF 97–125쪽" }, { chapter: "Lab 4 · XQL Syntax Review", pages: "PDF 449–450쪽" }], items: [
-        "Navigation에서 Investigation & Response → Search → Query Builder를 엽니다.",
+        "왼쪽 사이드바에서 Investigation & Response를 클릭하고 Search → Query Builder를 엽니다.",
         "Query Builder 오른쪽의 XQL을 클릭해 Query Editor를 엽니다.",
         "Dataset 또는 Preset을 선택하고 필드 탐색기에서 실제 필드명을 확인합니다.",
         "시간 선택기에서 사건 전후의 짧은 범위를 먼저 지정합니다.",
@@ -87,12 +108,13 @@ export const usageChapters: Chapter[] = [
   {
     id: "detections", no: "05", title: "Correlation Rule과 탐지 결과 확인", shortTitle: "Alerting", time: "30분", audience: "SOC L2/L3",
     description: "Alert에서 탐지 규칙으로 이동해 조건과 데이터 범위를 확인하고, Causality·score·status를 따라 Case 우선순위를 판단합니다.",
+    path: "왼쪽 사이드바 → Threat Management → Correlation Rules",
     outcomes: ["Correlation Rule 상세를 연다", "Alert 생성 조건을 원본 이벤트와 비교한다", "Case score와 status를 해석한다"],
     blocks: [
       { type: "steps", title: "Alert에서 Correlation Rule로 이동", references: [{ chapter: "Module 4 · Correlation Rules", pages: "PDF 165–174쪽" }], items: [
         "Cases에서 조사할 Case를 클릭하고 Alerts 영역을 엽니다.",
         "Alert 하나를 선택해 이름, 발생 시각, endpoint와 원본 이벤트를 확인합니다.",
-        "Alert 상세의 rule 이름 또는 Navigation의 Correlation Rules 화면을 엽니다.",
+        "Alert 상세의 rule 이름을 클릭하거나 왼쪽 사이드바에서 Threat Management → Correlation Rules를 엽니다.",
         "규칙 상세에서 dataset, XQL/조건, schedule, severity와 활성 상태를 확인합니다.",
         "규칙 조건과 Alert 원본 이벤트의 값을 한 항목씩 대조합니다.",
         "같은 규칙의 다른 Alert가 필요하면 rule 또는 Alert 이름으로 필터링합니다.",
@@ -116,6 +138,7 @@ export const usageChapters: Chapter[] = [
   {
     id: "forensics", no: "06", title: "Forensics 기능 접근과 수집 준비", shortTitle: "Forensics", time: "10분", audience: "포렌식 담당자",
     description: "이 PDF가 제공하는 Forensics 범위를 정확히 이해하고, 별도 공식 과정으로 이동하기 전에 수집 목적과 대상을 준비합니다.",
+    path: "왼쪽 사이드바 → Modules → 사용 가능한 Forensics 모듈 확인",
     outcomes: ["PDF의 Forensics 범위를 설명한다", "별도 학습 과정으로 이동한다", "수집 전 필요한 Case 정보를 준비한다"],
     blocks: [
       { type: "steps", title: "PDF에서 안내하는 접근 순서", references: [{ chapter: "Module 5 · Forensics", pages: "PDF 207–212쪽" }], items: [
@@ -131,11 +154,12 @@ export const usageChapters: Chapter[] = [
   {
     id: "threat-intel", no: "07", title: "Indicator 조회·보강·관계 분석", shortTitle: "Threat Intel", time: "30분", audience: "SOC L1~L3",
     description: "Case에서 발견한 IP·domain·URL·hash를 Indicator 화면에서 검색하고 verdict, source, timeline과 relationship을 순서대로 확인합니다.",
+    path: "왼쪽 사이드바 → Threat Management → Indicators",
     outcomes: ["Indicator Dashboard에서 값을 검색한다", "verdict와 enrichment를 확인한다", "내부 관계와 sightings를 Case에 연결한다"],
     blocks: [
       { type: "steps", title: "Indicator를 조회하는 클릭 순서", references: [{ chapter: "Module 6 · Indicator Investigation", pages: "PDF 252–279쪽" }, { chapter: "Lab 9 · Indicators", pages: "PDF 466–467쪽" }], items: [
         "Case의 Assets & Artifacts에서 조사할 IP, domain, URL 또는 hash를 복사합니다.",
-        "Navigation에서 Threat Intel Management의 Indicators 화면을 엽니다.",
+        "왼쪽 사이드바에서 Threat Management를 클릭하고 Indicators 화면을 엽니다.",
         "검색창에 Indicator 값을 정확히 입력하고 결과 행을 클릭합니다.",
         "상세에서 type, verdict, source, first/last seen과 expiration을 확인합니다.",
         "Enrichment와 Timeline을 열어 외부 정보와 내부 관측 이력을 확인합니다.",
@@ -160,10 +184,11 @@ export const usageChapters: Chapter[] = [
   {
     id: "automation", no: "08", title: "Playbook·Work Plan·Job 실제 확인", shortTitle: "Automation", time: "35분", audience: "SOC L2/L3",
     description: "Playbook 설계 화면과 Case 실행 내역을 오가며 task 입력·출력, context와 승인 대기를 확인합니다.",
+    path: "왼쪽 사이드바 → Modules → Automation → Playbooks",
     outcomes: ["Playbook을 열어 task 흐름을 읽는다", "Case 실행 내역을 검증한다", "Job과 Context Data를 확인한다"],
     blocks: [
       { type: "steps", title: "Playbook을 열어 확인하는 순서", references: [{ chapter: "Module 7 · Work Plan and Playbook Tasks", pages: "PDF 284–295쪽" }, { chapter: "Lab 10 · Playbooks", pages: "PDF 468–470쪽" }], items: [
-        "Navigation에서 Automation 또는 Playbooks 화면을 엽니다.",
+        "왼쪽 사이드바에서 Modules를 클릭하고, 표시되는 목록에서 Automation을 연 뒤 Playbooks 화면으로 이동합니다.",
         "검색창에서 이름으로 Playbook을 찾고 결과를 클릭합니다.",
         "Work Plan에서 시작 task부터 연결선을 따라 실행 순서를 읽습니다.",
         "각 task를 클릭해 Manual, Conditional, Communication, Automation 유형을 확인합니다.",
@@ -190,10 +215,11 @@ export const usageChapters: Chapter[] = [
   {
     id: "case-management", no: "09", title: "Case 조사·협업·대응 실제 사용", shortTitle: "Case Management", time: "40분", audience: "SOC L1~L3",
     description: "Cases 목록에서 시작해 Assets, Timeline, Causality, War Room과 대응 화면을 실제 조사 순서로 사용합니다.",
+    path: "왼쪽 사이드바 → Cases & Issues → Cases",
     outcomes: ["Case 상세의 조사 탭을 순서대로 사용한다", "War Room과 Executions로 협업 기록을 확인한다", "대응 결과를 검증하고 상태를 변경한다"],
     blocks: [
       { type: "steps", title: "Case를 조사하는 클릭 순서", references: [{ chapter: "Module 8 · Cases Page / Case Detailed View", pages: "PDF 340–360쪽" }, { chapter: "Lab 11 · Case Handling", pages: "PDF 471–473쪽" }], items: [
-        "Cases 목록에서 status, score, assignee와 시간 범위를 설정합니다.",
+        "왼쪽 사이드바에서 Cases & Issues → Cases를 열고 status, score, assignee와 시간 범위를 설정합니다.",
         "조사할 Case 행을 클릭하고 Overview에서 설명, Alert와 핵심 자산을 확인합니다.",
         "Alerts를 열어 가장 이른 Alert부터 원본 이벤트를 확인합니다.",
         "Assets & Artifacts에서 endpoint, 사용자, IP와 파일을 클릭해 상세로 확장합니다.",
@@ -221,10 +247,11 @@ export const usageChapters: Chapter[] = [
   {
     id: "reporting", no: "10", title: "Dashboard·Report·Widget 실제 생성", shortTitle: "Dashboards", time: "30분", audience: "SOC L2 · 관리자",
     description: "Widget Library에서 시각화를 선택하고 필터·drilldown을 설정해 조사 및 운영 현황 Dashboard를 구성합니다.",
+    path: "왼쪽 사이드바 → Dashboards & Reports → Dashboards",
     outcomes: ["Widget을 Dashboard에 추가한다", "필터와 입력을 구성한다", "drilldown과 report template을 확인한다"],
     blocks: [
       { type: "steps", title: "Dashboard와 Widget을 만드는 순서", references: [{ chapter: "Module 9 · XQL Widgets / Dynamic Dashboards", pages: "PDF 414–429쪽" }, { chapter: "Lab 12 · Dashboards, Reports, and Widgets", pages: "PDF 474–476쪽" }], items: [
-        "Navigation에서 Dashboards & Reports를 열고 Dashboards를 선택합니다.",
+        "왼쪽 사이드바에서 Dashboards & Reports를 클릭하고 Dashboards를 선택합니다.",
         "Create 또는 기존 Dashboard의 복제본을 클릭합니다.",
         "Add Widget을 클릭해 Widget Library를 엽니다.",
         "기존 widget을 선택하거나 Create Custom Widget을 클릭합니다.",

@@ -5,7 +5,7 @@ const chapterCatalog: Chapter[] = [
   {
     id: "overview", no: "00", title: "XSIAM 분석 프로세스 이해", shortTitle: "분석 프로세스", time: "20분", audience: "신규 고객 · SOC 분석가",
     description: "새 Case를 받았을 때 기능을 둘러보기 전에, 탐지 신호를 확인하고 우선순위를 정해 조사·대응·종료까지 연결하는 분석가의 사고 순서를 익힙니다.",
-    path: "Cases → Case 목록 → Case 상세",
+    path: "왼쪽 사이드바 → Cases & Issues → Cases → Case 상세",
     outcomes: [
       "탐지부터 Case 종료까지의 전체 분석 흐름을 설명할 수 있다",
       "각 단계에서 먼저 확인할 정보와 그 이유를 말할 수 있다",
@@ -213,7 +213,7 @@ const chapterCatalog: Chapter[] = [
   {
     id: "cases", no: "01", title: "Alert와 Case 이해", shortTitle: "Alert와 Case", time: "25분", audience: "신규 고객 · SOC L1/L2",
     description: "개별 탐지 신호인 Alert가 어떤 규칙에서 시작되고, 관련 이슈와 자산이 어떻게 Case라는 조사 단위로 연결되는지 증거를 따라 확인합니다.",
-    path: "Cases → Case 상세 → Alerts",
+    path: "왼쪽 사이드바 → Cases & Issues → Cases → Case 상세 → Alerts",
     outcomes: [
       "Alert와 Case의 역할을 구분할 수 있다",
       "Alert의 생성 근거와 Case에 포함된 관계를 확인할 수 있다",
