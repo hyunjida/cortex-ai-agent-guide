@@ -266,7 +266,7 @@ const chapterCatalog: Chapter[] = [
         { chapter: "Module 4 · Correlation Rules / Case Scoring / Case Statuses", pages: "PDF 165–203쪽" },
         { chapter: "Module 8 · Cases Page / Case Detailed View", pages: "PDF 340–344쪽" },
       ], items: [
-        { title: "Alert name · Source", text: "무슨 탐지 로직이 신호를 만들었는지 식별합니다. 이름만으로 악성 여부를 판정하지 않습니다." },
+        { title: "Alert name · Source", text: "어떤 탐지 로직이 신호를 만들었는지 확인합니다. 이름만으로 악성 여부를 판정하지 않습니다." },
         { title: "Correlation Rule", text: "이벤트에서 Alert를 생성한 조건과 대상 데이터입니다. 탐지 이유를 재현하는 핵심 근거입니다." },
         { title: "Alert timestamp", text: "개별 신호의 발생 시각입니다. Case 생성 시각과 구분해 실제 활동 순서를 파악합니다." },
         { title: "Severity", text: "Alert 또는 Case에 지정된 심각도입니다. 우선순위 판단에 쓰지만 정탐 여부와 같지 않습니다." },
@@ -417,7 +417,7 @@ const chapterCatalog: Chapter[] = [
       ]},
       { type: "steps", title: "자동 생성 결과 검토", items: [
         "Agent가 제안한 스크립트·플레이북의 목적, 입력, 출력, 외부 통합을 확인합니다.",
-        "삭제·격리·차단·티켓 생성 등 상태 변경 Task를 식별합니다.",
+        "삭제·격리·차단·티켓 생성 등 상태를 바꾸는 Task를 찾아 표시합니다.",
         "테스트 데이터와 승인된 테스트 자산에서 실행한 뒤 결과와 오류 처리를 검증합니다.",
         "승인 후 배포하고 버전, 작성자, 변경 사유를 감사 가능하게 남깁니다.",
       ]},
