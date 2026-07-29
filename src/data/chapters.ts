@@ -1,4 +1,4 @@
-import type { Chapter } from "../types/guide";
+import type { Chapter, ChapterSection } from "../types/guide";
 import { usageChapters } from "./usageChapters";
 
 const chapterCatalog: Chapter[] = [
@@ -472,12 +472,222 @@ const isVerifiedBlock = (block: Chapter["blocks"][number]) =>
   block.basis !== "practice" &&
   (Boolean(block.references?.length) || verifiedUiBlocks.has(block.title));
 
-export const chapters: Chapter[] = [
-  chapterCatalog.find((chapter) => chapter.id === "overview")!,
-  chapterCatalog.find((chapter) => chapter.id === "cases")!,
-  ...usageChapters.filter((chapter) => chapter.id !== "login"),
-].map((chapter, index) => ({
-  ...chapter,
-  no: String(index).padStart(2, "0"),
-  blocks: chapter.blocks.filter(isVerifiedBlock),
+const catalog = (id: string) => chapterCatalog.find((chapter) => chapter.id === id)!;
+const usage = (id: string) => usageChapters.find((chapter) => chapter.id === id)!;
+const verified = (chapter: Chapter) => chapter.blocks.filter(isVerifiedBlock);
+const blocksNamed = (chapter: Chapter, titles: string[]) =>
+  verified(chapter).filter((block) => titles.includes(block.title));
+const blocksExcept = (chapter: Chapter, titles: string[]) =>
+  verified(chapter).filter((block) => !titles.includes(block.title));
+
+const endpointChapter = usage("endpoints");
+const actionCenterTitles = ["Action Center에서 조치 결과 확인"];
+const caseManagementChapter = usage("case-management");
+
+const sectionChapters: Omit<ChapterSection, "no">[] = [
+  {
+    id: "start",
+    title: "시작하기",
+    chapters: [
+      {
+        ...catalog("login"),
+        id: "xsiam-overview",
+        no: "0.1",
+        title: "XSIAM 개요와 환경 확인",
+        shortTitle: "XSIAM 개요",
+        description: "XSIAM의 주요 제품 영역을 확인하고 데이터 수집 기반인 Broker VM과 Data Sources & Integrations 화면을 찾습니다.",
+        path: "XSIAM 테넌트 → 왼쪽 사이드바와 Settings",
+        outcomes: ["주요 제품 영역을 구분한다", "Broker VMs 화면을 찾는다", "Data Sources & Integrations 화면을 찾는다"],
+        blocks: [
+          ...verified(usage("platform-components")),
+          ...verified(usage("integrations")),
+        ],
+      },
+      {
+        ...catalog("overview"),
+        no: "0.2",
+        shortTitle: "분석 프로세스",
+        title: "XSIAM 분석 프로세스",
+      },
+      {
+        ...catalog("cases"),
+        no: "0.3",
+        shortTitle: "Event·Alert·Issue·Case",
+        title: "Event / Alert / Issue / Case 개념",
+      },
+    ],
+  },
+  {
+    id: "dashboards-reports",
+    title: "Dashboards & Reports",
+    chapters: [
+      {
+        ...usage("reporting"),
+        no: "1.1",
+        shortTitle: "Dashboard·Reports",
+        title: "Dashboard 조회와 Reports 메뉴",
+      },
+    ],
+  },
+  {
+    id: "cases-issues",
+    title: "Cases & Issues",
+    chapters: [
+      {
+        ...caseManagementChapter,
+        no: "2.1",
+        shortTitle: "Case 조사",
+        title: "Case 목록에서 Resolution Center까지",
+        blocks: blocksNamed(caseManagementChapter, [
+          "Case를 조사하는 클릭 순서",
+          "Case 상세의 역할",
+          "Resolution Center 확인 순서",
+          "Engineer Guide · Case Layout과 Layout Rule 확인",
+        ]),
+      },
+    ],
+  },
+  {
+    id: "investigation-response",
+    title: "Investigation & Response",
+    chapters: [
+      {
+        ...usage("xql"),
+        no: "3.1",
+        shortTitle: "Search·XQL",
+      },
+      {
+        ...usage("automation"),
+        no: "3.2",
+        shortTitle: "Automation",
+      },
+      {
+        ...endpointChapter,
+        id: "action-center",
+        no: "3.3",
+        title: "Response · Action Center",
+        shortTitle: "Response·Action Center",
+        description: "Action Center에서 endpoint에 수행된 조사·대응 조치의 대상, 진행 상태와 결과를 확인합니다.",
+        path: "왼쪽 사이드바 → Investigation & Response → Response → Action Center",
+        outcomes: ["Action Center를 연다", "endpoint 또는 action ID로 조치를 찾는다", "조치 상태와 결과를 확인한다"],
+        blocks: blocksNamed(endpointChapter, actionCenterTitles),
+      },
+      {
+        ...usage("forensics"),
+        no: "3.4",
+        shortTitle: "Forensics",
+      },
+    ],
+  },
+  {
+    id: "threat-management",
+    title: "Threat Management",
+    chapters: [
+      {
+        ...usage("detections"),
+        no: "4.1",
+        shortTitle: "Detection Rules",
+      },
+      {
+        ...usage("threat-intel"),
+        no: "4.2",
+        shortTitle: "Threat Intelligence",
+      },
+    ],
+  },
+  {
+    id: "posture-management",
+    title: "Posture Management",
+    chapters: [
+      {
+        id: "posture-management",
+        no: "5.1",
+        title: "Posture Management 메뉴 이해",
+        shortTitle: "Posture Management",
+        time: "10분",
+        audience: "SOC · 보안 관리자",
+        description: "Posture Case를 조사할 때 Vulnerability Management, Compliance와 Rules & Policies 중 확인할 화면을 구분합니다.",
+        path: "왼쪽 사이드바 → Posture Management",
+        outcomes: ["취약점 관련 화면을 찾는다", "Compliance 화면을 구분한다", "Rules & Policies의 역할을 구분한다"],
+        blocks: [
+          { type: "cards", title: "Posture Management 하위 메뉴", items: [
+            { title: "Vulnerability Management", text: "취약점 Issue, 취약 자산, 취약점과 Vulnerability Intelligence를 확인하는 영역입니다." },
+            { title: "Compliance", text: "자산이 선택한 표준과 통제 기준을 충족하는지 확인하는 영역입니다." },
+            { title: "Rules & Policies", text: "Cloud Security와 Vulnerability Management에 적용되는 규칙과 정책을 확인하는 영역입니다." },
+          ]},
+        ],
+      },
+    ],
+  },
+  {
+    id: "inventory",
+    title: "Inventory",
+    chapters: [
+      {
+        id: "inventory-assets",
+        no: "6.1",
+        title: "Assets 목록에서 조사 대상 찾기",
+        shortTitle: "Assets",
+        time: "10분",
+        audience: "SOC L1/L2",
+        description: "All Assets에서 자산을 검색하고 자산 카드의 속성과 연결된 Case·Issue를 확인합니다.",
+        path: "왼쪽 사이드바 → Inventory → Assets → All Assets",
+        outcomes: ["All Assets를 연다", "자산을 검색한다", "자산 카드를 열어 관련 위험을 확인한다"],
+        blocks: [
+          { type: "steps", title: "All Assets를 여는 순서", items: [
+            "왼쪽 사이드바에서 Inventory를 클릭합니다.",
+            "Assets 아래의 All Assets를 클릭합니다.",
+            "표에서 조사할 자산 이름을 찾고 자산 이름을 클릭합니다.",
+            "열린 자산 카드에서 속성과 연결된 Case 및 Issue를 확인합니다.",
+          ]},
+        ],
+      },
+      {
+        ...endpointChapter,
+        no: "6.2",
+        title: "Endpoints 조회와 정책 확인",
+        shortTitle: "Endpoints",
+        description: "All Endpoints에서 endpoint를 검색하고 상태, 그룹, 설치 패키지와 정책 관리 화면을 확인합니다.",
+        outcomes: ["All Endpoints에서 endpoint를 찾는다", "endpoint 상태와 Last Seen을 확인한다", "Groups·Installations·Policy Management 화면을 찾는다"],
+        blocks: blocksExcept(endpointChapter, actionCenterTitles),
+      },
+    ],
+  },
+  {
+    id: "modules",
+    title: "Modules",
+    chapters: [
+      {
+        id: "modules",
+        no: "7.1",
+        title: "Modules에서 라이선스별 기능 찾기",
+        shortTitle: "Modules",
+        time: "10분",
+        audience: "모든 사용자",
+        description: "Modules에 표시되는 기능을 확인하고 현재 조사 대상과 연결되는 모듈을 선택합니다.",
+        path: "왼쪽 사이드바 → Modules",
+        outcomes: ["Modules를 연다", "표시되는 모듈을 확인한다", "라이선스에 따라 메뉴가 달라질 수 있음을 구분한다"],
+        blocks: [
+          { type: "cards", title: "공식 문서에 안내된 Modules", items: [
+            { title: "AI · Application · Data Security", text: "AI 자산, 애플리케이션과 데이터 보안 기능은 해당 라이선스가 있는 환경에서 표시됩니다." },
+            { title: "Identity · Kubernetes Security", text: "ID 권한과 Kubernetes 자산·정책 관련 기능은 해당 라이선스가 있는 환경에서 표시됩니다." },
+            { title: "Attack Surface · Exposure Management", text: "외부 공격 표면과 노출 정보를 확인하는 모듈입니다." },
+            { title: "Email Security", text: "지원되는 이메일 환경의 메시지 및 ID 관련 탐지·조사 기능입니다." },
+          ]},
+        ],
+      },
+    ],
+  },
+];
+
+export const chapterSections: ChapterSection[] = sectionChapters.map((section, index) => ({
+  ...section,
+  no: String(index),
+  chapters: section.chapters.map((chapter) => ({
+    ...chapter,
+    blocks: chapter.blocks.filter((block) =>
+      block.basis !== "practice" || Boolean(block.references?.length)),
+  })),
 }));
+
+export const chapters: Chapter[] = chapterSections.flatMap((section) => section.chapters);

@@ -35,3 +35,10 @@ export type Chapter = {
     alt: string;
   };
 };
+
+export type ChapterSection = {
+  id: string;
+  no: string;
+  title: string;
+  chapters: Chapter[];
+};

@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { Header, Sidebar } from "./components/Navigation";
 import ChapterPage from "./components/ChapterPage";
-import { chapters } from "./data/chapters";
+import { chapters, chapterSections } from "./data/chapters";
 
 const legacyChapterAliases: Record<string, string> = {
-  dashboard: "endpoints",
-  ingestion: "forensics",
+  dashboard: "reporting",
+  ingestion: "xsiam-overview",
   exceptions: "threat-intel",
+  login: "xsiam-overview",
+  "platform-components": "xsiam-overview",
+  integrations: "xsiam-overview",
 };
 
 const resolveChapterId = (id: string) => {
@@ -44,7 +47,11 @@ export default function App() {
         <label className="mobile-chapter-select">
           <span>CHAPTER</span>
           <select value={chapter.id} onChange={(event) => selectChapter(event.target.value)}>
-            {chapters.map((item) => <option value={item.id} key={item.id}>{item.no}. {item.shortTitle}</option>)}
+            {chapterSections.map((section) => (
+              <optgroup label={`${section.no}. ${section.title}`} key={section.id}>
+                {section.chapters.map((item) => <option value={item.id} key={item.id}>{item.no} {item.shortTitle}</option>)}
+              </optgroup>
+            ))}
           </select>
         </label>
         <ChapterPage chapter={chapter} completed={completed.includes(chapter.id)} onComplete={toggleComplete}

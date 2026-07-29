@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Brand from "./Brand";
-import { chapters } from "../data/chapters";
+import { chapters, chapterSections } from "../data/chapters";
 
 type SidebarProps = {
   activeId: string;
@@ -34,10 +34,15 @@ export function Sidebar({ activeId, completed, onSelect }: SidebarProps) {
         <div className="progress-track"><i style={{ width: `${progress}%` }} /></div>
       </div>
       <nav className="course-nav">
-        {chapters.map((chapter) => (
-          <button className={activeId === chapter.id ? "active" : ""} onClick={() => onSelect(chapter.id)} key={chapter.id}>
-            <span>{chapter.no}</span><b>{chapter.shortTitle}</b>{completed.includes(chapter.id) && <i>✓</i>}
-          </button>
+        {chapterSections.map((section) => (
+          <section className="course-nav-section" aria-labelledby={`nav-${section.id}`} key={section.id}>
+            <h2 id={`nav-${section.id}`}><span>{section.no}</span>{section.title}</h2>
+            {section.chapters.map((chapter) => (
+              <button className={activeId === chapter.id ? "active" : ""} onClick={() => onSelect(chapter.id)} key={chapter.id}>
+                <span>{chapter.no}</span><b>{chapter.shortTitle}</b>{completed.includes(chapter.id) && <i>✓</i>}
+              </button>
+            ))}
+          </section>
         ))}
       </nav>
       <div className="side-note"><span className="pulse" /><p><b>POC 학습 가이드</b><br />조회부터 보고까지 순서대로 학습하세요.</p></div>
