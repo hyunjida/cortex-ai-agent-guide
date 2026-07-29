@@ -19,7 +19,7 @@ export const usageChapters: Chapter[] = [
         { title: "Cases & Issues", text: "새 Case를 찾고 Alert, Timeline, Causality와 조사 기록을 확인할 때 시작합니다." },
         { title: "Investigation & Response", text: "Search와 Query Builder를 열어 XQL로 원본 데이터를 조사할 때 사용합니다." },
         { title: "Threat Management", text: "Indicator, 위협 인텔리전스와 탐지·Correlation 관련 화면을 찾을 때 사용합니다." },
-        { title: "Posture Management", text: "보안 상태와 구성 위험을 관리하는 영역입니다. 이번 조사 가이드의 핵심 Case 흐름과는 구분합니다." },
+        { title: "Posture Management", text: "보안 상태와 구성 위험을 보여주는 영역입니다." },
         { title: "Inventory", text: "Endpoint와 자산 목록을 찾아 상세 상태, 태그와 관련 정보를 확인할 때 사용합니다." },
         { title: "Modules", text: "현재 테넌트에 제공되는 추가 기능 모듈을 여는 진입점입니다. 표시 항목은 라이선스와 권한에 따라 다릅니다." },
       ]},
@@ -44,9 +44,9 @@ export const usageChapters: Chapter[] = [
   },
   {
     id: "endpoints", no: "03", title: "Endpoint 실제 조회와 조치", shortTitle: "Endpoints", time: "25분", audience: "SOC L1/L2",
-    description: "Case에서 endpoint를 식별한 뒤 프로파일·태그·상태를 확인하고 Action Center에서 조치 결과까지 검증합니다.",
+    description: "Case에 표시된 endpoint 이름을 Inventory에서 검색하고 프로파일·태그·상태와 Action Center 결과를 확인합니다.",
     path: "왼쪽 사이드바 → Inventory → Endpoints",
-    outcomes: ["endpoint 상세를 연다", "적용 프로파일과 태그를 확인한다", "Action Center에서 조치 상태를 검증한다"],
+    outcomes: ["endpoint 상세를 연다", "적용 프로파일과 태그를 확인한다", "Action Center에서 조치 상태와 결과를 확인한다"],
     blocks: [
       { type: "steps", title: "Endpoint를 조회하는 클릭 순서", references: [{ chapter: "Module 2 · Endpoint Security / Investigating Endpoints", pages: "PDF 48–64쪽" }], items: [
         "왼쪽 사이드바에서 Inventory를 클릭하고 Endpoints 또는 Endpoint Management를 엽니다.",
@@ -61,7 +61,7 @@ export const usageChapters: Chapter[] = [
         "action 종류, 요청자, 시작 시각과 현재 상태를 확인합니다.",
         "격리·스캔·파일 회수 작업의 상세를 열어 대상 endpoint가 맞는지 재확인합니다.",
         "Running은 완료될 때까지 새로 고침하고, Failed는 오류와 재시도 이력을 먼저 확인합니다.",
-        "Completed여도 결과 또는 산출물을 열어 실제 조치가 끝났는지 검증합니다.",
+        "Completed가 표시되면 결과 또는 산출물을 열어 완료 내용을 확인합니다.",
       ]},
       { type: "cards", title: "화면 값과 판단", references: [{ chapter: "Module 2 · Endpoint Groups / Security Profiles", pages: "PDF 50–58쪽" }], items: [
         { title: "Agent status", text: "endpoint가 관리 서버와 통신하는지 보여줍니다. 오래된 마지막 연결은 조치 성공 가능성에도 영향을 줍니다." },
@@ -119,9 +119,9 @@ export const usageChapters: Chapter[] = [
   },
   {
     id: "xql", no: "05", title: "Query Builder와 XQL 실제 사용", shortTitle: "XQL", time: "35분", audience: "SOC L1~L3",
-    description: "Case에서 생긴 질문을 Query Builder로 옮겨 데이터셋·시간·필드를 확인하고, 좁은 쿼리부터 실행해 결과를 검증합니다.",
+    description: "Query Builder에서 데이터셋·시간·필드를 선택하고 짧은 시간 범위의 쿼리 결과부터 확인합니다.",
     path: "왼쪽 사이드바 → Investigation & Response → Search → Query Builder",
-    outcomes: ["Query Builder를 연다", "XQL 모드에서 쿼리를 실행한다", "결과를 표와 그래프로 검증한다"],
+    outcomes: ["Query Builder를 연다", "XQL 모드에서 쿼리를 실행한다", "결과를 표와 그래프로 확인한다"],
     blocks: [
       { type: "steps", title: "Query Builder를 여는 순서", references: [{ chapter: "Module 3 · XQL Components / Query Editor", pages: "PDF 97–125쪽" }, { chapter: "Lab 4 · XQL Syntax Review", pages: "PDF 449–450쪽" }], items: [
         "왼쪽 사이드바에서 Investigation & Response를 클릭하고 Search → Query Builder를 엽니다.",
@@ -131,10 +131,10 @@ export const usageChapters: Chapter[] = [
         "dataset stage 뒤에 filter, fields, sort와 limit를 순서대로 추가합니다.",
         "Run을 클릭하고 오류가 나면 표시된 stage와 필드명을 수정합니다.",
       ]},
-      { type: "steps", title: "결과를 검증하는 순서", references: [{ chapter: "Module 3 · Query Results / Table-Graph", pages: "PDF 118–125쪽" }], items: [
+      { type: "steps", title: "쿼리 결과를 확인하는 순서", references: [{ chapter: "Module 3 · Query Results / Table-Graph", pages: "PDF 118–125쪽" }], items: [
         "Results의 총 건수와 실행 시간 범위를 확인합니다.",
         "Table에서 시간, endpoint, 사용자와 조사 개체 필드를 확인합니다.",
-        "원본 행을 열어 필드 값과 null, 중복 여부를 표본 검증합니다.",
+        "원본 행을 열어 필드 값, null과 중복 여부를 확인합니다.",
         "필요할 때만 시간 범위 또는 필터를 한 단계씩 넓힙니다.",
         "Table/Graph를 전환해 시간별 분포가 조사 가설과 일치하는지 확인합니다.",
         "재사용할 쿼리는 Query Library에 목적이 드러나는 이름으로 저장합니다.",
@@ -145,7 +145,7 @@ export const usageChapters: Chapter[] = [
         { title: "Time window", text: "쿼리 데이터 범위입니다. 넓은 범위는 결과량과 실행 시간을 키웁니다." },
         { title: "Fields · Aliases", text: "필드 탐색기와 XDM alias로 사용할 수 있는 값을 확인합니다." },
       ]},
-      { type: "check", title: "XQL 실행 체크리스트", basis: "practice", references: [{ chapter: "Lab 5 · Winning Gold with XQL", pages: "PDF 451–457쪽" }], items: ["조사 질문을 한 문장으로 적었다", "dataset과 필드 존재를 확인했다", "짧은 시간 범위로 시작했다", "limit를 사용해 표본을 확인했다", "시간대·null·중복을 검증했다", "쿼리와 결과를 Case 기록에 남겼다"] },
+      { type: "check", title: "XQL 실행 체크리스트", basis: "practice", references: [{ chapter: "Lab 5 · Winning Gold with XQL", pages: "PDF 451–457쪽" }], items: ["조사 질문을 한 문장으로 적었다", "dataset과 필드 존재를 확인했다", "짧은 시간 범위로 시작했다", "limit를 사용해 표본을 확인했다", "시간대·null·중복 값을 확인했다", "쿼리와 결과를 Case 기록에 남겼다"] },
       { type: "steps", title: "Engineer Guide · Query Builder에서 직접 실행", references: [{ chapter: "Engineer Lab 11 · XQL Syntax Review", pages: "Engineer PDF 587–588쪽" }, { chapter: "Engineer Lab 12 · Winning Gold with XQL", pages: "Engineer PDF 589–594쪽" }], items: [
         "Investigation & Response → Search → Query Builder를 엽니다.",
         "XQL을 클릭해 Query Editor로 전환합니다.",
@@ -158,7 +158,7 @@ export const usageChapters: Chapter[] = [
   },
   {
     id: "detections", no: "05", title: "Correlation Rule과 탐지 결과 확인", shortTitle: "Alerting", time: "30분", audience: "SOC L2/L3",
-    description: "Alert에서 탐지 규칙으로 이동해 조건과 데이터 범위를 확인하고, Causality·score·status를 따라 Case 우선순위를 판단합니다.",
+    description: "Alert에서 탐지 규칙으로 이동해 조건과 데이터 범위를 확인하고 Causality, Score와 Status 값을 읽습니다.",
     path: "왼쪽 사이드바 → Threat Management → Correlation Rules",
     outcomes: ["Correlation Rule 상세를 연다", "Alert 생성 조건을 원본 이벤트와 비교한다", "Case score와 status를 해석한다"],
     blocks: [
@@ -175,12 +175,12 @@ export const usageChapters: Chapter[] = [
         "노드를 클릭해 상세 이벤트와 연결 개체를 확인합니다.",
         "Case 목록 또는 상세에서 score와 적용 scoring method를 확인합니다.",
         "Star, assignee와 status를 확인하고 필요한 경우 승인된 업무 절차에 따라 갱신합니다.",
-        "새 증거가 기존 우선순위를 바꾸는지 검토합니다.",
+        "새 증거가 추가되면 Severity, Score와 Status 값을 다시 확인합니다.",
       ]},
       { type: "cards", title: "화면에서 해석할 값", references: [{ chapter: "Module 4 · Case Scoring / Statuses", pages: "PDF 180–203쪽" }], items: [
         { title: "Rule query", text: "어떤 데이터와 조건이 Alert를 만드는지 보여주는 탐지 근거입니다." },
         { title: "Causality node", text: "관련 이벤트와 개체의 관계를 조사하는 진입점입니다." },
-        { title: "Score method", text: "Rule-based, SmartScore 또는 수동 점수의 영향을 구분합니다." },
+        { title: "Score method", text: "Rule-based, SmartScore 또는 수동 점수 중 어떤 방식이 표시되는지 확인합니다." },
         { title: "Status", text: "New, In Progress, Resolved 등 Case 처리 단계를 나타냅니다." },
       ]},
       { type: "check", title: "탐지 검토 체크리스트", basis: "practice", references: [{ chapter: "Lab 6–7 · Correlation Rule / AnyDesk Case", pages: "PDF 458–464쪽" }], items: ["Alert 원본 이벤트를 열었다", "rule의 dataset과 조건을 확인했다", "조건과 이벤트 값을 대조했다", "Causality 연결을 확인했다", "score 계산 방식을 확인했다", "규칙을 바로 수정하거나 끄지 않았다"] },
@@ -245,7 +245,7 @@ export const usageChapters: Chapter[] = [
         "검색창에 Indicator 값을 정확히 입력하고 결과 행을 클릭합니다.",
         "상세에서 type, verdict, source, first/last seen과 expiration을 확인합니다.",
         "Enrichment와 Timeline을 열어 외부 정보와 내부 관측 이력을 확인합니다.",
-        "Relationships에서 연결된 Indicator와 Case를 열어 조사 범위를 확장합니다.",
+        "Relationships에서 연결된 Indicator와 Case를 하나씩 엽니다.",
       ]},
       { type: "steps", title: "Indicator 관리 화면 사용", references: [{ chapter: "Module 6 · Indicator Management", pages: "PDF 232–251쪽" }], items: [
         "Indicators 목록의 필터로 type, verdict, source 또는 expiration 범위를 좁힙니다.",
@@ -275,7 +275,7 @@ export const usageChapters: Chapter[] = [
     id: "automation", no: "09", title: "Playbook·Work Plan·Job 실제 확인", shortTitle: "Automation", time: "35분", audience: "SOC L2/L3",
     description: "Playbook 설계 화면과 Case 실행 내역을 오가며 task 입력·출력, context와 승인 대기를 확인합니다.",
     path: "왼쪽 사이드바 → Modules → Automation → Playbooks",
-    outcomes: ["Playbook을 열어 task 흐름을 읽는다", "Case 실행 내역을 검증한다", "Job과 Context Data를 확인한다"],
+    outcomes: ["Playbook을 열어 Task 순서를 읽는다", "Case 실행 상태와 출력값을 확인한다", "Job과 Context Data를 확인한다"],
     blocks: [
       { type: "steps", title: "Playbook을 열어 확인하는 순서", references: [{ chapter: "Module 7 · Work Plan and Playbook Tasks", pages: "PDF 284–295쪽" }, { chapter: "Lab 10 · Playbooks", pages: "PDF 468–470쪽" }], items: [
         "왼쪽 사이드바에서 Modules를 클릭하고, 표시되는 목록에서 Automation을 연 뒤 Playbooks 화면으로 이동합니다.",
@@ -283,12 +283,12 @@ export const usageChapters: Chapter[] = [
         "Work Plan에서 시작 task부터 연결선을 따라 실행 순서를 읽습니다.",
         "각 task를 클릭해 Manual, Conditional, Communication, Automation 유형을 확인합니다.",
         "task 입력, 출력, 조건, 사용하는 integration과 on-error 흐름을 확인합니다.",
-        "편집 권한이 있어도 분석 중에는 저장하지 말고 조회 상태로 검토합니다.",
+        "Playbook을 조회 모드로 열고 Task 순서와 설정값을 확인합니다.",
       ]},
       { type: "steps", title: "Case에서 실행 결과를 확인하는 순서", references: [{ chapter: "Module 7 · Jobs / Context Data", pages: "PDF 296–305쪽" }, { chapter: "Module 8 · Case Executions / War Room", pages: "PDF 361–369쪽" }], items: [
         "Case 상세에서 Executions 또는 War Room을 엽니다.",
         "실행된 Playbook과 시작 시각, trigger를 확인합니다.",
-        "Work Plan에서 Pending, Running, Completed, Failed task를 구분합니다.",
+        "Work Plan에서 각 Task에 Pending, Running, Completed, Failed 중 어떤 상태가 표시되는지 확인합니다.",
         "task를 클릭해 입력값, 출력값, 오류와 승인 대기 내용을 확인합니다.",
         "Context Data에서 task 간 전달된 Case·Alert 데이터를 확인합니다.",
         "Jobs 화면이 필요하면 job ID로 검색해 실행 상태와 상세 결과를 교차 확인합니다.",
@@ -297,9 +297,9 @@ export const usageChapters: Chapter[] = [
         { title: "Trigger", text: "Playbook 또는 Job이 언제 무엇에 의해 시작됐는지 보여줍니다." },
         { title: "Task input/output", text: "자동화가 어떤 값을 사용하고 무엇을 반환했는지 확인하는 증거입니다." },
         { title: "Context Data", text: "Case와 task 사이에서 공유되는 구조화된 데이터입니다." },
-        { title: "Job status", text: "실행 상태입니다. Completed와 실제 외부 조치 성공을 구분합니다." },
+        { title: "Job status", text: "실행 상태입니다. Completed를 확인한 뒤 출력값에서 외부 조치 결과를 확인합니다." },
       ]},
-      { type: "check", title: "자동화 검증 체크리스트", basis: "practice", items: ["Playbook과 trigger를 확인했다", "task 순서와 조건을 읽었다", "입력 대상이 Case와 일치한다", "실패·승인 대기를 확인했다", "출력값과 외부 조치 결과를 검증했다", "재실행 전 중복 조치 위험을 확인했다"] },
+      { type: "check", title: "자동화 실행 체크리스트", basis: "practice", items: ["Playbook과 trigger를 확인했다", "task 순서와 조건을 읽었다", "입력 대상이 Case와 일치한다", "실패·승인 대기를 확인했다", "출력값과 외부 조치 결과를 확인했다", "재실행 전 중복 조치 위험을 확인했다"] },
       { type: "steps", title: "Engineer Guide · Playbook 생성과 Trigger 연결", references: [{ chapter: "Engineer Lab 17 · Create a Playbook", pages: "Engineer PDF 600–604쪽" }, { chapter: "Engineer Lab 18 · Playbook Trigger", pages: "Engineer PDF 605–606쪽" }], items: [
         "Incident Response → Automation → Playbooks를 열고 New Playbook을 클릭합니다.",
         "이름을 입력하고 Task Library에서 task를 canvas로 끌어놓습니다.",
@@ -314,7 +314,7 @@ export const usageChapters: Chapter[] = [
     id: "case-management", no: "10", title: "Case 조사·협업·대응 실제 사용", shortTitle: "Case Management", time: "40분", audience: "SOC L1~L3",
     description: "Cases 목록에서 시작해 Assets, Timeline, Causality, War Room과 대응 화면을 실제 조사 순서로 사용합니다.",
     path: "왼쪽 사이드바 → Cases & Issues → Cases",
-    outcomes: ["Case 상세의 조사 탭을 순서대로 사용한다", "War Room과 Executions로 협업 기록을 확인한다", "대응 결과를 검증하고 상태를 변경한다"],
+    outcomes: ["Case 상세의 조사 탭을 순서대로 사용한다", "War Room과 Executions에서 기록을 확인한다", "Action Center에서 조치 결과를 확인하고 Case 상태를 변경한다"],
     blocks: [
       { type: "steps", title: "Engineer Guide · Case Layout과 Layout Rule 확인", references: [{ chapter: "Engineer Lab 20 · Create a Custom Case Layout and Rule", pages: "Engineer PDF 609–611쪽" }], items: [
         "Settings → Configurations → Object Setup → Cases를 엽니다.",
@@ -332,17 +332,17 @@ export const usageChapters: Chapter[] = [
         "War Room에서 새 entry 또는 note를 선택해 확인한 사실과 근거를 기록합니다.",
         "대응이 필요하면 endpoint 또는 관련 action 화면을 열어 대상이 맞는지 확인합니다.",
         "containment 작업을 실행하기 전 영향과 승인 상태를 확인합니다.",
-        "Executions 또는 Action Center에서 요청 상태와 실제 결과를 검증합니다.",
+        "Executions 또는 Action Center를 열어 요청 상태와 결과를 확인합니다.",
         "eradication, recovery와 후속 작업을 War Room에 기록합니다.",
         "필수 정보가 갖춰졌을 때 status와 assignee를 조직 절차에 따라 변경합니다.",
       ]},
       { type: "cards", title: "Case 상세의 역할", references: [{ chapter: "Module 8 · Case Management", pages: "PDF 324–390쪽" }], items: [
         { title: "Overview", text: "Case의 범위와 현재 상태를 잡는 시작 화면입니다." },
         { title: "Assets & Artifacts", text: "조사 개체를 열고 다른 Case·이벤트로 확장합니다." },
-        { title: "Timeline · Causality", text: "시간 순서와 이벤트 관계를 검증합니다." },
+        { title: "Timeline · Causality", text: "이벤트의 발생 시각과 연결된 자산·행위를 확인합니다." },
         { title: "War Room · Executions", text: "사람과 자동화의 조사·조치 기록을 확인합니다." },
       ]},
-      { type: "check", title: "Case 처리 체크리스트", basis: "practice", items: ["목록 필터와 시간 범위를 확인했다", "Alert 원본 이벤트를 확인했다", "핵심 Assets & Artifacts를 열었다", "Timeline과 Causality를 검증했다", "기존 War Room과 Executions를 확인했다", "대응 결과와 후속 작업을 기록했다", "종료 전 잔여 위험을 확인했다"] },
+      { type: "check", title: "Case 처리 체크리스트", basis: "practice", items: ["목록 필터와 시간 범위를 확인했다", "Alert 원본 이벤트를 확인했다", "핵심 Assets & Artifacts를 열었다", "Timeline과 Causality의 연결 이벤트를 확인했다", "기존 War Room과 Executions를 확인했다", "대응 결과와 후속 작업을 기록했다", "종료 전 잔여 위험을 확인했다"] },
     ],
   },
   {

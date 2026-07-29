@@ -36,7 +36,7 @@ const chapterCatalog: Chapter[] = [
       ], items: [
         "왼쪽 메뉴에서 Cases & Issues를 누르고 Cases를 선택합니다.",
         "All Cases 화면에서 Last Updated와 Status 필터를 먼저 봅니다. 화면에 어떤 기간과 상태의 Case가 표시되는지 확인하는 단계입니다.",
-        "Case Domain을 봅니다. Security와 Posture 중 지금 확인하려는 업무 영역에 해당하는 Case인지 구분합니다.",
+        "Case Domain 열을 봅니다. 각 Case에 Security 또는 Posture 중 어떤 값이 표시되는지 확인합니다.",
         "Severity, Score, Status, Assignee를 왼쪽에서 오른쪽으로 읽습니다. 아직 Case를 열기 전이므로 목록에서 현재 상태를 파악하는 단계입니다.",
         "Case Name과 Issues Breakdown을 확인합니다. 어떤 내용의 Case인지, 연결된 Issue가 어떻게 표시되는지 봅니다.",
         "조사할 Case의 행 또는 Case Name을 클릭해 상세 화면을 엽니다.",
@@ -51,7 +51,7 @@ const chapterCatalog: Chapter[] = [
         { title: "Last Updated", text: "Case 정보가 마지막으로 갱신된 시각입니다. 위쪽 필터의 조회 기간과 표의 각 Case 시각을 함께 확인합니다." },
         { title: "Case Domain", text: "Case가 속한 영역입니다. 제공된 화면에서는 Security와 Posture로 구분됩니다." },
         { title: "Severity", text: "Case에 표시된 심각도입니다. 제공된 화면에서는 Critical, High, Medium, Low로 나뉩니다." },
-        { title: "Score", text: "Case 우선순위를 판단할 때 참고하는 점수입니다. Severity와 별개의 열로 표시됩니다." },
+        { title: "Score", text: "Case 목록을 정렬할 때 참고하는 숫자입니다. Severity와 별개의 열로 표시됩니다." },
         { title: "Status", text: "Case의 현재 처리 상태입니다. 제공된 화면에서는 New와 In Progress가 표시됩니다." },
         { title: "Assignee", text: "현재 Case 담당자입니다. N/A는 목록에서 담당자가 표시되지 않은 상태입니다." },
         { title: "Case Name", text: "Case 제목입니다. 제목이나 행을 클릭해 상세 화면으로 이동합니다." },
@@ -63,7 +63,7 @@ const chapterCatalog: Chapter[] = [
       ], items: [
         { title: "지금 즉시 확장 조사", text: "중요 자산이 포함됐거나 여러 관련 Alert·개체가 보이고, Timeline 또는 Causality에 확인할 연결 관계가 있을 때입니다." },
         { title: "먼저 정보 보강", text: "점수와 제목 외에 판단할 증거가 부족하거나 대상·시간 범위가 불명확할 때입니다. 원본 Alert와 개체 정보를 먼저 확보합니다." },
-        { title: "대응 검토", text: "위협 활동과 영향 대상이 증거로 확인되고, 조치 대상과 예상 영향이 특정됐을 때 승인 절차와 대응 옵션을 검토합니다." },
+        { title: "대응 화면 열기", text: "위협 활동과 영향 대상이 확인되면 조치할 자산 이름을 다시 확인하고 승인된 대응 화면을 엽니다." },
         { title: "종료 검토", text: "조사 질문에 답했고, 필요한 조치 결과와 잔여 위험·후속 작업이 기록됐을 때입니다. 조직별 종료 기준은 별도로 적용합니다." },
       ]},
       { type: "note", tone: "warn", title: "Case score는 결론이 아닙니다", references: [
@@ -76,7 +76,7 @@ const chapterCatalog: Chapter[] = [
         "최초 행위와 실행 순서를 확인해야 하면 Timeline과 Causality 분석으로 이동합니다.",
         "endpoint, 사용자, host, process가 핵심 조사 대상이면 개체 분석으로 이동합니다.",
         "IP, domain, URL, hash가 발견되면 Indicator와 Artifact 분석으로 이동합니다.",
-        "화면 정보만으로 가설을 검증할 수 없으면 XQL 심층 분석으로 이동합니다.",
+        "화면에 필요한 이벤트가 없으면 Query Builder를 열어 XQL로 원본 데이터를 검색합니다.",
         "위협과 대상이 확인되고 조치 영향이 검토됐으면 대응 단계로 이동합니다.",
       ]},
       { type: "check", title: "분석 체크리스트", basis: "practice", references: [
@@ -160,12 +160,12 @@ const chapterCatalog: Chapter[] = [
     id: "ingestion", no: "03", title: "데이터 수집 상태 확인", shortTitle: "수집 상태", time: "12분", audience: "SOC L1/L2",
     description: "연동 설정을 바꾸지 않고, 필요한 로그가 정상적으로 들어오는지 여러 화면으로 교차 확인합니다.",
     path: "Dashboards & Reports → Dashboards → Command Center",
-    outcomes: ["수집 상태를 교차 검증한다", "지연과 단발성 순단을 구분한다", "증거를 갖춰 엔지니어에게 전달한다"],
+    outcomes: ["두 화면에서 수집 상태를 확인한다", "지연 시각과 단발성 순단 시각을 확인한다", "화면 값과 시각을 엔지니어에게 전달한다"],
     blocks: [
       { type: "cards", title: "어느 화면을 쓸까?", items: [
         { title: "Command Center", text: "소스별 수집률과 최근 이벤트 흐름을 약 30초 주기로 확인합니다. ⋮ → Mark as default로 기본 대시보드 지정이 가능합니다." },
         { title: "Data Ingestion Dashboard", text: "고볼륨 소스와 quota 초과 여부 확인에 유용합니다." },
-        { title: "Dataset Management", text: "데이터셋 존재, 저장 용량, 보관 기간을 확인합니다. Broker VM 소스도 교차 검증할 수 있습니다." },
+        { title: "Dataset Management", text: "데이터셋 존재, 저장 용량과 보관 기간을 확인합니다. Broker VM 화면의 소스 이름과 나란히 확인합니다." },
         { title: "Health Issues", text: "XSIAM이 감지한 수집 이상과 관련 세부 정보를 확인합니다." },
       ]},
       { type: "cards", title: "연동 상태 교차 확인", items: [
@@ -227,7 +227,7 @@ const chapterCatalog: Chapter[] = [
       ], items: [
         { title: "Alert", text: "Correlation Rule 등 탐지 로직이 이벤트 패턴을 찾아 생성한 보안 신호입니다. 분석가는 어떤 조건과 원본 이벤트가 신호를 만들었는지 확인합니다." },
         { title: "Issue와 Causality", text: "탐지된 활동의 관계와 문맥을 보여줍니다. Causality View는 관련 이벤트와 개체를 따라 조사할 수 있는 출발점입니다." },
-        { title: "Case", text: "관련 이슈, 자산과 Artifact를 한곳에서 식별·조사·대응하도록 관리하는 조사 단위입니다." },
+        { title: "Case", text: "관련 Issue, 자산과 Artifact를 한 화면에서 확인하고 처리하도록 묶은 작업 단위입니다." },
         { title: "분석가의 핵심 질문", text: "“왜 탐지됐는가?”, “왜 같은 Case에 포함됐는가?”, “어떤 자산까지 영향을 받았는가?”를 순서대로 답합니다." },
       ]},
       { type: "cards", title: "분석을 시작하는 상황", references: [
@@ -235,7 +235,7 @@ const chapterCatalog: Chapter[] = [
         { chapter: "Module 8 · Cases", pages: "PDF 328–330쪽" },
       ], items: [
         { title: "새 Alert를 확인함", text: "탐지 규칙과 원본 이벤트를 확인해 무엇이 기준을 충족했는지 판단해야 합니다." },
-        { title: "여러 Alert가 한 Case에 포함됨", text: "공통 자산·행위·시간 관계가 있는지 확인하고 하나의 조사 범위로 볼 수 있는지 판단합니다." },
+        { title: "여러 Alert가 한 Case에 포함됨", text: "각 Alert의 자산, 행위와 발생 시각을 나란히 확인합니다." },
         { title: "Case score가 높거나 변경됨", text: "점수 자체보다 어떤 Alert와 scoring method가 값에 영향을 줬는지 확인합니다." },
         { title: "기존 Case에 새 활동이 추가됨", text: "마지막 확인 이후 어떤 Alert·Artifact가 추가됐고 기존 가설이 달라지는지 확인합니다." },
       ]},
@@ -258,8 +258,8 @@ const chapterCatalog: Chapter[] = [
         "Alerts 영역에서 가장 이른 Alert부터 확인합니다. Alert 이름, 발생 시각, 대상 개체와 탐지 규칙을 기록합니다.",
         "탐지 이유를 확인합니다. Correlation Rule의 조건과 Alert의 원본 이벤트를 대조해 실제로 어떤 패턴이 일치했는지 찾습니다.",
         "Alert 사이의 공통점을 찾습니다. 같은 endpoint, 사용자, process, IP, 파일 또는 인접 시간대가 있는지 비교합니다.",
-        "Causality와 Timeline으로 관계를 검증합니다. 단순히 함께 표시됐다는 이유만으로 원인·결과라고 단정하지 않고 연결된 이벤트를 엽니다.",
-        "Case 범위를 정리합니다. 현재까지 확인된 영향 자산, 핵심 Artifact, 최초·최종 활동 시각과 아직 모르는 내용을 구분합니다.",
+        "Causality와 Timeline을 열고 연결된 이벤트의 자산, 행위와 발생 시각을 확인합니다.",
+        "확인된 영향 자산, 핵심 Artifact, 최초·최종 활동 시각을 Case 기록에 적습니다.",
         "다음 행동을 선택합니다. 증거가 부족하면 정보 보강, 관계가 확인되면 심층 조사, 명확한 위협과 대상이 확인되면 대응 검토로 이동합니다.",
       ]},
       { type: "cards", title: "화면에서 확인할 항목과 의미", references: [
@@ -268,10 +268,10 @@ const chapterCatalog: Chapter[] = [
       ], items: [
         { title: "Alert name · Source", text: "어떤 탐지 로직이 신호를 만들었는지 확인합니다. 이름만으로 악성 여부를 판정하지 않습니다." },
         { title: "Correlation Rule", text: "이벤트에서 Alert를 생성한 조건과 대상 데이터입니다. 탐지 이유를 재현하는 핵심 근거입니다." },
-        { title: "Alert timestamp", text: "개별 신호의 발생 시각입니다. Case 생성 시각과 구분해 실제 활동 순서를 파악합니다." },
-        { title: "Severity", text: "Alert 또는 Case에 지정된 심각도입니다. 우선순위 판단에 쓰지만 정탐 여부와 같지 않습니다." },
+        { title: "Alert timestamp", text: "개별 신호의 발생 시각입니다. Case 생성 시각과 나란히 놓고 어느 시각이 먼저인지 확인합니다." },
+        { title: "Severity", text: "Alert 또는 Case에 표시되는 심각도입니다. 목록에서 Critical, High, Medium, Low 값을 확인합니다." },
         { title: "Case score", text: "Case의 상대적 우선순위를 표현합니다. 적용된 scoring method와 수동 조정 가능성을 확인합니다." },
-        { title: "Issue Grouping", text: "여러 관련 이슈를 하나의 Case로 관리해 조사량을 줄이는 기능입니다. 묶인 근거는 분석가가 검증합니다." },
+        { title: "Issue Grouping", text: "여러 관련 Issue를 하나의 Case에 묶어 보여주는 기능입니다. 각 Issue를 열어 공통 자산과 시각을 확인합니다." },
         { title: "Assets · Artifacts", text: "Alert와 Case에 관련된 endpoint, 사용자, IP, 파일 등 조사할 개체입니다." },
         { title: "Status · Last updated", text: "업무 처리 단계와 최근 변화를 보여줍니다. 새 활동이 추가됐는지 확인하는 기준입니다." },
       ]},
@@ -292,8 +292,8 @@ const chapterCatalog: Chapter[] = [
         "Alert 사이의 시간·개체 관계가 보이면 Timeline과 Causality 심층 분석으로 이동합니다.",
         "특정 endpoint, 사용자, host 또는 process가 중심이면 해당 개체 조사로 이동합니다.",
         "IP, domain, URL, hash가 핵심 증거면 Indicator와 Artifact 조사로 이동합니다.",
-        "현재 화면의 정보로 범위나 가설을 검증할 수 없으면 XQL로 이동합니다.",
-        "위협 활동, 대상과 영향이 증거로 확인되면 승인 조건을 확인하고 대응 검토로 이동합니다.",
+        "현재 화면에 필요한 원본 이벤트가 없으면 Query Builder를 열어 XQL로 검색합니다.",
+        "위협 활동과 대상이 확인되면 조치 대상의 이름을 다시 확인하고 승인된 대응 화면을 엽니다.",
         "정상 정황이 있어도 근거와 확인자를 기록하기 전에는 종료하지 않습니다.",
       ]},
       { type: "check", title: "분석 체크리스트", basis: "practice", references: [
@@ -305,7 +305,7 @@ const chapterCatalog: Chapter[] = [
         "Alert의 원본 이벤트를 최소 한 건 이상 확인했다",
         "공통 endpoint, 사용자, process와 Artifact를 비교했다",
         "Case score와 Severity를 정탐 판정으로 사용하지 않았다",
-        "Causality 또는 Timeline의 관계를 원본 이벤트로 검증했다",
+        "Causality 또는 Timeline에서 연결된 원본 이벤트를 열었다",
         "확인한 사실과 아직 모르는 내용을 분리했다",
         "다음 조사 단계와 이동 이유를 기록했다",
       ]},
@@ -327,7 +327,7 @@ const chapterCatalog: Chapter[] = [
   },
   {
     id: "xql", no: "05", title: "XQL 쿼리 심층 분석", shortTitle: "XQL", time: "15분", audience: "SOC L2/L3",
-    description: "Query Center에서 데이터 범위를 정하고, 필터·필드·집계를 조합해 조사 가설을 직접 검증합니다.",
+    description: "Query Center에서 데이터셋, 시간 범위와 필드를 선택하고 결과 행을 직접 확인합니다.",
     path: "Investigation → Query Center",
     outcomes: ["기본 파이프라인을 읽는다", "좁은 범위에서 안전하게 검색한다", "결과를 사건 근거로 남긴다"],
     blocks: [
@@ -348,7 +348,7 @@ const chapterCatalog: Chapter[] = [
       { type: "steps", title: "결과 저장과 케이스 연계", items: [
         "쿼리 이름에 목적·대상·시간 범위가 드러나도록 Saved Query로 저장합니다.",
         "재사용 쿼리는 즐겨찾기 또는 조직이 정한 폴더에 배치하고 설명을 추가합니다.",
-        "결과에서 핵심 행과 필드를 검증하고 Export 또는 사건 연계 기능을 사용합니다.",
+        "결과에서 핵심 행과 필드 값을 확인하고 Export 또는 Case 연결 기능을 사용합니다.",
         "케이스 코멘트에 쿼리, 실행 시각, 결과 요약, 원본 링크를 함께 남깁니다.",
       ]},
       { type: "note", tone: "ai", title: "AI 변환 사용법", text: "자연어로 쿼리를 생성해도 실행 전 dataset, 시간 범위, 필터를 직접 검토하세요. 생성된 쿼리가 조사 질문과 같은 의미인지 확인해야 합니다." },
@@ -363,7 +363,7 @@ const chapterCatalog: Chapter[] = [
       { type: "cards", title: "주요 탐지 유형", items: [
         { title: "IOC", text: "악성 IP·도메인·해시 등 알려진 지표를 탐지합니다." },
         { title: "BIOC / Analytics", text: "프로세스·파일·네트워크의 수상한 행동이나 기준선 이탈을 탐지합니다." },
-        { title: "Correlation", text: "XQL 기반으로 여러 소스와 이벤트의 관계를 분석합니다." },
+        { title: "Correlation", text: "XQL로 여러 데이터 소스의 이벤트를 검색해 함께 표시합니다." },
       ]},
       { type: "check", title: "규칙 상세에서 확인할 것", items: ["활성 상태와 심각도", "탐지 조건과 대상 데이터", "MITRE ATT&CK 전술·기술", "최근 발생량과 정·오탐 이력", "수정 권한과 변경 승인 절차"] },
       { type: "steps", title: "활성화·심각도 조정", items: [
@@ -372,13 +372,13 @@ const chapterCatalog: Chapter[] = [
         "승인된 변경만 적용하고 변경 전후의 Alert 발생량과 탐지 공백을 모니터링합니다.",
       ]},
       { type: "note", tone: "ai", title: "AI 기반 이상탐지", text: "고정 지표와 일치시키는 일반 규칙과 달리, 분석 모델은 사용자·자산의 기준선 이탈을 볼 수 있습니다. 왜 평소와 다른지 비교 기간과 특성을 확인하세요." },
-      { type: "check", title: "신규 규칙 요청 항목", items: ["탐지하려는 위협과 사용 사례", "필요 데이터셋과 예시 이벤트", "XQL 또는 조건 초안", "예상 발생량과 오탐 조건", "심각도와 MITRE ATT&CK 매핑", "검증 시나리오와 담당자"] },
+      { type: "check", title: "신규 규칙 요청 항목", items: ["탐지하려는 위협과 사용 사례", "필요 데이터셋과 예시 이벤트", "XQL 또는 조건 초안", "예상 발생량과 오탐 조건", "심각도와 MITRE ATT&CK 매핑", "테스트 시나리오와 담당자"] },
       { type: "note", tone: "warn", title: "규칙을 바로 끄지 마세요", text: "오탐 하나만으로 전체 규칙을 비활성화하면 탐지 공백이 생깁니다. 반복 표본, 정상 원인, 최소 예외 조건, 만료일을 포함해 변경을 요청하세요." },
     ],
   },
   {
     id: "exceptions", no: "07", title: "예외 설정", shortTitle: "예외 설정", time: "8분", audience: "승인된 운영자",
-    description: "반복 오탐의 근거를 검증하고, 필요한 대상만 최소 범위로 제외해 탐지 공백을 줄입니다.",
+    description: "반복된 Case의 원본 이벤트를 확인하고 필요한 대상만 예외 조건에 추가합니다.",
     path: "Settings → Exception / Exclusion Configuration",
     outcomes: ["예외와 규칙 비활성화를 구분한다", "최소 범위 원칙을 적용한다", "재검토 가능한 기록을 남긴다"],
     blocks: [
@@ -390,7 +390,7 @@ const chapterCatalog: Chapter[] = [
       { type: "steps", title: "예외 등록 전후 절차", items: [
         "동일 원인의 반복 오탐인지 여러 사건 표본으로 확인합니다.",
         "사용자·경로·서명자·해시·자산 등 가장 좁은 조건을 선택합니다.",
-        "예외가 적용될 모듈, 규칙, 자산 범위와 잠재 탐지 공백을 검토합니다.",
+        "예외 화면에서 적용 모듈, 규칙과 자산 범위를 확인합니다.",
         "승인자 확인 후 시작일·만료일·사유·관련 티켓을 기록합니다.",
         "적용 후 알림 감소와 예상하지 않은 탐지 누락을 모니터링합니다.",
       ]},
@@ -400,7 +400,7 @@ const chapterCatalog: Chapter[] = [
   },
   {
     id: "automation", no: "08", title: "자동화와 Automation Agent", shortTitle: "자동화", time: "10분", audience: "SOC L2/L3",
-    description: "플레이북 실행 흐름을 확인하고, Automation Engineer Agent가 만든 결과를 안전하게 검토합니다.",
+    description: "플레이북의 Task 순서와 실행 상태를 열고 Automation Engineer Agent가 만든 출력값을 확인합니다.",
     outcomes: ["플레이북 상태를 확인한다", "AI 생성 결과를 검토한다", "실패와 승인 대기를 구분한다"],
     blocks: [
       { type: "steps", title: "플레이북 실행 확인", items: [
@@ -408,7 +408,7 @@ const chapterCatalog: Chapter[] = [
         "각 Task의 성공, 실패, 대기 상태와 입력·출력값을 확인합니다.",
         "수동 승인 단계가 있으면 대상·행동·영향을 확인한 후 승인 또는 거부합니다.",
         "실패한 Task의 오류를 기록하고 임의 재실행 전 중복 조치 가능성을 확인합니다.",
-        "격리·차단 등 실제 조치는 Management Audit Logs와 함께 검증합니다.",
+        "격리·차단 작업을 실행한 뒤 Management Audit Logs에서 대상과 완료 상태를 확인합니다.",
       ]},
       { type: "cards", title: "실행 목록에서 볼 것", items: [
         { title: "Running / Pending", text: "실행 중이거나 입력·사람 승인을 기다리는 상태입니다." },
@@ -418,7 +418,7 @@ const chapterCatalog: Chapter[] = [
       { type: "steps", title: "자동 생성 결과 검토", items: [
         "Agent가 제안한 스크립트·플레이북의 목적, 입력, 출력, 외부 통합을 확인합니다.",
         "삭제·격리·차단·티켓 생성 등 상태를 바꾸는 Task를 찾아 표시합니다.",
-        "테스트 데이터와 승인된 테스트 자산에서 실행한 뒤 결과와 오류 처리를 검증합니다.",
+        "승인된 테스트 자산에서 실행한 뒤 출력값과 오류 메시지를 확인합니다.",
         "승인 후 배포하고 버전, 작성자, 변경 사유를 감사 가능하게 남깁니다.",
       ]},
       { type: "note", tone: "ai", title: "Automation Engineer Agent", text: "자연어로 스크립트나 자동화 초안을 만들 수 있지만, 생성물은 코드 리뷰·테스트·승인을 거쳐야 합니다. 운영 테넌트에서 바로 실행하지 마세요." },
@@ -427,7 +427,7 @@ const chapterCatalog: Chapter[] = [
   },
   {
     id: "reporting", no: "09", title: "리포트 / 사고 문서화", shortTitle: "리포트", time: "10분", audience: "모든 분석가",
-    description: "AI 요약을 초안으로 사용하되, 증거와 조치 결과를 검증해 다른 사람이 재현할 수 있는 사고 기록을 만듭니다.",
+    description: "AI 요약의 각 문장을 원본 Alert, Timeline과 조치 결과에 대조해 사고 기록을 만듭니다.",
     outcomes: ["필수 보고 항목을 빠뜨리지 않는다", "사실과 판단을 구분한다", "POC 성과를 측정한다"],
     blocks: [
       { type: "check", title: "사고보고서 필수 항목", items: ["사건 번호·제목·심각도·담당자", "최초 탐지·조사·조치·종결 시각", "영향 사용자·자산·데이터", "근본 원인과 공격 타임라인", "확인된 증거와 사용한 쿼리", "수행 조치와 결과", "재발 방지·후속 작업·담당자"] },
@@ -438,14 +438,14 @@ const chapterCatalog: Chapter[] = [
         "확인되지 않은 추론과 민감정보를 수정하고 검토 상태를 표시합니다.",
       ]},
       { type: "steps", title: "보고서 작성 순서", items: [
-        "AI Case Summary로 초안을 만들고 원본 Alert와 Timeline으로 사실을 검증합니다.",
+        "AI Case Summary를 열고 각 문장을 원본 Alert와 Timeline의 시각·자산·행위와 대조합니다.",
         "관찰된 사실, 분석가의 판단, 아직 확인되지 않은 가설을 구분해 씁니다.",
         "민감정보를 제거하고 고객 표준 템플릿에 항목을 매핑합니다.",
         "최종 검토자 승인 후 PDF 또는 조직이 정한 형식으로 보관·공유합니다.",
       ]},
       { type: "cards", title: "사내 표준 양식 매핑", items: [
         { title: "사건 개요", text: "Case Summary, Severity, 상태, 담당자 정보를 연결합니다." },
-        { title: "발생 경위", text: "Timeline과 Root Cause/Attack Story의 검증된 이벤트를 연결합니다." },
+        { title: "발생 경위", text: "Timeline과 Root Cause/Attack Story에서 직접 확인한 이벤트를 연결합니다." },
         { title: "영향 및 증거", text: "Assets, Alerts, Artifacts, XQL 결과를 연결합니다." },
         { title: "조치 및 재발 방지", text: "War Room Task, Audit Log, 후속 티켓과 권고를 연결합니다." },
       ]},
@@ -454,7 +454,7 @@ const chapterCatalog: Chapter[] = [
         { title: "Investigation", text: "원인·영향 범위 확인 시간과 AI 지원 효과" },
         { title: "Response", text: "조치 성공 여부, 승인·자동화 시간, 개선 항목" },
       ]},
-      { type: "note", tone: "warn", title: "AI 요약은 초안입니다", text: "AI가 생성한 요약에 없는 증거나 잘못된 인과관계가 있을 수 있습니다. 분석가가 검증한 내용만 최종 보고서에 포함하세요." },
+      { type: "note", tone: "warn", title: "AI 요약은 초안입니다", text: "AI 요약의 각 문장을 원본 Alert와 Timeline에서 확인한 뒤 최종 보고서에 포함하세요." },
     ],
   },
 ];
