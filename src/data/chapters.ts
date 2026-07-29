@@ -6,10 +6,6 @@ const chapterCatalog: Chapter[] = [
     id: "overview", no: "00", title: "XSIAM 분석 프로세스 이해", shortTitle: "분석 프로세스", time: "20분", audience: "신규 고객 · SOC 분석가",
     description: "Cases 목록을 처음 연 사용자가 화면의 필터와 열을 읽고, 조사할 Case 한 건을 열어 상세 화면으로 이동하는 순서를 익힙니다.",
     path: "왼쪽 사이드바 → Cases & Issues → Cases → Case 상세",
-    heroImage: {
-      src: "./case-overview.png",
-      alt: "Cortex XSIAM Case 상세 화면의 AI 요약, 관계 화면, Issues, Assets와 Artifacts",
-    },
     outcomes: [
       "Cases 목록에서 조회 기간과 상태 필터를 확인할 수 있다",
       "Severity, Score, Status, Assignee의 위치와 의미를 구분할 수 있다",
@@ -219,6 +215,10 @@ const chapterCatalog: Chapter[] = [
     id: "cases", no: "01", title: "Alert와 Case 이해", shortTitle: "Alert와 Case", time: "25분", audience: "신규 고객 · SOC L1/L2",
     description: "개별 탐지 신호인 Alert가 어떤 규칙에서 시작되고, 관련 이슈와 자산이 어떻게 Case라는 조사 단위로 연결되는지 증거를 따라 확인합니다.",
     path: "왼쪽 사이드바 → Cases & Issues → Cases → Case 상세 → Alerts",
+    heroImage: {
+      src: "./case-overview.png",
+      alt: "Cortex XSIAM Case 상세 화면의 AI 요약, 관계 화면, Issues, Assets와 Artifacts",
+    },
     outcomes: [
       "Alert와 Case의 역할을 구분할 수 있다",
       "Alert의 생성 근거와 Case에 포함된 관계를 확인할 수 있다",
