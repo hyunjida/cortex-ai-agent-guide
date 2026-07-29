@@ -30,4 +30,8 @@ export type Chapter = {
   path?: string;
   outcomes: string[];
   blocks: GuideBlock[];
+  heroImage?: {
+    src: string;
+    alt: string;
+  };
 };
