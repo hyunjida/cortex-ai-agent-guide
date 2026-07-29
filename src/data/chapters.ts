@@ -475,7 +475,7 @@ const isVerifiedBlock = (block: Chapter["blocks"][number]) =>
 export const chapters: Chapter[] = [
   chapterCatalog.find((chapter) => chapter.id === "overview")!,
   chapterCatalog.find((chapter) => chapter.id === "cases")!,
-  ...usageChapters,
+  ...usageChapters.filter((chapter) => chapter.id !== "login"),
 ].map((chapter, index) => ({
   ...chapter,
   no: String(index).padStart(2, "0"),
