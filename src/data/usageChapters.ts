@@ -362,13 +362,12 @@ export const usageChapters: Chapter[] = [
         "선택한 Dashboard와 시간 범위가 화면에 적용되었는지 확인합니다.",
         "화면에 표시되는 Endpoints, Issues, Cases와 하단 운영 지표를 확인합니다.",
       ]},
-      { type: "cards", title: "첨부 화면에서 확인된 항목", items: [
+      { type: "cards", title: "Dashboard 화면 항목", items: [
         { title: "Dashboard 선택", text: "상단의 XSIAM Command Center 이름 옆 화살표에서 표시할 Dashboard를 선택합니다." },
         { title: "시간 범위", text: "오른쪽 위 Last 24 Hours 버튼에서 Dashboard 조회 범위를 선택합니다." },
-        { title: "더보기", text: "시간 범위 오른쪽의 ⋮ 버튼입니다. 메뉴 내부 항목은 첨부 화면에서 확인되지 않아 가이드에 단정하지 않습니다." },
-        { title: "Investigate", text: "화면 하단에 표시되는 버튼입니다. 클릭 후 이동 화면은 제공된 화면과 PDF에서 검증되지 않아 동작을 설명하지 않습니다." },
+        { title: "더보기", text: "시간 범위 오른쪽의 ⋮ 버튼입니다." },
+        { title: "Investigate", text: "화면 하단에 표시되는 버튼입니다." },
       ]},
-      { type: "note", tone: "warn", title: "이 장에서 제외한 기능", text: "Dashboard Manager, Dashboard 생성·복제, Widget 추가, Report Template 생성은 현재 제공된 Dashboards 화면에서 직접 확인되지 않으므로 이 장의 클릭 절차에서 제외했습니다." },
       { type: "check", title: "Dashboard 조회 확인", items: ["Dashboards & Reports 아래의 Dashboard를 열었다", "상단에서 조회할 Dashboard를 선택했다", "오른쪽 위에서 시간 범위를 선택했다", "선택값이 화면에 적용됐는지 확인했다", "화면에 표시된 지표만 확인했다"] },
     ],
   },
