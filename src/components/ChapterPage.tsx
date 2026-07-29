@@ -14,7 +14,7 @@ export default function ChapterPage({ chapter, completed, onComplete, onNext, ha
     <article className="chapter-page" key={chapter.id}>
       <header className="chapter-hero">
         <div className="chapter-meta"><span>CHAPTER {chapter.no}</span><i /><span>{chapter.time}</span><i /><span>{chapter.audience}</span></div>
-        <h1>{chapter.title}</h1><p>{chapter.description}</p>
+        <h1 className="chapter-title">{chapter.title}</h1><p>{chapter.description}</p>
         {chapter.path && <div className="chapter-path"><span>MENU PATH</span><code>{chapter.path}</code></div>}
       </header>
       <section className="outcomes">
