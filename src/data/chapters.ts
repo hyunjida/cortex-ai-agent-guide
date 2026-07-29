@@ -1,4 +1,5 @@
 import type { Chapter } from "../types/guide";
+import { usageChapters } from "./usageChapters";
 
 const chapterCatalog: Chapter[] = [
   {
@@ -457,11 +458,10 @@ const chapterCatalog: Chapter[] = [
   },
 ];
 
-const primaryChapterIds = ["overview", "cases"];
-
 export const chapters: Chapter[] = [
-  ...primaryChapterIds.map((id) => chapterCatalog.find((chapter) => chapter.id === id)!),
-  ...chapterCatalog.filter((chapter) => !primaryChapterIds.includes(chapter.id)),
+  chapterCatalog.find((chapter) => chapter.id === "overview")!,
+  chapterCatalog.find((chapter) => chapter.id === "cases")!,
+  ...usageChapters,
 ].map((chapter, index) => ({
   ...chapter,
   no: String(index).padStart(2, "0"),

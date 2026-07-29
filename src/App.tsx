@@ -3,8 +3,19 @@ import { Header, Sidebar } from "./components/Navigation";
 import ChapterPage from "./components/ChapterPage";
 import { chapters } from "./data/chapters";
 
+const legacyChapterAliases: Record<string, string> = {
+  dashboard: "endpoints",
+  ingestion: "forensics",
+  exceptions: "threat-intel",
+};
+
+const resolveChapterId = (id: string) => {
+  const resolved = legacyChapterAliases[id] || id;
+  return chapters.some((chapter) => chapter.id === resolved) ? resolved : chapters[0].id;
+};
+
 export default function App() {
-  const [activeId, setActiveId] = useState(() => location.hash.slice(1) || chapters[0].id);
+  const [activeId, setActiveId] = useState(() => resolveChapterId(location.hash.slice(1)));
   const [completed, setCompleted] = useState<string[]>(() => {
     try { return JSON.parse(localStorage.getItem("xsiam-guide-progress") || "[]") as string[]; }
     catch { return []; }
