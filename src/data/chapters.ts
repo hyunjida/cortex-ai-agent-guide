@@ -40,9 +40,9 @@ const chapterCatalog: Chapter[] = [
         "Severity, Score, Status, Assignee를 왼쪽에서 오른쪽으로 읽습니다. 아직 Case를 열기 전이므로 목록에서 현재 상태를 파악하는 단계입니다.",
         "Case Name과 Issues Breakdown을 확인합니다. 어떤 내용의 Case인지, 연결된 Issue가 어떻게 표시되는지 봅니다.",
         "조사할 Case의 행 또는 Case Name을 클릭해 상세 화면을 엽니다.",
-        "상세 화면에서 Overview를 먼저 보고 Alerts, Assets & Artifacts, Timeline과 Causality 순서로 이동합니다.",
-        "Executions와 War Room에서 이미 수행된 자동화와 분석 기록을 확인합니다.",
-        "확인한 증거와 조치 결과를 기록한 뒤 Case 상태를 변경하거나 다음 담당자에게 전달합니다.",
+        "상세 화면 상단의 AI 요약과 가운데 Case 관계 화면을 확인합니다.",
+        "화면 아래에서 Issues 목록과 Assets, Artifacts, MITRE ATT&CK 항목을 확인합니다.",
+        "오른쪽 Resolution Center에서 Pending, Recommended, In Progress, Done 숫자를 확인합니다.",
       ]},
       { type: "cards", title: "화면에서 확인할 항목과 의미", references: [
         { chapter: "Module 4 · Case Scoring / Case Statuses", pages: "PDF 180–203쪽" },
@@ -404,7 +404,7 @@ const chapterCatalog: Chapter[] = [
     outcomes: ["플레이북 상태를 확인한다", "AI 생성 결과를 검토한다", "실패와 승인 대기를 구분한다"],
     blocks: [
       { type: "steps", title: "플레이북 실행 확인", items: [
-        "케이스의 War Room 또는 실행 내역에서 시작 시각과 트리거를 확인합니다.",
+        "Playbook 실행 목록에서 시작 시각과 trigger를 확인합니다.",
         "각 Task의 성공, 실패, 대기 상태와 입력·출력값을 확인합니다.",
         "수동 승인 단계가 있으면 대상·행동·영향을 확인한 후 승인 또는 거부합니다.",
         "실패한 Task의 오류를 기록하고 임의 재실행 전 중복 조치 가능성을 확인합니다.",
@@ -447,7 +447,7 @@ const chapterCatalog: Chapter[] = [
         { title: "사건 개요", text: "Case Summary, Severity, 상태, 담당자 정보를 연결합니다." },
         { title: "발생 경위", text: "Timeline과 Root Cause/Attack Story에서 직접 확인한 이벤트를 연결합니다." },
         { title: "영향 및 증거", text: "Assets, Alerts, Artifacts, XQL 결과를 연결합니다." },
-        { title: "조치 및 재발 방지", text: "War Room Task, Audit Log, 후속 티켓과 권고를 연결합니다." },
+        { title: "조치 및 재발 방지", text: "실행 Task, Audit Log, 후속 티켓과 권고를 연결합니다." },
       ]},
       { type: "cards", title: "POC 결과에 포함할 지표", items: [
         { title: "Detection", text: "시나리오별 탐지 성공 여부와 탐지까지 걸린 시간" },
