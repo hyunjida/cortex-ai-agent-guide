@@ -154,7 +154,6 @@ export const usageChapters: Chapter[] = [
         "Query Results에서 Table View를 열고 필요한 열을 추가·정렬합니다.",
         "Save Query를 클릭해 Query Library에 저장하고 다시 열어 실행합니다.",
       ]},
-      { type: "note", tone: "warn", title: "PDF에 없는 필드명을 추측하지 마세요", basis: "practice", text: "테넌트와 데이터 소스에 따라 필드가 다를 수 있습니다. 예제 쿼리를 그대로 붙여 넣기보다 Field Browser에서 존재와 의미를 확인한 뒤 사용하세요." },
     ],
   },
   {
@@ -207,7 +206,6 @@ export const usageChapters: Chapter[] = [
         "Forensics concept, virtual dataset, collection과 query 관련 별도 과정을 이수합니다.",
         "제품에서 실행하기 전 조사 Case와 endpoint, 수집 목적, 필요한 artifact를 정리합니다.",
       ]},
-      { type: "note", tone: "warn", title: "이 PDF에는 실제 Forensics 클릭 절차가 없습니다", references: [{ chapter: "Module 5 · Forensics Learning Modality", pages: "PDF 207–212쪽" }], text: "Student Guide는 Forensics 주제를 소개하고 별도 Learning Center로 안내합니다. 따라서 이 사이트에서는 PDF에 없는 수집 버튼·옵션·쿼리 절차를 추측해 제공하지 않습니다." },
       { type: "check", title: "별도 과정 이동 전 준비", basis: "practice", items: ["Case ID와 조사 질문을 정리했다", "대상 endpoint와 agent 상태를 확인했다", "필요한 artifact와 시간 범위를 정했다", "수집 권한과 승인 절차를 확인했다", "별도 공식 Forensics 과정을 사용할 수 있는지 확인했다"] },
     ],
   },
