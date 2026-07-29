@@ -139,7 +139,7 @@ const chapterCatalog: Chapter[] = [
         "우측 상단의 조회 기간, 시간대, 대상 필터를 먼저 확인합니다.",
         "Critical/High 신규 사건과 미할당 사건이 증가했는지 봅니다.",
         "Open과 Closed 추세, MTTR 변화가 평소 기준선과 다른지 확인합니다.",
-        "이상 수치나 위젯을 눌러 원본 Incident 목록으로 드릴다운합니다.",
+        "이상 수치나 위젯을 눌러 원본 Case 목록으로 드릴다운합니다.",
       ]},
       { type: "cards", title: "주요 지표", items: [
         { title: "Severity", text: "사건의 잠재 영향도. 높을수록 먼저 확인하지만 정탐을 뜻하지는 않습니다." },
