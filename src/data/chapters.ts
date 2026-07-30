@@ -226,6 +226,7 @@ const chapterCatalog: Chapter[] = [
         { title: "분석가의 핵심 질문", text: "“왜 탐지됐는가?”, “왜 같은 Case에 포함됐는가?”, “어떤 자산까지 영향을 받았는가?”를 순서대로 답합니다." },
       ]},
       { type: "note", tone: "tip", title: "참고사항 · Causality View", text: "Causality View 화면 위치: Cases → Case Name → Issues → Evidence" },
+      { type: "image", title: "Issue 상세의 Evidence에서 확인하는 Causality View", src: "./CausalityView.png", alt: "Cortex XSIAM Case의 Issue 상세 화면에서 Evidence 영역에 표시된 Causality View" },
       { type: "cards", title: "분석을 시작하는 상황", references: [
         { chapter: "Module 4 · Correlation Rules / Issue Causality", pages: "165–179쪽" },
         { chapter: "Module 8 · Cases", pages: "328–330쪽" },
