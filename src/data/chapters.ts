@@ -225,6 +225,7 @@ const chapterCatalog: Chapter[] = [
         { title: "Case", text: "관련 Issue, 자산과 Artifact를 한 화면에서 확인하고 처리하도록 묶은 작업 단위입니다." },
         { title: "분석가의 핵심 질문", text: "“왜 탐지됐는가?”, “왜 같은 Case에 포함됐는가?”, “어떤 자산까지 영향을 받았는가?”를 순서대로 답합니다." },
       ]},
+      { type: "note", tone: "tip", title: "참고사항 · Causality View", text: "Causality View 화면 위치: Cases → Case Name → Issues → Evidence" },
       { type: "cards", title: "분석을 시작하는 상황", references: [
         { chapter: "Module 4 · Correlation Rules / Issue Causality", pages: "165–179쪽" },
         { chapter: "Module 8 · Cases", pages: "328–330쪽" },
