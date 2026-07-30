@@ -93,15 +93,6 @@ const chapterCatalog: Chapter[] = [
       ]},
       { type: "note", tone: "tip", title: "실무 참고 · 조사 질문을 먼저 적으세요", basis: "practice", text: "화면을 무작정 순회하기보다 “어떤 신호가 왜 하나의 Case가 되었는가?”, “어느 자산까지 영향을 받았는가?”처럼 현재 답해야 할 질문을 한 문장으로 적으면 다음 화면을 선택하기 쉽습니다." },
       { type: "note", tone: "warn", title: "주의 · 시간대와 최신 활동", basis: "practice", text: "교대 인수인계나 장시간 열린 Case에서는 표시 시간대와 마지막 갱신 시각을 먼저 확인하세요. 시간 순서를 잘못 읽거나 이미 수행된 조치를 중복 실행하지 않기 위한 실무 참고입니다." },
-      { type: "cards", title: "간단한 실습 시나리오", basis: "practice", references: [
-        { chapter: "Lab 7 · Analyze AnyDesk Cases", pages: "461–464쪽" },
-        { chapter: "Lab 11 · Case Handling", pages: "471–473쪽" },
-      ], items: [
-        { title: "상황", text: "Portable AnyDesk 관련 Case가 새로 배정됐습니다. 상태는 New이고 여러 이벤트가 Case Timeline에 포함돼 있습니다." },
-        { title: "과제 1", text: "Case를 열고 처음 확인할 여섯 가지 정보를 순서대로 적은 뒤, 각각 왜 필요한지 설명합니다." },
-        { title: "과제 2", text: "Case Overview와 Timeline만으로 답할 수 있는 질문과 추가 조사가 필요한 질문을 나눕니다." },
-        { title: "완료 기준", text: "현재 판단, 근거, 다음에 열 화면, 그 화면으로 이동하는 이유를 한 문단으로 기록합니다." },
-      ]},
     ],
   },
   {
@@ -317,16 +308,6 @@ const chapterCatalog: Chapter[] = [
       { type: "note", tone: "warn", title: "주의 · 함께 묶였다는 사실만으로 인과관계를 확정하지 마세요", references: [
         { chapter: "Module 4 · Issue Causality", pages: "175–179쪽" },
       ], text: "Causality View와 Issue Grouping은 조사 범위를 좁히는 강력한 단서입니다. 각 노드와 Alert의 원본 이벤트를 열어 시간, 개체와 행위 관계를 확인한 뒤 판단하세요." },
-      { type: "cards", title: "간단한 실습 시나리오", basis: "practice", references: [
-        { chapter: "Lab 6 · Review Correlation Rule", pages: "458–460쪽" },
-        { chapter: "Lab 7 · Analyze AnyDesk Cases", pages: "461–464쪽" },
-      ], items: [
-        { title: "상황", text: "Portable AnyDesk Detected Correlation Rule에서 Alert가 생성되고 관련 Case가 열렸습니다." },
-        { title: "과제 1", text: "Correlation Rule에서 어떤 조건과 데이터가 Alert를 만들었는지 찾고, Alert 상세의 원본 이벤트와 대조합니다." },
-        { title: "과제 2", text: "Case에 포함된 Alert를 시간 순으로 정리하고 공통 endpoint, 사용자 또는 Artifact를 표시합니다." },
-        { title: "판단", text: "확인된 사실, 추가로 필요한 증거, 다음에 열 화면과 그 이유를 각각 한 문장으로 작성합니다." },
-        { title: "완료 기준", text: "Alert 생성 이유와 Case 조사 범위를 설명하되, 제공된 증거 이상으로 악성 여부를 단정하지 않습니다." },
-      ]},
     ],
   },
   {
