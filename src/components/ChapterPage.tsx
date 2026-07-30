@@ -16,6 +16,12 @@ export default function ChapterPage({ chapter, completed, onComplete, onNext, ha
         <div className="chapter-meta"><span>CHAPTER {chapter.no}</span><i /><span>{chapter.time}</span><i /><span>{chapter.audience}</span></div>
         <h1 className="chapter-title">{chapter.title}</h1><p>{chapter.description}</p>
         {chapter.path && <div className="chapter-path"><span>MENU PATH</span><code>{chapter.path}</code></div>}
+        {chapter.heroIntro && <p className="chapter-hero-intro">{chapter.heroIntro}</p>}
+        {chapter.heroExample && <figure className="screen-example hero-screen-example">
+          <div className="screen-example-heading"><span>{chapter.heroExample.label}</span><h2>{chapter.heroExample.title}</h2></div>
+          <img src={chapter.heroExample.src} alt={chapter.heroExample.alt} />
+          <figcaption>{chapter.heroExample.caption}</figcaption>
+        </figure>}
         {chapter.heroImage && <img className="chapter-hero-image" src={chapter.heroImage.src} alt={chapter.heroImage.alt} />}
       </header>
       <section className="outcomes">

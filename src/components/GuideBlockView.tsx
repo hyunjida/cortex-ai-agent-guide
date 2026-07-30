@@ -19,7 +19,11 @@ export default function GuideBlockView({ block }: { block: GuideBlock }) {
     </div></section>;
   }
   if (block.type === "image") {
-    return <figure className="guide-image"><img src={block.src} alt={block.alt} loading="lazy" /><figcaption>{block.title}</figcaption></figure>;
+    return <figure className="screen-example guide-image">
+      <div className="screen-example-heading"><span>화면 예시</span><h3>{block.title}</h3></div>
+      <img src={block.src} alt={block.alt} loading="lazy" />
+      <figcaption>{block.title}</figcaption>
+    </figure>;
   }
   if (block.type === "cards") {
     return <section className="guide-block"><h3>{block.title}</h3><div className="guide-cards">

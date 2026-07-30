@@ -206,9 +206,13 @@ const chapterCatalog: Chapter[] = [
     id: "cases", no: "01", title: "Alert와 Case 이해", shortTitle: "Alert와 Case", time: "25분", audience: "신규 고객 · SOC L1/L2",
     description: "개별 탐지 신호인 Alert가 어떤 규칙에서 시작되고, 관련 이슈와 자산이 어떻게 Case라는 조사 단위로 연결되는지 증거를 따라 확인합니다.",
     path: "왼쪽 사이드바 → Cases & Issues → Cases → Case 상세 → Alerts",
-    heroImage: {
-      src: "./case-overview.png",
-      alt: "Cortex XSIAM Case 상세 화면의 AI 요약, 관계 화면, Issues, Assets와 Artifacts",
+    heroIntro: "Case 상세 화면에서는 Grouping Graph, Issue 목록, Assets와 Artifacts를 함께 확인할 수 있습니다. 아래 화면은 Case에 포함된 Issue 목록의 위치를 보여줍니다.",
+    heroExample: {
+      label: "화면 예시",
+      title: "Case 상세 화면에서 Issue 목록 확인",
+      src: "./case-overview-issue-list.png",
+      alt: "Cortex XSIAM Case 상세 화면에서 빨간 박스와 Issue 목록 주석으로 표시된 22 Issues 영역",
+      caption: "Case에 포함된 개별 Issue를 확인하는 영역",
     },
     outcomes: [
       "Alert와 Case의 역할을 구분할 수 있다",

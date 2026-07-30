@@ -28,8 +28,16 @@ export type Chapter = {
   time: string;
   audience: string;
   path?: string;
+  heroIntro?: string;
   outcomes: string[];
   blocks: GuideBlock[];
+  heroExample?: {
+    label: string;
+    title: string;
+    src: string;
+    alt: string;
+    caption: string;
+  };
   heroImage?: {
     src: string;
     alt: string;
