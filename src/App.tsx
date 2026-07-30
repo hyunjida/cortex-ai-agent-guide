@@ -5,11 +5,11 @@ import { chapters, chapterSections } from "./data/chapters";
 
 const legacyChapterAliases: Record<string, string> = {
   dashboard: "reporting",
-  ingestion: "xsiam-overview",
+  ingestion: "environment-configuration",
   exceptions: "threat-intel",
   login: "xsiam-overview",
-  "platform-components": "xsiam-overview",
-  integrations: "xsiam-overview",
+  "platform-components": "environment-configuration",
+  integrations: "environment-configuration",
 };
 
 const resolveChapterId = (id: string) => {
