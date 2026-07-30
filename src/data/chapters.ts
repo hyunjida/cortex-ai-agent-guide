@@ -72,7 +72,7 @@ const chapterCatalog: Chapter[] = [
       { type: "steps", title: "다음 조사 단계로 넘어가는 기준", basis: "practice", references: [
         { chapter: "Module 8 · Investigate / Mitigate", pages: "334–339쪽" },
       ], items: [
-        "Alert의 생성 이유와 Case에 묶인 관계가 불명확하면 1장 ‘Alert와 Case 이해’로 이동합니다.",
+        "Alert의 생성 이유와 Case에 묶인 관계가 불명확하면 0.3 ‘Event·Alert·Issue·Case’로 이동합니다.",
         "최초 행위와 실행 순서를 확인해야 하면 Timeline과 Causality 분석으로 이동합니다.",
         "endpoint, 사용자, host, process가 핵심 조사 대상이면 개체 분석으로 이동합니다.",
         "IP, domain, URL, hash가 발견되면 Indicator와 Artifact 분석으로 이동합니다.",
