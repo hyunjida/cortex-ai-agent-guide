@@ -998,7 +998,7 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
             { number: "01", title: "View recent related issues", text: "최근 동일 Rule이 생성한 Issue를 확인합니다." },
             { number: "02", title: "Show issues in same tab", text: "현재 탭에서 동일 Rule의 Issue 목록을 확인합니다." },
           ]},
-          { type: "note", tone: "warn", title: "Starter Guide에서는 조회 기능만 사용합니다.", text: "Add Correlation Rule, Edit Rule, XQL 작성, Rule 생성과 Rule 수정은 관리자 기능이므로 이 장에서 다루지 않습니다.\n\n분석가는 기존 Rule을 찾아 Description, Severity, MITRE ATT&CK와 관련 Issue를 확인하는 데 집중합니다." },
+          { type: "note", tone: "tip", title: "Rule 이름만 확인하고 끝내지 마세요.", text: "Description과 Severity를 확인한 뒤 MITRE ATT&CK 정보와 최근 관련 Issue를 함께 비교하세요.\n\n같은 Rule에서 반복적으로 Issue가 발생했다면 발생 시간, 대상 자산, 사용자와 공통 조건을 확인하여 동일한 원인인지 판단합니다." },
         ],
       },
       {
