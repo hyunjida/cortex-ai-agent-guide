@@ -28,7 +28,11 @@ export default function GuideBlockView({ block }: { block: GuideBlock }) {
   if (block.type === "annotatedImage") {
     return <figure className="screen-example annotated-screen-example">
       <div className="screen-example-heading"><span>{block.label}</span><h3>{block.title}</h3></div>
-      <img src={block.src} alt={block.alt} />
+      {block.description && <p className="screen-example-description">{block.description}</p>}
+      <a className="screen-example-link" href={block.src} target="_blank" rel="noreferrer" title="새 창에서 크게 보기">
+        <img src={block.src} alt={block.alt} />
+        <span>크게 보기 ↗</span>
+      </a>
       <figcaption>{block.caption}</figcaption>
     </figure>;
   }

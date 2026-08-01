@@ -16,7 +16,7 @@ export type GuideBlock = BlockMeta & (
   | { type: "note"; tone: "tip" | "warn" | "ai"; title: string; text: string }
   | { type: "code"; title: string; code: string }
   | { type: "image"; title: string; src: string; alt: string }
-  | { type: "annotatedImage"; label: string; title: string; src: string; alt: string; caption: string }
+  | { type: "annotatedImage"; label: string; title: string; description?: string; src: string; alt: string; caption: string }
   | { type: "callouts"; title: string; items: { number: string; title: string; text: string }[] }
   | { type: "flowSteps"; title: string; items: string[] }
   | { type: "cards"; title: string; items: { title: string; text: string }[] }
