@@ -1,5 +1,6 @@
 import type { Chapter } from "../types/guide";
 import GuideBlockView from "./GuideBlockView";
+import ZoomableImage from "./ZoomableImage";
 
 type ChapterPageProps = {
   chapter: Chapter;
@@ -25,10 +26,10 @@ export default function ChapterPage({ chapter, completed, onComplete, onNext, ha
         {chapter.heroIntro && <p className="chapter-hero-intro">{chapter.heroIntro}</p>}
         {chapter.heroExample && <figure className="screen-example hero-screen-example">
           <div className="screen-example-heading"><span>{chapter.heroExample.label}</span><h2>{chapter.heroExample.title}</h2></div>
-          <img src={chapter.heroExample.src} alt={chapter.heroExample.alt} />
+          <ZoomableImage src={chapter.heroExample.src} alt={chapter.heroExample.alt} />
           <figcaption>{chapter.heroExample.caption}</figcaption>
         </figure>}
-        {chapter.heroImage && <img className="chapter-hero-image" src={chapter.heroImage.src} alt={chapter.heroImage.alt} />}
+        {chapter.heroImage && <ZoomableImage className="chapter-hero-image-link" src={chapter.heroImage.src} alt={chapter.heroImage.alt} />}
       </header>
       {outcomes}
       {screenFirst && chapter.path && <div className="chapter-path chapter-path-after-outcomes"><span>MENU PATH</span><code>{chapter.path}</code></div>}

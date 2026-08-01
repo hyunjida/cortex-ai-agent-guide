@@ -1,4 +1,5 @@
 import type { GuideBlock } from "../types/guide";
+import ZoomableImage from "./ZoomableImage";
 
 const toneLabels = { tip: "TIP", warn: "CHECK", ai: "AI" };
 
@@ -21,7 +22,7 @@ export default function GuideBlockView({ block }: { block: GuideBlock }) {
   if (block.type === "image") {
     return <figure className="screen-example guide-image">
       <div className="screen-example-heading"><span>화면 예시</span><h3>{block.title}</h3></div>
-      <img src={block.src} alt={block.alt} loading="lazy" />
+      <ZoomableImage src={block.src} alt={block.alt} loading="lazy" />
       <figcaption>{block.title}</figcaption>
     </figure>;
   }
@@ -30,10 +31,7 @@ export default function GuideBlockView({ block }: { block: GuideBlock }) {
       <div className="screen-example-heading"><span>{block.label}</span><h3>{block.title}</h3></div>
       {block.description && <p className="screen-example-description">{block.description}</p>}
       {block.path && <div className="screen-example-path"><span>MENU PATH</span><code>{block.path}</code></div>}
-      <a className="screen-example-link" href={block.src} target="_blank" rel="noreferrer" title="새 창에서 크게 보기">
-        <img src={block.src} alt={block.alt} />
-        <span>크게 보기 ↗</span>
-      </a>
+      <ZoomableImage src={block.src} alt={block.alt} />
       <figcaption>{block.caption}</figcaption>
     </figure>;
   }
