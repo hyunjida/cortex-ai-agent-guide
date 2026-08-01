@@ -26,9 +26,10 @@ export default function GuideBlockView({ block }: { block: GuideBlock }) {
     </figure>;
   }
   if (block.type === "annotatedImage") {
-    return <figure className="screen-example annotated-screen-example">
+    return <figure className={`screen-example annotated-screen-example ${block.variant === "compact" ? "compact" : ""}`}>
       <div className="screen-example-heading"><span>{block.label}</span><h3>{block.title}</h3></div>
       {block.description && <p className="screen-example-description">{block.description}</p>}
+      {block.path && <div className="screen-example-path"><span>MENU PATH</span><code>{block.path}</code></div>}
       <a className="screen-example-link" href={block.src} target="_blank" rel="noreferrer" title="새 창에서 크게 보기">
         <img src={block.src} alt={block.alt} />
         <span>크게 보기 ↗</span>
