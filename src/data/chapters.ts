@@ -547,20 +547,6 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
         shortTitle: "Event·Issue·Case",
         title: "Event / Issue / Case 개념",
       },
-      {
-        ...usage("platform-components"),
-        id: "environment-configuration",
-        no: "0.4",
-        title: "환경 구성 · Data Collection",
-        shortTitle: "환경 구성",
-        description: "Settings에서 Broker VM과 Data Sources & Integrations 화면을 열어 데이터 수집 환경을 확인합니다.",
-        path: "Settings → Configurations → Data Broker / Data Collection",
-        outcomes: ["Broker VMs 화면을 찾는다", "Data Sources & Integrations 화면을 찾는다", "등록된 구성과 상태를 확인한다"],
-        blocks: [
-          ...verified(usage("platform-components")),
-          ...verified(usage("integrations")),
-        ],
-      },
     ],
   },
   {
