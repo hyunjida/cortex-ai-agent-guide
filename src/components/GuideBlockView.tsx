@@ -25,6 +25,23 @@ export default function GuideBlockView({ block }: { block: GuideBlock }) {
       <figcaption>{block.title}</figcaption>
     </figure>;
   }
+  if (block.type === "annotatedImage") {
+    return <figure className="screen-example annotated-screen-example">
+      <div className="screen-example-heading"><span>{block.label}</span><h3>{block.title}</h3></div>
+      <img src={block.src} alt={block.alt} />
+      <figcaption>{block.caption}</figcaption>
+    </figure>;
+  }
+  if (block.type === "callouts") {
+    return <section className="guide-block"><h3>{block.title}</h3><div className="screen-callouts">
+      {block.items.map((item) => <article key={item.number}><span>{item.number}</span><div><h4>{item.title}</h4><p>{item.text}</p></div></article>)}
+    </div></section>;
+  }
+  if (block.type === "flowSteps") {
+    return <section className="guide-block"><h3>{block.title}</h3><ol className="dashboard-flow-steps">
+      {block.items.map((item, index) => <li key={item}><span>{index + 1}</span><b>{item}</b></li>)}
+    </ol></section>;
+  }
   if (block.type === "cards") {
     return <section className="guide-block"><h3>{block.title}</h3><div className="guide-cards">
       {block.items.map((item, index) => <article key={item.title}><span>0{index + 1}</span><h4>{item.title}</h4><p>{item.text}</p></article>)}
