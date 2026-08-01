@@ -462,8 +462,6 @@ const isVerifiedBlock = (block: Chapter["blocks"][number]) =>
 const catalog = (id: string) => chapterCatalog.find((chapter) => chapter.id === id)!;
 const usage = (id: string) => usageChapters.find((chapter) => chapter.id === id)!;
 const verified = (chapter: Chapter) => chapter.blocks.filter(isVerifiedBlock);
-const blocksNamed = (chapter: Chapter, titles: string[]) =>
-  verified(chapter).filter((block) => titles.includes(block.title));
 const blocksExcept = (chapter: Chapter, titles: string[]) =>
   verified(chapter).filter((block) => !titles.includes(block.title));
 
@@ -515,7 +513,7 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
           { type: "cards", title: "SIEM · XDR · SOAR가 연결되는 방식", items: [
             { title: "SIEM · 데이터와 검색", text: "다양한 로그와 보안 데이터를 중앙에서 수집·정규화하고 XQL로 검색·분석할 수 있는 데이터 기반을 제공합니다." },
             { title: "XDR · 탐지와 관계 분석", text: "Endpoint, Network, Cloud와 Identity의 활동을 연결하여 개별 이벤트 사이의 관계와 영향을 조사할 수 있게 합니다." },
-            { title: "SOAR · 자동화와 대응", text: "Playbook, Script와 Response Action을 이용해 반복 조사와 대응 절차를 실행하고 결과를 기록합니다." },
+            { title: "SOAR · 자동화와 대응", text: "Playbook과 Script로 반복 절차를 실행하고 Action Center에서 조치 상태와 결과를 확인합니다." },
             { title: "하나의 업무 흐름", text: "SIEM의 데이터, XDR의 탐지·조사, SOAR의 자동화·대응이 Case를 중심으로 이어지므로 서로 다른 콘솔을 오갈 필요를 줄입니다." },
           ]},
           { type: "cards", title: "XSIAM의 주요 기능", items: [
@@ -742,12 +740,74 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
         ...endpointChapter,
         id: "action-center",
         no: "3.3",
-        title: "Response · Action Center",
-        shortTitle: "Response·Action Center",
-        description: "Action Center에서 endpoint에 수행된 조사·대응 조치의 대상, 진행 상태와 결과를 확인합니다.",
-        path: "왼쪽 사이드바 → Investigation & Response → Response → Action Center",
-        outcomes: ["Action Center를 연다", "endpoint 또는 action ID로 조치를 찾는다", "조치 상태와 결과를 확인한다"],
-        blocks: blocksNamed(endpointChapter, actionCenterTitles),
+        title: "조회 기록과 조치 결과 확인",
+        shortTitle: "Query·Action Center",
+        description: "XQL Search로 실행한 조회 기록은 Query Center에서 확인하고, Endpoint나 파일 등에 수행한 조치 결과는 Action Center에서 확인합니다.",
+        path: "Investigation & Response → Search / Response",
+        learningLayout: "screen-first",
+        outcomes: [
+          "Query Center에서 XQL 실행 기록을 확인한다",
+          "Action Center에서 수행한 조치의 상태와 결과를 확인한다",
+          "조회(Query)와 조치(Action)의 차이를 구분한다",
+          "상황에 따라 어느 화면으로 이동해야 하는지 판단한다",
+        ],
+        blocks: [
+          { type: "annotatedImage", label: "화면 예시 01", title: "Query Center에서 XQL 실행 기록 확인", path: "왼쪽 사이드바 → Investigation & Response → Search → Query Center", src: "./query-center-annotated.png", alt: "Cortex XSIAM Query Center Query History 화면의 탭, 필터와 주요 열 10곳을 번호로 표시한 화면", caption: "Query Center는 XQL Search에서 실행한 조회 이력을 확인하는 화면입니다. 어떤 Query가 언제 실행되었고, 몇 건이 조회되었으며, 정상 완료되었는지 확인할 수 있습니다." },
+          { type: "callouts", title: "Query Center 화면 구성", items: [
+            { number: "①", title: "Query History", text: "과거에 실행한 XQL Query 기록을 확인하는 탭입니다." },
+            { number: "②", title: "Active Queries", text: "현재 실행 중인 Query를 확인하는 탭입니다." },
+            { number: "③", title: "Filter", text: "Issued By, Timestamp 등 현재 적용된 조회 조건입니다." },
+            { number: "④", title: "Timestamp", text: "Query가 실행된 시간입니다." },
+            { number: "⑤", title: "Issued By", text: "Query를 실행한 사용자입니다." },
+            { number: "⑥", title: "Query Name", text: "실행된 Query의 이름입니다." },
+            { number: "⑦", title: "Query Status", text: "Completed, Running, Failed 등 실행 상태입니다." },
+            { number: "⑧", title: "Num of Results", text: "조회된 결과 건수입니다." },
+            { number: "⑨", title: "Duration", text: "Query 실행에 걸린 시간입니다." },
+            { number: "⑩", title: "Query Syntax", text: "실행한 XQL Query의 일부 또는 전체 문법입니다." },
+          ]},
+          { type: "annotatedImage", label: "화면 예시 02", title: "Action Center에서 조치 결과 확인", path: "왼쪽 사이드바 → Investigation & Response → Response → Action Center", src: "./action-center-annotated.png", alt: "Cortex XSIAM Action Center All Actions 화면의 메뉴, Create action과 주요 열 9곳을 번호로 표시한 화면", caption: "Action Center는 Endpoint, 파일, IP 등에 수행한 조치의 진행 상태와 결과를 확인하는 화면입니다. 조치를 누가 실행했는지, 성공했는지, 오류가 있었는지 확인할 수 있습니다." },
+          { type: "callouts", title: "Action Center 화면 구성", items: [
+            { number: "①", title: "All Actions", text: "실행된 모든 조치 이력을 확인하는 화면입니다." },
+            { number: "②", title: "Applied Actions", text: "File Quarantine, Block List, Isolated Endpoints 등 적용된 조치 유형별 결과를 확인합니다." },
+            { number: "③", title: "Create action", text: "새로운 조치를 실행하는 버튼입니다. 실행 전에 승인과 대상 확인이 필요합니다." },
+            { number: "④", title: "Creation Time", text: "조치가 생성된 시간입니다." },
+            { number: "⑤", title: "Action Type", text: "File Search, Isolate Endpoint 등 수행한 조치 종류입니다." },
+            { number: "⑥", title: "Description", text: "조치의 대상 또는 목적을 보여줍니다." },
+            { number: "⑦", title: "Status", text: "In Progress, Completed Successfully, Completed with Errors 등 현재 상태입니다." },
+            { number: "⑧", title: "Created By", text: "조치를 실행한 사용자입니다." },
+            { number: "⑨", title: "Expiration Date", text: "조치 또는 작업의 만료 예정 시간입니다." },
+          ]},
+          { type: "note", tone: "warn", title: "Create action 실행 전 확인", text: "Create action은 실제 Endpoint나 파일에 영향을 줄 수 있습니다. 실행 전에 대상, 범위와 승인 여부를 반드시 확인하세요." },
+          { type: "cards", title: "Query Center와 Action Center 차이", items: [
+            { title: "Query Center · 조회 기록", text: "목적: 데이터 조회 기록 확인 · 대상: XQL Query · 확인 항목: Query Status, 결과 건수, 실행 시간, Query Syntax · 사용 상황: 과거 Query 재확인, 실패 여부와 실행 시간 확인 · Endpoint에 직접 조치를 수행하지 않습니다." },
+            { title: "Action Center · 조치 결과", text: "목적: 조치 실행 결과 확인 · 대상: Endpoint, 파일, IP 등 · 확인 항목: Action Type, Status, Created By, Expiration Date · 사용 상황: File Search, File Quarantine, Endpoint Isolation 결과 확인 · 조치 유형에 따라 실제 대상에 영향을 줄 수 있습니다." },
+          ]},
+          { type: "flowSteps", title: "실제 업무 흐름", items: [
+            "Case에서 추가 원본 데이터가 필요하다고 판단합니다.",
+            "XQL Search에서 Query를 실행합니다.",
+            "Query Center에서 Query의 완료 상태와 결과 건수를 확인합니다.",
+            "조사 결과 실제 대응이 필요하다고 판단합니다.",
+            "승인 절차와 대상 정보를 확인한 후 조치를 실행합니다.",
+            "Action Center에서 조치 상태와 성공 또는 오류 결과를 확인합니다.",
+            "확인한 Query와 Action 결과를 Case 기록에 남깁니다.",
+          ]},
+          { type: "cards", title: "언제 어느 화면을 사용할까", items: [
+            { title: "실행했던 XQL 기록", text: "다시 보고 싶다면 Query Center를 엽니다." },
+            { title: "Query 완료 여부", text: "실행 상태를 확인하려면 Query Center를 엽니다." },
+            { title: "조회 결과 건수", text: "몇 건이 조회됐는지 확인하려면 Query Center를 엽니다." },
+            { title: "격리·File Search 진행 상태", text: "진행 중인 조치를 확인하려면 Action Center를 엽니다." },
+            { title: "조치 성공 또는 오류", text: "완료 결과를 확인하려면 Action Center를 엽니다." },
+            { title: "조치 실행 사용자", text: "누가 실행했는지 확인하려면 Action Center를 엽니다." },
+          ]},
+          { type: "cards", title: "초보자가 많이 하는 실수", items: [
+            { title: "Query Center에서 조치 검색", text: "Query Center는 XQL 조회 기록을 확인하는 화면입니다." },
+            { title: "Action Center에서 Query 검색", text: "Action Center는 실제 조치의 상태와 결과를 확인하는 화면입니다." },
+            { title: "Status 확인 없이 완료 판단", text: "In Progress인지 Completed인지 반드시 확인해야 합니다." },
+            { title: "대상 확인 없이 Create action", text: "실제 업무에 영향을 줄 수 있으므로 대상, 범위, 승인 여부를 확인해야 합니다." },
+            { title: "Case에 결과를 기록하지 않음", text: "조사 근거와 수행한 조치 결과를 Case 기록에 남겨야 합니다." },
+          ]},
+          { type: "note", tone: "tip", title: "조회와 조치를 구분하세요.", text: "Query Center는 ‘무엇을 조회했는지’ 확인하는 화면이고, Action Center는 ‘어떤 조치를 수행했고 결과가 어땠는지’ 확인하는 화면입니다.\n\nQuery는 데이터 확인이 목적이며, Action은 실제 대상에 영향을 줄 수 있으므로 실행 전 대상과 승인 여부를 반드시 확인하세요." },
+        ],
       },
       {
         ...usage("forensics"),
