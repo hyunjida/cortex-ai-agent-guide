@@ -108,10 +108,10 @@ export const usageChapters: Chapter[] = [
       { type: "steps", title: "XQL Search를 여는 순서", references: [{ chapter: "Module 3 · XQL Components / Query Editor", pages: "97–125쪽" }, { chapter: "Lab 4 · XQL Syntax Review", pages: "449–450쪽" }], items: [
         "왼쪽 사이드바에서 Investigation & Response를 클릭합니다.",
         "Search 아래의 XQL Search를 클릭합니다.",
-        "Dataset 또는 Preset을 선택하고 필드 탐색기에서 실제 필드명을 확인합니다.",
+        "쿼리 입력 영역을 열고 사용할 필드명이 화면에 표시되는지 확인합니다.",
         "시간 선택기에서 사건 전후의 짧은 범위를 먼저 지정합니다.",
-        "dataset stage 뒤에 filter, fields, sort와 limit를 순서대로 추가합니다.",
-        "Run을 클릭하고 오류가 나면 표시된 stage와 필드명을 수정합니다.",
+        "검색할 데이터와 조건을 입력하고 처음에는 limit로 결과 수를 작게 제한합니다.",
+        "Run을 클릭하고 오류가 나면 화면에 표시된 줄과 필드명을 확인합니다.",
       ]},
       { type: "steps", title: "쿼리 결과를 확인하는 순서", references: [{ chapter: "Module 3 · Query Results / Table-Graph", pages: "118–125쪽" }], items: [
         "Results의 총 건수와 실행 시간 범위를 확인합니다.",
@@ -122,8 +122,8 @@ export const usageChapters: Chapter[] = [
         "재사용할 쿼리는 Query Library에 목적이 드러나는 이름으로 저장합니다.",
       ]},
       { type: "cards", title: "쿼리 편집 화면에서 볼 것", references: [{ chapter: "Module 3 · Data Types / Stage Order / XQL Functions", pages: "83–119쪽" }], items: [
-        { title: "Dataset · Preset", text: "검색할 데이터 범위와 미리 구성된 데이터 뷰입니다." },
-        { title: "Stage order", text: "앞 stage의 결과가 다음 stage 입력이 되므로 순서가 결과에 영향을 줍니다." },
+        { title: "검색 대상", text: "어떤 데이터에서 결과를 찾을지 정합니다." },
+        { title: "입력 순서", text: "검색 대상 다음에 조건과 표시할 결과 수를 차례로 입력합니다." },
         { title: "Time window", text: "쿼리 데이터 범위입니다. 넓은 범위는 결과량과 실행 시간을 키웁니다." },
         { title: "Fields · Aliases", text: "필드 탐색기와 XDM alias로 사용할 수 있는 값을 확인합니다." },
       ]},
