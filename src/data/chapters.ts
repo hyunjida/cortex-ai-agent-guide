@@ -678,7 +678,7 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
             { title: "근거 없이 대응 진행", text: "대상과 영향을 확인하지 않은 조치는 정상 업무를 중단시키거나 잘못된 대상에 적용될 수 있습니다." },
             { title: "조사 기록 없이 종료", text: "확인한 사실, 판단 근거, 수행한 조치와 후속 작업을 남기지 않으면 검토와 인수인계가 어려워집니다." },
           ]},
-          { type: "note", tone: "tip", title: "다음 화면은 조사 질문에 따라 선택합니다.", text: "화면을 순서대로 모두 열기보다 현재 Case에서 무엇이 부족한지 먼저 판단하세요.\n\n• 시간 흐름을 확인하려면 Timeline\n• 개체 간 관계를 확인하려면 Grouping Graph\n• 원본 이벤트를 찾아야 하면 XQL Search\n• 조사가 끝나 대응을 검토할 단계라면 Resolution Center" },
+          { type: "note", tone: "tip", title: "조사 목적에 맞는 화면을 선택하세요.", text: "현재 Case에서 무엇이 부족한지 먼저 판단한 후 필요한 화면으로 이동합니다.\n\n• 시간 흐름을 확인하려면 Timeline\n• 개체 간 관계를 확인하려면 Grouping Graph\n• 원본 이벤트를 찾아야 하면 XQL Search\n• 조사가 끝나 대응을 검토할 단계라면 Resolution Center" },
         ],
       },
     ],
