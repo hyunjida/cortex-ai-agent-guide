@@ -1296,23 +1296,6 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
           { type: "note", tone: "tip", title: "먼저 다섯 항목을 확인하세요.", text: "실무에서는 Endpoint Status, Operational Status, Last Seen, Agent Version과 Assigned Prevention Policy를 먼저 확인하면 Endpoint의 현재 상태를 빠르게 파악할 수 있습니다." },
         ],
       },
-      {
-        id: "endpoint-management",
-        no: "6.3",
-        title: "Endpoint 관리 화면 찾기",
-        shortTitle: "Endpoint 관리",
-        time: "10분",
-        audience: "XSIAM 엔지니어",
-        description: "Agent 설치, Endpoint 그룹과 정책 관리 화면의 위치를 확인합니다.",
-        path: "왼쪽 사이드바 → Inventory → Endpoints",
-        outcomes: ["Installations 화면을 찾는다.", "Groups 화면을 찾는다.", "Policy Management 화면을 찾는다."],
-        blocks: endpointChapter.blocks.filter((block) =>
-          [
-            "Engineer Guide · Agent 설치 패키지 화면 열기",
-            "Engineer Guide · Endpoint 그룹과 정책 확인",
-          ].includes(block.title),
-        ),
-      },
     ],
   },
   {
