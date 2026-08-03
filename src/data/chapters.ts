@@ -1008,7 +1008,7 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
         shortTitle: "Threat Intelligence",
         time: "30분",
         audience: "SOC 분석가",
-        description: "Case에서 확인한 IP, Domain, URL, File Hash를 Indicators에서 검색하고 판정과 최근 관찰 정보를 확인합니다. Indicators (TIM)에서는 Indicator의 수집 출처와 만료 상태를 확인합니다.",
+        description: "Case에 IP, Domain, URL 또는 File Hash가 포함된 경우 Indicators에서 판정과 최근 관찰 정보를 확인합니다. Indicators (TIM)에서는 Indicator의 수집 출처와 만료 상태를 확인합니다.",
         path: undefined,
         outcomes: [
           "Indicators 화면에서 IP, Domain, URL, File Hash를 조회한다.",
@@ -1029,7 +1029,7 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
             path: "Threat Management → Threat Intelligence → Indicators",
             src: "./indicators-annotated.png",
             alt: "Cortex XSIAM Indicators 화면에서 요약 차트, 필터와 Indicator 목록의 주요 항목 12곳을 번호로 표시한 화면",
-            caption: "Indicators는 Case에서 발견한 IP, Domain, URL, File Hash의 Verdict와 관련 정보를 조회하는 화면입니다. Value와 Type을 확인한 뒤 Verdict, Last Seen, Threat Actors, Malware Families 순으로 확인합니다.",
+            caption: "Indicators는 Case에 포함된 IP, Domain, URL 또는 File Hash의 Verdict와 관련 정보를 조회하는 화면입니다. 조회할 IOC가 있을 때 Value와 Type을 확인한 뒤 Verdict, Last Seen, Threat Actors, Malware Families 순으로 확인합니다.",
           },
           { type: "callouts", title: "Indicators 화면 구성", items: [
             { number: "01", title: "Indicators by Type", text: "보유한 Indicator를 File Hash, URL, IP, Domain 등의 유형별로 보여줍니다." },
@@ -1046,13 +1046,19 @@ const sectionChapters: Omit<ChapterSection, "no">[] = [
             { number: "12", title: "Malware Families", text: "Indicator와 연결된 Malware Family가 있으면 표시합니다." },
           ]},
           { type: "flowSteps", title: "Indicators에서 IOC를 확인하는 순서", items: [
-            "Case의 Issues, Assets 또는 Artifacts에서 조사할 IP, Domain, URL 또는 File Hash를 복사합니다.",
+            "Case의 Issues와 Artifacts에서 IP, Domain, URL 또는 File Hash가 있는지 먼저 확인합니다.",
+            "조회할 IOC가 있다면 해당 값을 정확하게 복사합니다.",
             "Threat Management → Threat Intelligence → Indicators를 엽니다.",
-            "검색 또는 필터를 사용해 Indicator 값을 찾습니다.",
+            "검색 또는 필터를 사용해 복사한 Indicator 값을 찾습니다.",
             "Value와 Type이 조사 대상과 일치하는지 확인합니다.",
             "Verdict가 Malicious, Suspicious, Benign 또는 Unknown 중 무엇인지 확인합니다.",
-            "Last Seen과 Last Updated를 확인해 정보가 최근 데이터인지 확인합니다.",
-            "Threat Actors 또는 Malware Families가 표시되면 관련 정보를 조사 기록에 남깁니다.",
+            "Last Seen과 Last Updated를 확인해 최근 정보인지 확인합니다.",
+            "Threat Actors 또는 Malware Families가 표시되면 관련 내용을 Case 조사 기록에 남깁니다.",
+          ]},
+          { type: "note", tone: "tip", title: "모든 Case에서 Indicators 조회가 필요한 것은 아닙니다.", text: "Indicators 조회는 IP, Domain, URL 또는 File Hash와 같은 IOC가 포함된 Case에서 사용합니다.\n\nPosture Case처럼 클라우드 권한, 정책, 설정 오류 또는 자산 위험을 다루는 Case에서는 조회할 IOC가 없을 수 있습니다. 이 경우 Indicators로 이동하지 말고, Issue 상세와 Assets 정보를 확인한 후 Posture Management 또는 Inventory에서 관련 자산과 설정을 조사합니다." },
+          { type: "cards", title: "Case 유형별 조사 방향", items: [
+            { title: "Security Case", text: "확인 대상: IP, Domain, URL, File Hash · 추가 조사 화면: Indicators · 확인 내용: Verdict, Last Seen, Threat Actors, Malware Families" },
+            { title: "Posture Case", text: "확인 대상: Cloud Asset, Identity, Secret, Permission, Policy · 추가 조사 화면: Posture Management 또는 Inventory · 확인 내용: 권한 구성, 연결된 자산, 정책, 설정 위험" },
           ]},
           { type: "cards", title: "Indicators 화면에서 먼저 확인할 것", items: [
             { title: "01 · Value · Type", text: "조회한 값이 정확한지와 Indicator 유형을 확인합니다." },
