@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Header, Sidebar } from "./components/Navigation";
+import { ChapterSearch, Header, Sidebar } from "./components/Navigation";
 import ChapterPage from "./components/ChapterPage";
 import { chapters, chapterSections } from "./data/chapters";
 
@@ -41,16 +41,19 @@ export default function App() {
       <Header />
       <Sidebar activeId={chapter.id} completed={completed} onSelect={selectChapter} />
       <main id="main">
-        <label className="mobile-chapter-select">
-          <span>CHAPTER</span>
-          <select value={chapter.id} onChange={(event) => selectChapter(event.target.value)}>
-            {chapterSections.map((section) => (
-              <optgroup label={`${section.no}. ${section.title}`} key={section.id}>
-                {section.chapters.map((item) => <option value={item.id} key={item.id}>{item.no} {item.shortTitle}</option>)}
-              </optgroup>
-            ))}
-          </select>
-        </label>
+        <div className="mobile-navigation">
+          <label className="mobile-chapter-select">
+            <span>CHAPTER</span>
+            <select value={chapter.id} onChange={(event) => selectChapter(event.target.value)}>
+              {chapterSections.map((section) => (
+                <optgroup label={`${section.no}. ${section.title}`} key={section.id}>
+                  {section.chapters.map((item) => <option value={item.id} key={item.id}>{item.no} {item.shortTitle}</option>)}
+                </optgroup>
+              ))}
+            </select>
+          </label>
+          <ChapterSearch onSelect={selectChapter} className="mobile-guide-search" />
+        </div>
         <ChapterPage chapter={chapter} completed={completed.includes(chapter.id)} onComplete={toggleComplete}
           hasNext={activeIndex < chapters.length - 1} onNext={() => selectChapter(chapters[activeIndex + 1].id)} />
       </main>
