@@ -289,7 +289,6 @@ const chapterCatalog: Chapter[] = [
       { type: "steps", title: "다음 조사 단계로 넘어가는 기준", basis: "practice", references: [
         { chapter: "Module 8 · Investigate / Key Assets & Artifacts", pages: "334–357쪽" },
       ], items: [
-        "Issue가 발생한 조건을 설명할 수 없으면 Correlation Rule과 원본 이벤트 확인을 계속합니다.",
         "Issue 사이의 시간·개체 관계가 보이면 Timeline과 Causality 심층 분석으로 이동합니다.",
         "특정 endpoint, 사용자, host 또는 process가 중심이면 해당 개체 조사로 이동합니다.",
         "IP, domain, URL, hash가 핵심 증거면 Indicator와 Artifact 조사로 이동합니다.",
