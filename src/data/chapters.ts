@@ -450,23 +450,10 @@ const chapterCatalog: Chapter[] = [
   },
 ];
 
-const verifiedUiBlocks = new Set([
-  "Dashboard 화면 항목",
-  "Dashboard 조회 확인",
-]);
-
-const isVerifiedBlock = (block: Chapter["blocks"][number]) =>
-  block.basis !== "practice" &&
-  (Boolean(block.references?.length) || verifiedUiBlocks.has(block.title));
-
 const catalog = (id: string) => chapterCatalog.find((chapter) => chapter.id === id)!;
 const usage = (id: string) => usageChapters.find((chapter) => chapter.id === id)!;
-const verified = (chapter: Chapter) => chapter.blocks.filter(isVerifiedBlock);
-const blocksExcept = (chapter: Chapter, titles: string[]) =>
-  verified(chapter).filter((block) => !titles.includes(block.title));
 
 const endpointChapter = usage("endpoints");
-const actionCenterTitles = ["Action Center에서 조치 결과 확인"];
 const caseManagementChapter = usage("case-management");
 
 const sectionChapters: Omit<ChapterSection, "no">[] = [
